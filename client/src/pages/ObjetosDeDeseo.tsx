@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { ASSETS, films } from "@/data/content";
 import { motion } from "framer-motion";
-import { ArrowLeft, Award, Clock, Globe, Film, MapPin, Clapperboard, Quote } from "lucide-react";
+import { ArrowLeft, Award, Clock, Globe, Film, MapPin, Clapperboard, X, Image as ImageIcon } from "lucide-react";
 
 const film = films[0]; // Objetos de Deseo is the first film
+
+const MEDIA_BASE = "https://alejandrorenteria.com/objetos-media";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -16,6 +19,7 @@ const stagger = {
 
 export default function ObjetosDeDeseo() {
   const { theme } = useTheme();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   return (
     <div className={`min-h-screen bg-background text-foreground theme-${theme.className}`}>
@@ -30,67 +34,108 @@ export default function ObjetosDeDeseo() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero with Poster */}
       <motion.header
         initial="hidden"
         animate="visible"
         variants={stagger}
-        className="pt-24 pb-16 container"
+        className="pt-20 pb-12 container"
       >
-        <motion.div variants={fadeUp} className="max-w-4xl">
-          <span className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4 block">Short Film</span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[0.95]" style={{ fontFamily: "var(--font-display)" }}>
-            Objetos de Deseo
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mt-3 font-light" style={{ fontFamily: "var(--font-display)" }}>
-            La Navaja
-          </p>
-        </motion.div>
+        <div className="grid md:grid-cols-[320px_1fr] lg:grid-cols-[380px_1fr] gap-10 items-start">
+          {/* Main Poster */}
+          <motion.div variants={fadeUp} className="relative group cursor-pointer" onClick={() => setLightboxOpen(true)}>
+            <img
+              src={`${MEDIA_BASE}/poster.jpg`}
+              alt="Objetos de Deseo - Official Poster"
+              className="w-full rounded-sm shadow-2xl border border-border/30"
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors rounded-sm flex items-center justify-center">
+              <ImageIcon size={32} className="text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+          </motion.div>
 
-        {/* Specs Bar */}
-        <motion.div variants={fadeUp} className="flex flex-wrap gap-6 mt-10 text-sm text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <Clock size={14} className="text-primary" />
-            <span>{film.runtime}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Globe size={14} className="text-primary" />
-            <span>{film.language}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Film size={14} className="text-primary" />
-            <span>{film.format}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <MapPin size={14} className="text-primary" />
-            <span>United States</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Clapperboard size={14} className="text-primary" />
-            <span>16:9 &middot; Color</span>
-          </div>
-        </motion.div>
+          {/* Title & Info */}
+          <motion.div variants={fadeUp} className="pt-2">
+            <span className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4 block">Short Film</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[0.95]" style={{ fontFamily: "var(--font-display)" }}>
+              Objetos de Deseo
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground mt-3 font-light" style={{ fontFamily: "var(--font-display)" }}>
+              La Navaja
+            </p>
+
+            {/* Specs */}
+            <div className="flex flex-wrap gap-5 mt-8 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Clock size={14} className="text-primary" />
+                <span>{film.runtime}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Globe size={14} className="text-primary" />
+                <span>{film.language}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Film size={14} className="text-primary" />
+                <span>{film.format}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin size={14} className="text-primary" />
+                <span>United States</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clapperboard size={14} className="text-primary" />
+                <span>16:9 &middot; Color</span>
+              </div>
+            </div>
+
+            {/* Synopsis */}
+            <div className="mt-8">
+              <p className="text-base leading-relaxed text-foreground/90">
+                This captivating award winning tragedy and proof of concept with dark comedy tones; <strong>follows the eventful journey of Jessy, a morally ambiguous young man who finds himself entangled in a web of challenges when his mother is kidnapped. To settle his debt, Jessy reluctantly sets out to seduce Carlos, an older man in a vulnerable state of decline,</strong> who has a shady proposition that could solve his urgent problem.
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </motion.header>
 
       <div className="container pb-24 space-y-20">
-        {/* Synopsis */}
-        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-          <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-6">Overview</h2>
-          <div className="max-w-3xl">
-            <p className="text-lg md:text-xl leading-relaxed italic text-foreground/90">
-              This captivating award winning tragedy and proof of concept with dark comedy tones; <strong>follows the eventful journey of Jessy, a morally ambiguous young man who finds himself entangled in a web of challenges when his mother is kidnapped. To settle his debt, Jessy reluctantly sets out to seduce Carlos, an older man in a vulnerable state of decline,</strong> who has a shady proposition that could solve his urgent problem.
-            </p>
-          </div>
-          <p className="mt-6 text-sm leading-relaxed text-muted-foreground max-w-3xl">
-            Overall, the project is aiming to entertain and engage the audience while encouraging self-reflection and a deeper understanding of human nature. The combination of varied cultural settings, dark comedy, and a unifying symbolic element will make for a compelling and thought-provoking film.
-          </p>
+
+        {/* ===== TRAILER (YouTube) ===== */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+          <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">
+            Trailer
+          </motion.h2>
+          <motion.div variants={fadeUp} className="aspect-video w-full max-w-4xl rounded-sm overflow-hidden border border-border">
+            <iframe
+              src="https://www.youtube.com/embed/-IkjPxa6YXQ"
+              title="Objetos de Deseo - Official Trailer"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </motion.div>
         </motion.section>
 
-        {/* Credits */}
+        {/* ===== FULL FILM (YouTube) ===== */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+          <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">
+            Full Film
+          </motion.h2>
+          <motion.div variants={fadeUp} className="aspect-video w-full max-w-4xl rounded-sm overflow-hidden border border-border">
+            <iframe
+              src="https://www.youtube.com/embed/rNcGMiXXXoM"
+              title="Objetos de Deseo - La Navaja (Full Film)"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </motion.div>
+        </motion.section>
+
+        {/* ===== CREDITS ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
           <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">Credits</motion.h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Cast */}
             <motion.div variants={fadeUp} className="space-y-4">
               <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground">Cast</h3>
               <div className="space-y-3">
@@ -102,8 +147,6 @@ export default function ObjetosDeDeseo() {
                 ))}
               </div>
             </motion.div>
-
-            {/* Crew */}
             <motion.div variants={fadeUp} className="space-y-4">
               <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground">Crew</h3>
               <div className="space-y-3">
@@ -128,7 +171,7 @@ export default function ObjetosDeDeseo() {
           </div>
         </motion.section>
 
-        {/* Specifications */}
+        {/* ===== SPECIFICATIONS ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">Specifications</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -150,7 +193,7 @@ export default function ObjetosDeDeseo() {
           </div>
         </motion.section>
 
-        {/* Awards */}
+        {/* ===== AWARDS ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
           <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8 flex items-center gap-2">
             <Award size={14} className="text-primary" /> Awards & Selections
@@ -165,12 +208,11 @@ export default function ObjetosDeDeseo() {
           </div>
         </motion.section>
 
-        {/* Director Statement */}
+        {/* ===== DIRECTOR STATEMENT ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">Director Statement</h2>
           <div className="max-w-3xl space-y-6">
             <p className="text-sm text-muted-foreground italic mb-4">This first story is part of a feature film design to reflect this statement.</p>
-            
             <div className="space-y-5 text-sm leading-relaxed text-foreground/85">
               <p className="indent-8">
                 In the vibrant city of Miami, people from different corners of the globe&mdash;Argentina, Mexico, Spain, and Miami itself&mdash;come together. Each bringing their own unique cultural flavors and perspectives. However, underneath these surface differences, the silent motivators that drive human behavior remain consistent.
@@ -191,7 +233,7 @@ export default function ObjetosDeDeseo() {
           </div>
         </motion.section>
 
-        {/* Director Biography */}
+        {/* ===== DIRECTOR BIOGRAPHY ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
           <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">Director Biography</h2>
           <div className="max-w-3xl space-y-5 text-sm leading-relaxed text-foreground/85">
@@ -214,6 +256,21 @@ export default function ObjetosDeDeseo() {
           </a>
         </motion.div>
       </div>
+
+      {/* ===== POSTER LIGHTBOX ===== */}
+      {lightboxOpen && (
+        <div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center" onClick={() => setLightboxOpen(false)}>
+          <button onClick={() => setLightboxOpen(false)} className="absolute top-4 right-4 text-white/70 hover:text-white z-10">
+            <X size={28} />
+          </button>
+          <img
+            src={`${MEDIA_BASE}/poster.jpg`}
+            alt="Objetos de Deseo - Official Poster"
+            className="max-w-[90vw] max-h-[90vh] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 }
