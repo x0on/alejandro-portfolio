@@ -67,6 +67,8 @@ export default function Home() {
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
   const [commercialOpen, setCommercialOpen] = useState(false);
   const [photographyOpen, setPhotographyOpen] = useState(false);
+  const [activePhotoCategory, setActivePhotoCategory] = useState<string | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const featuredFilm = films[0];
 
@@ -441,29 +443,80 @@ export default function Home() {
             </div>
 
             <div className={`${photographyOpen ? 'block' : 'hidden'} md:block`}>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                {photographyCategories.map((cat, i) => (
-                  <a
-                    key={i}
-                    href={cat.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative bg-card border border-border rounded-sm p-6 text-center hover:border-primary/50 hover:bg-secondary/30 transition-all"
+              {/* Category filter tabs */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                <button
+                  onClick={() => setActivePhotoCategory(null)}
+                  className={`px-3 py-1.5 text-xs font-mono rounded-sm border transition-all ${
+                    activePhotoCategory === null
+                      ? 'bg-primary text-primary-foreground border-primary'
+                      : 'bg-card text-muted-foreground border-border hover:border-primary/50'
+                  }`}
+                >
+                  All
+                </button>
+                {photographyCategories.map((cat) => (
+                  <button
+                    key={cat.name}
+                    onClick={() => setActivePhotoCategory(cat.name)}
+                    className={`px-3 py-1.5 text-xs font-mono rounded-sm border transition-all ${
+                      activePhotoCategory === cat.name
+                        ? 'bg-primary text-primary-foreground border-primary'
+                        : 'bg-card text-muted-foreground border-border hover:border-primary/50'
+                    }`}
                   >
-                    <Camera size={28} className="mx-auto text-muted-foreground group-hover:text-primary transition-colors mb-3" />
-                    <div className="text-sm font-medium group-hover:text-primary transition-colors">{cat.name}</div>
-                    <div className="text-[10px] text-muted-foreground font-mono mt-1 flex items-center justify-center gap-1">
-                      View Gallery <ExternalLink size={10} />
-                    </div>
-                  </a>
+                    {cat.name}
+                  </button>
                 ))}
               </div>
-              <p className="text-xs text-muted-foreground mt-4 font-mono text-center">
-                Full photography portfolio at{" "}
-                <a href="https://alejandrorenteria.com/project/still/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                  alejandrorenteria.com
-                </a>
-              </p>
+
+              {/* Photo grid */}
+              <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
+                {(activePhotoCategory
+                  ? photographyCategories.filter(c => c.name === activePhotoCategory)
+                  : photographyCategories
+                ).flatMap(cat =>
+                  cat.images.slice(0, activePhotoCategory ? undefined : 4).map((img, i) => (
+                    <div
+                      key={`${cat.name}-${i}`}
+                      className="break-inside-avoid group relative overflow-hidden rounded-sm border border-border cursor-pointer"
+                      onClick={() => setLightboxImage(img)}
+                    >
+                      <img
+                        src={img}
+                        alt={`${cat.name} photography by Alejandro Renteria`}
+                        className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-end">
+                        <span className="text-white text-[10px] font-mono px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                          {cat.name}
+                        </span>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+
+              {/* Lightbox */}
+              {lightboxImage && (
+                <div
+                  className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-pointer"
+                  onClick={() => setLightboxImage(null)}
+                >
+                  <img
+                    src={lightboxImage}
+                    alt="Photography by Alejandro Renteria"
+                    className="max-w-full max-h-[90vh] object-contain rounded"
+                  />
+                  <button
+                    className="absolute top-4 right-4 text-white/70 hover:text-white text-2xl font-mono"
+                    onClick={() => setLightboxImage(null)}
+                  >
+                    ×
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </Section>

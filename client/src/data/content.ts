@@ -178,14 +178,112 @@ export const commercialWork = [
 ];
 
 // ===== PHOTOGRAPHY =====
+const PHOTO_BASE = "https://alejandrorenteria.com/photography";
+
 export const photographyCategories = [
-  { name: "Romance", url: "https://alejandrorenteria.com/project/still/" },
-  { name: "Drama", url: "https://alejandrorenteria.com/project/still/" },
-  { name: "Food", url: "https://alejandrorenteria.com/project/still/" },
-  { name: "Portraits", url: "https://alejandrorenteria.com/project/still/" },
-  { name: "Lines", url: "https://alejandrorenteria.com/project/still/" },
-  { name: "Beauty", url: "https://alejandrorenteria.com/project/still/" },
-  { name: "Travel", url: "https://alejandrorenteria.com/project/still/" },
+  {
+    name: "Portraits",
+    images: [
+      `${PHOTO_BASE}/b8341257430397.59d557f2cb7b9.jpg`,
+      `${PHOTO_BASE}/a4b10657430397.59d557f425906.jpg`,
+      `${PHOTO_BASE}/a1ebdc57430397.59d557f3e1410.jpg`,
+      `${PHOTO_BASE}/44c62157430397.59d557f492a03.jpg`,
+      `${PHOTO_BASE}/d446b657430397.59d557f489724.jpg`,
+      `${PHOTO_BASE}/153a8957430397.59d557f558f6e.jpg`,
+      `${PHOTO_BASE}/db872957430397.59d557f4770bc.jpg`,
+      `${PHOTO_BASE}/35fc2157430397.59d557f1eb856.jpg`,
+      `${PHOTO_BASE}/e84a5a57430397.59d557f3a4eee.jpg`,
+      `${PHOTO_BASE}/8ba2fb57430397.59d557f46da25.jpg`,
+    ],
+  },
+  {
+    name: "Romance",
+    images: [
+      `${PHOTO_BASE}/3285f957430387.59d557e50d026.jpg`,
+      `${PHOTO_BASE}/2cf05757430387.59d557e446d7b.jpg`,
+      `${PHOTO_BASE}/00b25757430387.59d557e4a3c0a.jpg`,
+      `${PHOTO_BASE}/b912bb57430387.59d557e4d37c9.jpg`,
+      `${PHOTO_BASE}/09702957430387.59d557e46787c.jpg`,
+      `${PHOTO_BASE}/c3bb7757430387.59d557e481731.jpg`,
+      `${PHOTO_BASE}/5e24e857430387.59d557e4ca7ff.jpg`,
+      `${PHOTO_BASE}/f182ec57430387.59d557e47996d.jpg`,
+      `${PHOTO_BASE}/92983a57430387.59d557e45a6d0.jpg`,
+      `${PHOTO_BASE}/47486657430387.59d557e45076a.jpg`,
+    ],
+  },
+  {
+    name: "Drama",
+    images: [
+      `${PHOTO_BASE}/785abe57430391.59d557e8dc215.jpg`,
+      `${PHOTO_BASE}/59d10c57430391.59d557e907c34.jpg`,
+      `${PHOTO_BASE}/661c0f57430391.59d557e8d55c1.jpg`,
+      `${PHOTO_BASE}/15fa9457430391.59d557e8efdf5.jpg`,
+      `${PHOTO_BASE}/dffecf57430391.59d557e8bd207.jpg`,
+      `${PHOTO_BASE}/b084c857430391.59d557e8e2a6b.jpg`,
+      `${PHOTO_BASE}/3b302957430391.59d557e8cecfa.jpg`,
+      `${PHOTO_BASE}/55faa357430391.59d557e8c372b.jpg`,
+      `${PHOTO_BASE}/4e5d1357430391.59d557e91424d.jpg`,
+      `${PHOTO_BASE}/44430e57430391.59d557e90de02.jpg`,
+    ],
+  },
+  {
+    name: "Food",
+    images: [
+      `${PHOTO_BASE}/55c50d57430393.59d557eca5c29.jpg`,
+      `${PHOTO_BASE}/bb539157430393.59d557eca0594.jpg`,
+      `${PHOTO_BASE}/ef4c0457430393.59d557ecc0dd6.jpg`,
+      `${PHOTO_BASE}/a12ccc57430393.59d557ecb3dec.jpg`,
+      `${PHOTO_BASE}/49039057430393.59d557ecc5a28.jpg`,
+      `${PHOTO_BASE}/490a6657430393.59d557ecca413.jpg`,
+      `${PHOTO_BASE}/0e809257430393.59d557ecd223b.jpg`,
+      `${PHOTO_BASE}/a88d5357430393.59d557ecaa5e0.jpg`,
+      `${PHOTO_BASE}/900f4157430393.59d557ece5606.jpg`,
+      `${PHOTO_BASE}/1c350957430393.59d557ec976b7.jpg`,
+    ],
+  },
+  {
+    name: "Beauty",
+    images: [
+      `${PHOTO_BASE}/3e22b957430411.59d5580961e83.jpg`,
+      `${PHOTO_BASE}/ed997257430411.59d558095b456.jpg`,
+      `${PHOTO_BASE}/2db07957430411.59d558094a40f.jpg`,
+      `${PHOTO_BASE}/00832157430411.59d558094f02a.jpg`,
+      `${PHOTO_BASE}/0b46dd57430411.59d5580954d63.jpg`,
+      `${PHOTO_BASE}/a0249157430411.59d5580964099.jpg`,
+      `${PHOTO_BASE}/25897557430411.59d558095248d.jpg`,
+      `${PHOTO_BASE}/cb3dcf57430411.59d5580950164.jpg`,
+    ],
+  },
+  {
+    name: "Lines",
+    images: [
+      `${PHOTO_BASE}/e9df3b57430405.59d55804cd7ad.jpg`,
+      `${PHOTO_BASE}/d695aa57430405.59d55804d6f32.jpg`,
+      `${PHOTO_BASE}/c8d0d857430405.59d55803e25b0.jpg`,
+      `${PHOTO_BASE}/871fc357430405.59d558044e695.jpg`,
+      `${PHOTO_BASE}/fde8aa57430405.59d55804454ce.jpg`,
+      `${PHOTO_BASE}/22399057430405.59d5580411800.jpg`,
+      `${PHOTO_BASE}/f6720357430405.59d55804e0424.jpg`,
+      `${PHOTO_BASE}/0cf64c57430405.59d55803b4fe3.jpg`,
+      `${PHOTO_BASE}/eaf2e657430405.59d55804697ec.jpg`,
+      `${PHOTO_BASE}/01958f57430405.59d558041ac07.jpg`,
+    ],
+  },
+  {
+    name: "Travel",
+    images: [
+      `${PHOTO_BASE}/18952857430401.59d557ff319d3.jpg`,
+      `${PHOTO_BASE}/35a2f257430401.59d557ff413a3.jpg`,
+      `${PHOTO_BASE}/392ab457430401.59d557ff2beaa.jpg`,
+      `${PHOTO_BASE}/86886057430401.59d557ff2e93a.jpg`,
+      `${PHOTO_BASE}/a4f33157430401.59d557ff32de5.jpg`,
+      `${PHOTO_BASE}/157eba57430401.59d557ff36744.jpg`,
+      `${PHOTO_BASE}/209fa357430401.59d557ff3af7b.jpg`,
+      `${PHOTO_BASE}/35a07457430401.59d557ff48279.jpg`,
+      `${PHOTO_BASE}/0f21f857430401.59d557ff45409.jpg`,
+      `${PHOTO_BASE}/21628b57430401.59d557ff3c228.jpg`,
+    ],
+  },
 ];
 
 // ===== SOFTWARE =====

@@ -6,9 +6,6 @@ export type ArtisticTheme =
   | "minimalist"
   | "swiss"
   | "bauhaus"
-  | "memphis"
-  | "retrofuturism"
-  | "cyberpunk"
   | "artdeco";
 
 export interface ThemeConfig {
@@ -26,9 +23,6 @@ export const THEMES: ThemeConfig[] = [
   { id: "minimalist", name: "Minimalist", category: "Classic", fontDisplay: "'Cormorant Garamond'", fontBody: "'Source Sans 3'", fontMono: "'IBM Plex Mono'" },
   { id: "swiss", name: "Swiss Design", category: "Classic", fontDisplay: "'Space Grotesk'", fontBody: "'Source Sans 3'", fontMono: "'IBM Plex Mono'" },
   { id: "bauhaus", name: "Bauhaus", category: "Classic", fontDisplay: "'Oswald'", fontBody: "'Source Sans 3'", fontMono: "'IBM Plex Mono'" },
-  { id: "memphis", name: "Memphis", category: "Playful", fontDisplay: "'Bebas Neue'", fontBody: "'Source Sans 3'", fontMono: "'IBM Plex Mono'" },
-  { id: "retrofuturism", name: "Retro Futurism", category: "Futuristic", fontDisplay: "'Orbitron'", fontBody: "'Source Sans 3'", fontMono: "'IBM Plex Mono'" },
-  { id: "cyberpunk", name: "Cyberpunk", category: "Futuristic", fontDisplay: "'Orbitron'", fontBody: "'Source Sans 3'", fontMono: "'IBM Plex Mono'" },
   { id: "artdeco", name: "Art Deco", category: "Classic", fontDisplay: "'Poiret One'", fontBody: "'Source Sans 3'", fontMono: "'IBM Plex Mono'" },
 ];
 
