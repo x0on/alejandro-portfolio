@@ -65,6 +65,8 @@ export default function Home() {
   const [showAllFilmography, setShowAllFilmography] = useState(false);
   const [expandedFilm, setExpandedFilm] = useState<number | null>(0);
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+  const [commercialOpen, setCommercialOpen] = useState(false);
+  const [photographyOpen, setPhotographyOpen] = useState(false);
 
   const featuredFilm = films[0];
 
@@ -346,38 +348,65 @@ export default function Home() {
 
         {/* ===== COMMERCIAL WORK ===== */}
         <Section id="commercial" className="container py-16 md:py-24">
-          <SectionTitle number="03" title="Commercial Work" subtitle="Selected Campaigns & Reels" />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {commercialWork.map((item, i) => (
-              <div key={i} className="group relative overflow-hidden rounded-sm border border-border bg-card">
-                <div className="aspect-video relative bg-black">
-                  {playingVideo === i ? (
-                    <video
-                      src={item.url}
-                      controls
-                      autoPlay
-                      className="w-full h-full object-contain"
-                    />
-                  ) : (
-                    <button
-                      onClick={() => setPlayingVideo(i)}
-                      className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted/80 to-muted/40 hover:from-muted/60 hover:to-muted/20 transition-all"
-                    >
-                      <div className="flex flex-col items-center gap-2">
-                        <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center shadow-lg">
-                          <Play size={24} className="text-primary-foreground ml-1" />
-                        </div>
-                        <span className="text-xs text-muted-foreground font-mono">{item.type}</span>
-                      </div>
-                    </button>
-                  )}
+          {/* Mobile: collapsible header */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setCommercialOpen(!commercialOpen)}
+              className="w-full flex items-center justify-between mb-6"
+            >
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-xs font-mono text-muted-foreground tracking-widest">03</span>
+                  <div className="h-px flex-1 bg-border" />
                 </div>
-                <div className="p-3 flex items-center justify-between">
-                  <div className="text-sm font-medium">{item.title}</div>
-                  <span className="text-[10px] px-2 py-0.5 bg-secondary text-secondary-foreground rounded-sm font-mono">{item.type}</span>
-                </div>
+                <h2 className="text-3xl font-bold tracking-tight text-left" style={{ fontFamily: "var(--font-display)" }}>
+                  Commercial Work
+                </h2>
+                <p className="text-muted-foreground mt-1 text-sm text-left">Selected Campaigns & Reels</p>
               </div>
-            ))}
+              <div className="shrink-0 ml-4 w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+                {commercialOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              </div>
+            </button>
+          </div>
+          {/* Desktop: always visible header */}
+          <div className="hidden md:block">
+            <SectionTitle number="03" title="Commercial Work" subtitle="Selected Campaigns & Reels" />
+          </div>
+
+          <div className={`${commercialOpen ? 'block' : 'hidden'} md:block`}>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {commercialWork.map((item, i) => (
+                <div key={i} className="group relative overflow-hidden rounded-sm border border-border bg-card">
+                  <div className="aspect-video relative bg-black">
+                    {playingVideo === i ? (
+                      <video
+                        src={item.url}
+                        controls
+                        autoPlay
+                        className="w-full h-full object-contain"
+                      />
+                    ) : (
+                      <button
+                        onClick={() => setPlayingVideo(i)}
+                        className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted/80 to-muted/40 hover:from-muted/60 hover:to-muted/20 transition-all"
+                      >
+                        <div className="flex flex-col items-center gap-2">
+                          <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center shadow-lg">
+                            <Play size={24} className="text-primary-foreground ml-1" />
+                          </div>
+                          <span className="text-xs text-muted-foreground font-mono">{item.type}</span>
+                        </div>
+                      </button>
+                    )}
+                  </div>
+                  <div className="p-3 flex items-center justify-between">
+                    <div className="text-sm font-medium">{item.title}</div>
+                    <span className="text-[10px] px-2 py-0.5 bg-secondary text-secondary-foreground rounded-sm font-mono">{item.type}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </Section>
 
@@ -385,30 +414,57 @@ export default function Home() {
         <Section id="photography" className="relative">
           <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
           <div className="relative container py-16 md:py-24">
-            <SectionTitle number="04" title="Photography" subtitle="Still Photography Categories" />
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {photographyCategories.map((cat, i) => (
-                <a
-                  key={i}
-                  href={cat.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative bg-card border border-border rounded-sm p-6 text-center hover:border-primary/50 hover:bg-secondary/30 transition-all"
-                >
-                  <Camera size={28} className="mx-auto text-muted-foreground group-hover:text-primary transition-colors mb-3" />
-                  <div className="text-sm font-medium group-hover:text-primary transition-colors">{cat.name}</div>
-                  <div className="text-[10px] text-muted-foreground font-mono mt-1 flex items-center justify-center gap-1">
-                    View Gallery <ExternalLink size={10} />
+            {/* Mobile: collapsible header */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setPhotographyOpen(!photographyOpen)}
+                className="w-full flex items-center justify-between mb-6"
+              >
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-xs font-mono text-muted-foreground tracking-widest">04</span>
+                    <div className="h-px flex-1 bg-border" />
                   </div>
-                </a>
-              ))}
+                  <h2 className="text-3xl font-bold tracking-tight text-left" style={{ fontFamily: "var(--font-display)" }}>
+                    Photography
+                  </h2>
+                  <p className="text-muted-foreground mt-1 text-sm text-left">Still Photography Categories</p>
+                </div>
+                <div className="shrink-0 ml-4 w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
+                  {photographyOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                </div>
+              </button>
             </div>
-            <p className="text-xs text-muted-foreground mt-4 font-mono text-center">
-              Full photography portfolio at{" "}
-              <a href="https://alejandrorenteria.com/project/still/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                alejandrorenteria.com
-              </a>
-            </p>
+            {/* Desktop: always visible header */}
+            <div className="hidden md:block">
+              <SectionTitle number="04" title="Photography" subtitle="Still Photography Categories" />
+            </div>
+
+            <div className={`${photographyOpen ? 'block' : 'hidden'} md:block`}>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                {photographyCategories.map((cat, i) => (
+                  <a
+                    key={i}
+                    href={cat.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative bg-card border border-border rounded-sm p-6 text-center hover:border-primary/50 hover:bg-secondary/30 transition-all"
+                  >
+                    <Camera size={28} className="mx-auto text-muted-foreground group-hover:text-primary transition-colors mb-3" />
+                    <div className="text-sm font-medium group-hover:text-primary transition-colors">{cat.name}</div>
+                    <div className="text-[10px] text-muted-foreground font-mono mt-1 flex items-center justify-center gap-1">
+                      View Gallery <ExternalLink size={10} />
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground mt-4 font-mono text-center">
+                Full photography portfolio at{" "}
+                <a href="https://alejandrorenteria.com/project/still/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  alejandrorenteria.com
+                </a>
+              </p>
+            </div>
           </div>
         </Section>
 

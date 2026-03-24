@@ -63,7 +63,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<ArtisticTheme>(() => {
     const stored = localStorage.getItem("ar-theme") as ArtisticTheme | null;
     if (stored && THEMES.find(t => t.id === stored)) return stored;
-    return getRandomTheme();
+    return "minimalist";
   });
 
   const themeConfig = THEMES.find(t => t.id === theme)!;

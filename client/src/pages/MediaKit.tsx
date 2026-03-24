@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import { ASSETS, bios, contact, socialLinks } from "@/data/content";
+import { bios, contact, socialLinks } from "@/data/content";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Download, Copy, Check, X, Mail, Phone, Globe, ExternalLink } from "lucide-react";
@@ -9,9 +9,27 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const photos = [
-  { url: ASSETS.logomark, label: "Logo Mark" },
-  { url: ASSETS.logo, label: "Logo with Text" },
+const galleryPhotos = [
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-01_c05234d8.jpg", label: "Portrait — Dark Background" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-02_5ff44799.jpg", label: "Portrait — Color Background" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-03_479a04b9.jpg", label: "Portrait — White Shirt" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-04_201732d3.webp", label: "Behind the Scenes" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-05_dbb3b2b6.webp", label: "Miami Film Festival" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-06_b1d8601f.webp", label: "Film Festival Event" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-07_5141e0ed.webp", label: "On Set — Director" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-08_56bd9098.webp", label: "Production Still" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-09_890ece4d.webp", label: "On Location" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-10_59e7b3b0.webp", label: "Creative Direction" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-11_b0e0740f.webp", label: "Event Photography" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-12_1c447a25.webp", label: "Film Premiere" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-13_062deecd.webp", label: "Production Work" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-14_b946e4cb.webp", label: "Cinematography" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-15_bee8a357.webp", label: "Behind the Camera" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-16_97396776.webp", label: "Film Screening" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-17_dc00bf0d.webp", label: "Studio Portrait" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-18_7109e5be.webp", label: "Working on Set" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-19_ce3fee3b.webp", label: "Post-Production" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-20_1bbb6f1c.webp", label: "On Location — Miami" },
 ];
 
 const facts = [
@@ -54,7 +72,7 @@ export default function MediaKit() {
             Press Assets &<br />Media Resources
           </h1>
           <p className="text-muted-foreground mt-4 max-w-xl text-sm leading-relaxed">
-            Download high-resolution photos, logos, and copy-ready bios for press and media use.
+            Download high-resolution photos and copy-ready bios for press and media use.
             All assets are available for editorial and promotional purposes.
           </p>
         </motion.section>
@@ -72,24 +90,25 @@ export default function MediaKit() {
             <div className="h-px flex-1 bg-border" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ fontFamily: "var(--font-display)" }}>
-            Logos & Brand Assets
+            Photo Gallery
           </h2>
 
-          <div className="grid grid-cols-2 gap-4 max-w-lg">
-            {photos.map((photo, i) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            {galleryPhotos.map((photo, i) => (
               <div
                 key={i}
-                className="group relative aspect-square overflow-hidden rounded-sm border border-border cursor-pointer bg-white"
+                className="group relative aspect-[3/4] overflow-hidden rounded-sm border border-border cursor-pointer"
                 onClick={() => setLightbox(i)}
               >
                 <img
                   src={photo.url}
                   alt={photo.label}
-                  className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform">
-                  <p className="text-white text-sm font-medium">{photo.label}</p>
+                  <p className="text-white text-xs font-medium">{photo.label}</p>
                 </div>
               </div>
             ))}
@@ -113,13 +132,13 @@ export default function MediaKit() {
               <X size={28} />
             </button>
             <img
-              src={photos[lightbox].url}
-              alt={photos[lightbox].label}
+              src={galleryPhotos[lightbox].url}
+              alt={galleryPhotos[lightbox].label}
               className="max-w-full max-h-[85vh] object-contain rounded-sm"
               onClick={e => e.stopPropagation()}
             />
             <div className="absolute bottom-6 left-0 right-0 text-center">
-              <p className="text-white text-sm font-medium">{photos[lightbox].label}</p>
+              <p className="text-white text-sm font-medium">{galleryPhotos[lightbox].label}</p>
               <div className="flex items-center justify-center gap-3 mt-2">
                 {lightbox > 0 && (
                   <button
@@ -130,7 +149,7 @@ export default function MediaKit() {
                   </button>
                 )}
                 <a
-                  href={photos[lightbox].url}
+                  href={galleryPhotos[lightbox].url}
                   download
                   target="_blank"
                   rel="noopener noreferrer"
@@ -139,7 +158,7 @@ export default function MediaKit() {
                 >
                   <Download size={14} /> Download
                 </a>
-                {lightbox < photos.length - 1 && (
+                {lightbox < galleryPhotos.length - 1 && (
                   <button
                     onClick={e => { e.stopPropagation(); setLightbox(lightbox + 1); }}
                     className="px-3 py-1.5 text-xs bg-white/10 text-white rounded-sm hover:bg-white/20 transition-colors"
@@ -173,28 +192,27 @@ export default function MediaKit() {
               { key: "short50", label: "One-Liner (50 chars)", text: bios.short50 },
               { key: "short100", label: "Short Bio (100 chars)", text: bios.short100 },
               { key: "medium250", label: "Medium Bio (250 chars)", text: bios.medium250 },
-              { key: "medium500", label: "Extended Bio (500 chars)", text: bios.medium500 },
-              { key: "long1000", label: "Full Bio (1000 chars)", text: bios.long1000 },
+              { key: "long500", label: "Long Bio (500 chars)", text: bios.long500 },
+              { key: "full1000", label: "Full Bio (1000 chars)", text: bios.full1000 },
             ].map(bio => (
-              <div key={bio.key} className="bg-card border border-border rounded-sm p-5">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground">{bio.label}</h3>
+              <div key={bio.key} className="border border-border rounded-sm p-4 bg-card">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-mono text-muted-foreground">{bio.label}</span>
                   <button
                     onClick={() => handleCopy(bio.text, bio.key)}
-                    className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
+                    className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {copiedBio === bio.key ? <Check size={14} /> : <Copy size={14} />}
-                    {copiedBio === bio.key ? "Copied!" : "Copy"}
+                    {copiedBio === bio.key ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
+                    {copiedBio === bio.key ? "Copied" : "Copy"}
                   </button>
                 </div>
-                <p className="text-sm leading-relaxed whitespace-pre-wrap">{bio.text}</p>
-                <span className="text-xs text-muted-foreground font-mono mt-2 block">{bio.text.length} characters</span>
+                <p className="text-sm leading-relaxed">{bio.text}</p>
               </div>
             ))}
           </div>
         </motion.section>
 
-        {/* Facts & Contact */}
+        {/* Quick Facts & Contact */}
         <motion.section
           initial="hidden"
           whileInView="visible"
@@ -202,60 +220,60 @@ export default function MediaKit() {
           variants={fadeUp}
           className="container pb-16 md:pb-24"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-xs font-mono text-muted-foreground tracking-widest">03</span>
-            <div className="h-px flex-1 bg-border" />
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ fontFamily: "var(--font-display)" }}>
-            Quick Facts & Contact
-          </h2>
-
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="border border-border rounded-sm overflow-hidden">
-              <table className="w-full text-sm">
-                <tbody className="divide-y divide-border">
-                  {facts.map(f => (
-                    <tr key={f.label} className="hover:bg-secondary/20 transition-colors">
-                      <td className="px-4 py-3 font-mono text-xs text-muted-foreground w-1/3">{f.label}</td>
-                      <td className="px-4 py-3 font-medium">{f.value}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-xs font-mono text-muted-foreground tracking-widest">03</span>
+                <div className="h-px flex-1 bg-border" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ fontFamily: "var(--font-display)" }}>
+                Quick Facts
+              </h2>
+              <div className="space-y-3">
+                {facts.map((fact, i) => (
+                  <div key={i} className="flex items-start gap-3 text-sm">
+                    <span className="text-muted-foreground font-mono text-xs min-w-[120px]">{fact.label}</span>
+                    <span className="font-medium">{fact.value}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="bg-card border border-border p-5 rounded-sm space-y-4">
-                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground">Contact Information</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <Mail size={16} className="text-primary" />
-                    <a href={`mailto:${contact.email}`} className="text-sm hover:text-primary transition-colors">{contact.email}</a>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone size={16} className="text-primary" />
-                    <a href={`tel:${contact.phone}`} className="text-sm hover:text-primary transition-colors">{contact.phone}</a>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Globe size={16} className="text-primary" />
-                    <a href={`https://${contact.website}`} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary transition-colors">{contact.website}</a>
-                  </div>
-                </div>
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-xs font-mono text-muted-foreground tracking-widest">04</span>
+                <div className="h-px flex-1 bg-border" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ fontFamily: "var(--font-display)" }}>
+                Contact
+              </h2>
+              <div className="space-y-3">
+                <a href={`mailto:${contact.email}`} className="flex items-center gap-3 text-sm hover:text-primary transition-colors">
+                  <Mail size={16} className="text-muted-foreground" />
+                  {contact.email}
+                </a>
+                <a href={`tel:${contact.phone}`} className="flex items-center gap-3 text-sm hover:text-primary transition-colors">
+                  <Phone size={16} className="text-muted-foreground" />
+                  {contact.phone}
+                </a>
+                <a href={`https://${contact.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm hover:text-primary transition-colors">
+                  <Globe size={16} className="text-muted-foreground" />
+                  {contact.website}
+                </a>
               </div>
 
-              <div className="bg-card border border-border p-5 rounded-sm">
-                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">Social Profiles</h3>
-                <div className="space-y-2">
-                  {socialLinks.map(s => (
+              <div className="mt-6 pt-6 border-t border-border">
+                <p className="text-xs font-mono text-muted-foreground mb-3">Social</p>
+                <div className="flex flex-wrap gap-2">
+                  {socialLinks.map((link, i) => (
                     <a
-                      key={s.platform}
-                      href={s.url}
+                      key={i}
+                      href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between text-sm hover:text-primary transition-colors py-1"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 text-xs bg-secondary text-secondary-foreground rounded-sm hover:bg-accent hover:text-accent-foreground transition-colors"
                     >
-                      <span>{s.platform}</span>
-                      <ExternalLink size={14} className="text-muted-foreground" />
+                      {link.platform} <ExternalLink size={10} />
                     </a>
                   ))}
                 </div>
@@ -263,18 +281,14 @@ export default function MediaKit() {
             </div>
           </div>
         </motion.section>
-
-        {/* Footer */}
-        <footer className="border-t border-border py-8">
-          <div className="container flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <img src={ASSETS.logomark} alt="AR" className="h-5 w-5 object-contain opacity-60" />
-              <span>&copy; {new Date().getFullYear()} Alejandro Renteria. All rights reserved.</span>
-            </div>
-            <a href="/" className="hover:text-primary transition-colors">Back to Press Kit</a>
-          </div>
-        </footer>
       </main>
+
+      {/* Footer */}
+      <footer className="border-t border-border py-8">
+        <div className="container text-center text-xs text-muted-foreground font-mono">
+          &copy; {new Date().getFullYear()} Alejandro Renteria. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }

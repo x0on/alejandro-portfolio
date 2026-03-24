@@ -171,13 +171,10 @@ export const book = {
 
 // ===== COMMERCIAL WORK =====
 export const commercialWork = [
-  { title: "Al Horford", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/Alejandro-Renteria-Al-Horford.mp4", type: "Commercial" },
-  { title: "Cheff Claudette", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/Alejandro-Renteria-Cheff-Claudette.mp4", type: "Commercial" },
-  { title: "Rosemarie Burgos", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/Alejandro-Renteria-Rosemarie-Burgos.mp4", type: "Commercial" },
-  { title: "Demo 2020", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/2020-demo.mp4", type: "Demo Reel" },
-  { title: "Fiction Reel", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/fiction.mp4", type: "Reel" },
-  { title: "Change No 5", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/Change-No-5.mp4", type: "Short" },
-  { title: "Behind The Scenes", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/Behind-the-Scenes.mp4", type: "BTS" },
+  { title: "Al Horford", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Al-Horford.mp4", type: "Commercial" },
+  { title: "Cheff Claudette", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Cheff-Claudette.mp4", type: "Commercial" },
+  { title: "Rosemarie Burgos", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Rosemarie-Burgos.mp4", type: "Commercial" },
+  { title: "Behind The Scenes", url: "https://alejandrorenteria.com/videos/Behind-the-Scenes.mp4", type: "BTS" },
 ];
 
 // ===== PHOTOGRAPHY =====
@@ -196,7 +193,7 @@ export const software = {
   name: "Story Town",
   tagline: "Where storymakers produce",
   elevator: "Story Town is the first AI film production platform. You write a story \u2014 or just describe one \u2014 and the system writes the screenplay, builds the visual bibles, generates the storyboard, and produces the actual video clips and audio. Characters stay consistent. Shots follow cinematic grammar. The whole thing flows in one pipeline, from concept to content.",
-  description: "An end-to-end AI film production platform. You write a story \u2014 or just describe one \u2014 and the system writes the screenplay, builds the visual bibles, generates the storyboard, and produces the actual video clips and audio. Characters stay consistent. Shots follow cinematic grammar. The whole thing flows in one pipeline, from concept to content.",
+  description: "Story Town is an end-to-end AI pre-production pipeline. You go from a screenplay or concept to a complete visual package \u2014 characters, locations, storyboards, shot-by-shot animatics, and video clips \u2014 in one session. The system understands cinematography. It doesn\u2019t just generate pretty images. It thinks in shots: framing, camera angle, motion, scene continuity, character placement.",
   features: [
     { name: "Sentence-Level Visual Decomposition", desc: "Reads a screenplay line-by-line and derives the correct shot for each moment" },
     { name: "Bible-Aware Generation", desc: "Characters look the same from shot to shot via a tracked visual bible" },
@@ -308,9 +305,9 @@ export const socialLinks = [
   { platform: "IMDb", url: "https://www.imdb.com/name/nm2828446/", icon: "film" },
   { platform: "LinkedIn", url: "https://www.linkedin.com/in/alejandro-renteria-490a2a15/", icon: "linkedin" },
   { platform: "Instagram", url: "https://www.instagram.com/alejandrorenteria", icon: "instagram" },
+  { platform: "X", url: "https://twitter.com/susurrone", icon: "twitter" },
   { platform: "Behance", url: "https://www.behance.net/alejandrorenteria", icon: "palette" },
   { platform: "Website", url: "https://alejandrorenteria.com", icon: "globe" },
-  { platform: "Thinking Monkeys", url: "http://thinkingmonkeys.us", icon: "clapperboard" },
 ];
 
 // ===== CONTACT =====

@@ -15,8 +15,6 @@ export default function ThemeSwitcher() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  const categories = [...new Set(THEMES.map(t => t.category))];
-
   return (
     <div ref={ref} className="relative">
       <div className="flex items-center gap-1">
@@ -38,24 +36,17 @@ export default function ThemeSwitcher() {
       </div>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-56 bg-card border border-border rounded-sm shadow-xl z-50 overflow-hidden">
-          {categories.map(cat => (
-            <div key={cat}>
-              <div className="px-3 py-1.5 text-xs font-mono uppercase tracking-wider text-muted-foreground bg-muted/50">
-                {cat}
-              </div>
-              {THEMES.filter(t => t.category === cat).map(t => (
-                <button
-                  key={t.id}
-                  onClick={() => { setTheme(t.id as ArtisticTheme); setOpen(false); }}
-                  className={`w-full text-left px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors ${
-                    theme === t.id ? "bg-primary text-primary-foreground" : "text-card-foreground"
-                  }`}
-                >
-                  {t.name}
-                </button>
-              ))}
-            </div>
+        <div className="absolute right-0 top-full mt-2 w-48 bg-card border border-border rounded-sm shadow-xl z-50 overflow-hidden py-1">
+          {THEMES.map(t => (
+            <button
+              key={t.id}
+              onClick={() => { setTheme(t.id as ArtisticTheme); setOpen(false); }}
+              className={`w-full text-left px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground transition-colors ${
+                theme === t.id ? "bg-primary text-primary-foreground" : "text-card-foreground"
+              }`}
+            >
+              {t.name}
+            </button>
           ))}
         </div>
       )}
