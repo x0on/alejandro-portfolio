@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import { ASSETS, hero, bios, contact, socialLinks } from "@/data/content";
+import { ASSETS, hero, bios, contact, socialLinks, headshots } from "@/data/content";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Download, Copy, Check, X, Mail, Phone, Globe, ExternalLink } from "lucide-react";
@@ -10,17 +10,14 @@ const fadeUp = {
 };
 
 const photos = [
-  { url: ASSETS.heroImage, label: "Cinematic Portrait" },
-  { url: ASSETS.filmStill, label: "Film Still - Noir" },
-  { url: ASSETS.miamiCinematic, label: "Miami Cinematic" },
-  { url: ASSETS.manuscript, label: "Manuscript Artistic" },
+  ...headshots.map((h, i) => ({ url: h.url, label: `Portrait ${i + 1}` })),
   { url: ASSETS.logomark, label: "Logo Mark" },
   { url: ASSETS.logo, label: "Logo with Text" },
 ];
 
 const facts = [
   { label: "Full Name", value: "Alejandro Renteria" },
-  { label: "Title", value: "Director / Executive Producer / Cinematographer / Editor" },
+  { label: "Title", value: "Actor / Writer / Director / Editor / Photographer / Software Developer" },
   { label: "Company", value: "Thinking Monkeys Films" },
   { label: "Location", value: "Miami, FL" },
   { label: "Languages", value: "English, Spanish" },
@@ -79,11 +76,11 @@ export default function MediaKit() {
             Photo Gallery
           </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {photos.map((photo, i) => (
               <div
                 key={i}
-                className="group relative aspect-[4/3] overflow-hidden rounded-sm border border-border cursor-pointer"
+                className="group relative aspect-[3/4] overflow-hidden rounded-sm border border-border cursor-pointer"
                 onClick={() => setLightbox(i)}
               >
                 <img
@@ -124,16 +121,34 @@ export default function MediaKit() {
             />
             <div className="absolute bottom-6 left-0 right-0 text-center">
               <p className="text-white text-sm font-medium">{photos[lightbox].label}</p>
-              <a
-                href={photos[lightbox].url}
-                download
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-2 px-4 py-2 text-xs bg-white/10 text-white rounded-sm hover:bg-white/20 transition-colors"
-                onClick={e => e.stopPropagation()}
-              >
-                <Download size={14} /> Download Full Resolution
-              </a>
+              <div className="flex items-center justify-center gap-3 mt-2">
+                {lightbox > 0 && (
+                  <button
+                    onClick={e => { e.stopPropagation(); setLightbox(lightbox - 1); }}
+                    className="px-3 py-1.5 text-xs bg-white/10 text-white rounded-sm hover:bg-white/20 transition-colors"
+                  >
+                    Previous
+                  </button>
+                )}
+                <a
+                  href={photos[lightbox].url}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-1.5 text-xs bg-white/10 text-white rounded-sm hover:bg-white/20 transition-colors"
+                  onClick={e => e.stopPropagation()}
+                >
+                  <Download size={14} /> Download
+                </a>
+                {lightbox < photos.length - 1 && (
+                  <button
+                    onClick={e => { e.stopPropagation(); setLightbox(lightbox + 1); }}
+                    className="px-3 py-1.5 text-xs bg-white/10 text-white rounded-sm hover:bg-white/20 transition-colors"
+                  >
+                    Next
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -156,8 +171,10 @@ export default function MediaKit() {
 
           <div className="space-y-4">
             {[
+              { key: "short50", label: "One-Liner (50 chars)", text: bios.short50 },
               { key: "short100", label: "Short Bio (100 chars)", text: bios.short100 },
               { key: "medium250", label: "Medium Bio (250 chars)", text: bios.medium250 },
+              { key: "medium500", label: "Extended Bio (500 chars)", text: bios.medium500 },
               { key: "long1000", label: "Full Bio (1000 chars)", text: bios.long1000 },
             ].map(bio => (
               <div key={bio.key} className="bg-card border border-border rounded-sm p-5">

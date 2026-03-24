@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { ChevronDown, ChevronRight, User, Film, BookOpen, Newspaper, Video, Share2, Briefcase, Mail } from "lucide-react";
+import { ChevronDown, ChevronRight, User, Film, BookOpen, Video, Share2, Briefcase, Mail, Camera, Monitor, Clapperboard } from "lucide-react";
 
 const mainSections = [
   { id: "hero", label: "Overview", icon: User },
   { id: "about", label: "About", icon: User },
-  { id: "film", label: "Featured Film", icon: Film },
+  { id: "films", label: "Films", icon: Film },
+  { id: "commercial", label: "Commercial", icon: Clapperboard },
+  { id: "photography", label: "Photography", icon: Camera },
   { id: "book", label: "Book", icon: BookOpen },
-  { id: "press", label: "Press Coverage", icon: Newspaper },
+  { id: "software", label: "Software", icon: Monitor },
+  { id: "press", label: "Press Coverage", icon: BookOpen },
   { id: "interviews", label: "Interviews", icon: Video },
 ];
 

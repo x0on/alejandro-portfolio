@@ -6,14 +6,27 @@ export const ASSETS = {
   pressBg: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/press-coverage-bg-Lg8DwABNoS5LULfGSnbVCC.webp",
   miamiCinematic: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/miami-dark-cinematic-FNvSHzRp7W6HCWkHGPDMje.webp",
   logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-logo_5d73dd5d.png",
-  logomark: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-logomark_9c6fed72.png",
+  logomark: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-logo-official_a98eaccc.png",
   manuscriptPdf: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/CONVERSATIONSWITHTHEMACHINE_884b8b9b.pdf",
+  storyTown: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/storytown-screenshot_305ed758.webp",
 };
+
+// ===== HEADSHOTS =====
+export const headshots = [
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-headshot-1_0e423286.jpeg", alt: "Alejandro Renteria - Portrait 1" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-headshot-2_acb021de.jpeg", alt: "Alejandro Renteria - Portrait 2" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-headshot-3_1114aa78.jpeg", alt: "Alejandro Renteria - Portrait 3" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-headshot-4_4b4252b2.jpeg", alt: "Alejandro Renteria - Portrait 4" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-headshot-5_f057a531.jpeg", alt: "Alejandro Renteria - Portrait 5" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-headshot-6_c9303dcc.jpeg", alt: "Alejandro Renteria - Portrait 6" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-headshot-7_6ceee3f2.jpeg", alt: "Alejandro Renteria - Portrait 7" },
+  { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-headshot-8_e2963fb8.jpeg", alt: "Alejandro Renteria - Portrait 8" },
+];
 
 // ===== HERO =====
 export const hero = {
   name: "Alejandro Renteria",
-  title: "Director \u2022 Executive Producer \u2022 Cinematographer \u2022 Editor",
+  title: "Director \u2022 Producer \u2022 Cinematographer \u2022 Editor",
   tagline: "Multidisciplinary systems thinker specializing in transforming vision into scalable creative infrastructure.",
   stats: [
     { label: "Years Experience", value: "15+" },
@@ -29,16 +42,17 @@ export const bios = {
   short100: "Award-winning filmmaker and creative producer with 15+ years leading end-to-end production for government, commercial, and entertainment clients. Founder of Thinking Monkeys Films.",
   medium250: "Alejandro Renteria is an award-winning Creative Producer and Strategic Communicator with 15+ years of experience producing high-impact marketing collateral, public-facing campaigns, and executive presentations across municipal and commercial sectors. Expert in translating complex projects into compelling narratives for diverse audiences. Founder of Thinking Monkeys Films, he has produced 900+ projects for brands including HBO, Telemundo, and Carnival Corporation.",
   medium500: "Born in Havana, Cuba to a family of performing artists, Alejandro Renteria relocated to Caracas, Venezuela at age ten where he studied theatre and performing arts. After emigrating to the United States in 2002, he settled in Miami and continued his education in cinematography while honing his skills as a visual storyteller. He founded Thinking Monkeys Films and began making his mark on the American market as a \"Preditor\" (Producer+Editor+Director). With 15+ years of experience, he has produced 900+ projects for institutional and global brands including HBO, Carnival Corporation, and Telemundo. He directed 30+ national commercial campaigns targeting the U.S. Hispanic market. As Creative Producer for the City of Doral, he implemented communication strategies resulting in a 300% increase in public engagement and was twice awarded the Award of Excellence from the National Association of Government Communicators.",
-  long1000: "Alejandro Renteria is an award-winning Creative Producer and Strategic Communicator with over 15 years of experience leading end-to-end production for government, commercial, and entertainment sectors. Born in Havana, Cuba to a family of performing artists, he relocated to Caracas, Venezuela at age ten, where he immersed himself in theatre and performing arts at the CONAC Performing Arts School. After emigrating to the United States in 2002, he settled in Miami and pursued his education in Cinematography and Film Production at Miami Dade College, while also drawing from his earlier Business Administration studies at Universidad Católica Andrés Bello.\n\nHe founded Thinking Monkeys Films, a production company that has delivered over 900 projects nationwide for commercial and institutional clients including HBO, Telemundo, Carnival Corporation, sociedAD, and CommonGround/MGS. He has directed more than 30 national commercial campaigns for the U.S. Hispanic market and managed full production lifecycles from strategic concept through final delivery.\n\nAs Creative Producer for the City of Doral since 2014, Alejandro has directed and produced hundreds of civic campaigns and infrastructure-related communications. He translated complex municipal projects and policy initiatives into clear public-facing media, implementing a strategic communication plan that increased online engagement and public reach by 300%. He was twice honored with the Award of Excellence from the National Association of Government Communicators.\n\nHis latest short film, \"Objetos de Deseo,\" won the Audience Short Film Award at the 2024 Miami International Film Festival and has earned multiple international accolades including the Envision Award in Spain and Best Cinematography in Canada. He is also the author of \"Conversations with the Machine,\" a philosophical manuscript exploring the intersection of spirituality, psychology, and technology.\n\nAlejandro is a systems-driven creative who works at the intersection of storytelling, structure, and technology. He builds coherent systems from complex ideas, combining creative depth with structural thinking to design narratives, platforms, and strategies that are both imaginative and operational.",
+  long1000: "Alejandro Renteria is an award-winning Creative Producer and Strategic Communicator with over 15 years of experience leading end-to-end production for government, commercial, and entertainment sectors. Born in Havana, Cuba to a family of performing artists, he relocated to Caracas, Venezuela at age ten, where he immersed himself in theatre and performing arts at the CONAC Performing Arts School. After emigrating to the United States in 2002, he settled in Miami and pursued his education in Cinematography and Film Production at Miami Dade College, while also drawing from his earlier Business Administration studies at Universidad Cat\u00f3lica Andr\u00e9s Bello.\n\nHe founded Thinking Monkeys Films, a production company that has delivered over 900 projects nationwide for commercial and institutional clients including HBO, Telemundo, Carnival Corporation, sociedAD, and CommonGround/MGS. He has directed more than 30 national commercial campaigns for the U.S. Hispanic market and managed full production lifecycles from strategic concept through final delivery.\n\nAs Creative Producer for the City of Doral since 2014, Alejandro has directed and produced hundreds of civic campaigns and infrastructure-related communications. He translated complex municipal projects and policy initiatives into clear public-facing media, implementing a strategic communication plan that increased online engagement and public reach by 300%. He was twice honored with the Award of Excellence from the National Association of Government Communicators.\n\nHis latest short film, \"Objetos de Deseo,\" won the Audience Short Film Award at the 2024 Miami International Film Festival and has earned multiple international accolades including the Envision Award in Spain and Best Cinematography in Canada. He is also the author of \"Conversations with the Machine,\" a philosophical manuscript exploring the intersection of spirituality, psychology, and technology.\n\nAlejandro is a systems-driven creative who works at the intersection of storytelling, structure, and technology. He builds coherent systems from complex ideas, combining creative depth with structural thinking to design narratives, platforms, and strategies that are both imaginative and operational.",
 };
 
 // ===== ABOUT =====
 export const about = {
   fullBio: "Born in Havana, Cuba to a family of performing artists, Alejandro relocated to Caracas, Venezuela at age ten where he studied theatre and performing arts. After emigrating to the United States in 2002, he settled in Miami and continued his education in cinematography while honing his skills as a visual storyteller. He founded Thinking Monkeys Films and has since produced 900+ projects for institutional and global brands including HBO, Carnival Corporation, and Telemundo.",
   identity: "I am a systems-driven creative who works at the intersection of storytelling, structure, and technology. I think in patterns and build in frameworks. Whether developing narrative worlds, designing digital infrastructure, or shaping strategic initiatives, I focus on creating coherent systems that align vision with execution.",
+  aiExploration: "Increasingly curious about artificial intelligence\u2014not simply as a new filmmaking tool, but as a force that may reshape us. What has always fascinated me about cinema is that it functions as a laboratory for human behavior. Every science has its lab; cinema offers a space to observe and explore the complexities of human nature. Part of what motivates me is the belief that the tools we build will influence who gets to tell stories in the coming decades. If AI becomes a new storytelling medium\u2014and it will\u2014I believe it's important that the tools empower thoughtful writers and AI'mmakers to tell meaningful stories.",
   education: [
     { degree: "A.S. Cinematography & Film Production", school: "Miami Dade College" },
-    { degree: "Business Administration Studies", school: "Universidad Católica Andrés Bello" },
+    { degree: "Business Administration Studies", school: "Universidad Cat\u00f3lica Andr\u00e9s Bello" },
     { degree: "Diploma in Performing Arts", school: "CONAC Performing Arts School" },
   ],
   skills: [
@@ -50,6 +64,8 @@ export const about = {
     "Stakeholder & Executive Communication",
     "Video Production & Editing",
     "Adobe CC Suite / DaVinci Resolve / Final Cut Pro",
+    "AI-Driven Production Pipelines",
+    "Next.js / React / TypeScript",
   ],
   testimonials: [
     {
@@ -99,46 +115,102 @@ export const experience = [
   },
 ];
 
-// ===== FILM =====
-export const featuredFilm = {
-  title: "Objetos de Deseo",
-  subtitle: "La Navaja",
-  year: 2024,
-  runtime: "18 min 28 sec",
-  genres: ["Drama", "Tragedy", "Dark Comedy"],
-  language: "Spanish",
-  country: "United States",
-  format: "Digital S35mm",
-  description: "An award-winning dark comedy with noir touches that follows Jessy, a morally ambiguous young man who, after his mother is kidnapped, is forced to seduce Carlos, an older man in vulnerable decline, to pay off a debt. The film pushes the boundaries of ethics and explores the extreme choices we make under pressure.",
-  directorStatement: "The film explores the depths of humanity through interconnected stories set in Miami. Each story captures the essence of human experience\u2014the eternal pursuit of desires and avoidance of suffering. One character embodies the timeless figure of death, weaving a subtle thread that binds them all together.",
-  awards: [
-    { award: "Audience Short Film Award", festival: "Miami International Film Festival 2024" },
-    { award: "Envision Award", festival: "Spain" },
-    { award: "Best Cinematography", festival: "Canada" },
-    { award: "Best Actor (Alex Cowley)", festival: "ARFF Barcelona" },
-    { award: "Best Actor (Mauricio Renteria)", festival: "Georgia Latino International Film Festival 2024" },
-    { award: "Honorable Mention", festival: "Barcelona Film Festival" },
-  ],
-  cast: [
-    { name: "Alex Cowley", role: "Jessy" },
-    { name: "Mauricio Renteria", role: "Carlos" },
-    { name: "Lili Renteria", role: "Special Appearance" },
-  ],
-  crew: {
-    director: "Alejandro Renteria",
-    writer: "Jorge Luis Sanchez-Noya",
-    producer: "Agustin",
+// ===== FILMS (Short Films) =====
+export const films = [
+  {
+    title: "Objetos de Deseo \u2013 La Navaja",
+    year: 2024,
+    runtime: "18 min 28 sec",
+    genres: ["Drama", "Tragedy", "Dark Comedy"],
+    language: "Spanish",
+    format: "Digital S35mm",
+    description: "An award-winning dark comedy with noir touches that follows Jessy, a morally ambiguous young man who, after his mother is kidnapped, is forced to seduce Carlos, an older man in vulnerable decline, to pay off a debt.",
+    directorStatement: "The film explores the depths of humanity through interconnected stories set in Miami. Each story captures the essence of human experience\u2014the eternal pursuit of desires and avoidance of suffering.",
+    awards: [
+      { award: "Audience Short Film Award", festival: "Miami International Film Festival 2024" },
+      { award: "Envision Award", festival: "Spain" },
+      { award: "Best Cinematography", festival: "Canada" },
+      { award: "Best Actor (Alex Cowley)", festival: "ARFF Barcelona" },
+      { award: "Best Actor (Mauricio Renteria)", festival: "Georgia Latino International Film Festival 2024" },
+      { award: "Honorable Mention", festival: "Barcelona Film Festival" },
+    ],
+    cast: [
+      { name: "Alex Cowley", role: "Jessy" },
+      { name: "Mauricio Renteria", role: "Carlos" },
+      { name: "Lili Renteria", role: "Special Appearance" },
+    ],
+    crew: { director: "Alejandro Renteria", writer: "Jorge Luis Sanchez-Noya", producer: "Agustin" },
+    link: "https://alejandrorenteria.com/objetos-de-deseo-2/",
+    featured: true,
   },
-  links: {
-    website: "https://alejandrorenteria.com/objetos-de-deseo-2/",
+  {
+    title: "Entre Amores",
+    year: 2020,
+    description: "A short film exploring the complexities of love and relationships.",
+    link: "https://alejandrorenteria.com/films/",
+    featured: false,
   },
-};
+  {
+    title: "Mismatch Made in Heaven",
+    year: 2018,
+    description: "A short film directed by Alejandro Renteria.",
+    link: "https://alejandrorenteria.com/films/",
+    featured: false,
+  },
+  {
+    title: "Reaching the Sea",
+    year: 2014,
+    description: "A medium-length film written and directed by Alejandro Renteria, exploring themes of migration and identity.",
+    link: "https://alejandrorenteria.com/films/",
+    featured: false,
+  },
+];
 
 // ===== BOOK =====
 export const book = {
   title: "Conversations with the Machine",
   description: "A philosophical manuscript exploring the intersection of spirituality, psychology, and technology. Written as a dialogue between \"The Seeker\" and \"The Machine,\" it delves into themes of death, identity, free will, and consciousness\u2014probing the depths of human nature through the lens of systems thinking.",
   downloadUrl: ASSETS.manuscriptPdf,
+};
+
+// ===== COMMERCIAL WORK =====
+export const commercialWork = [
+  { title: "Al Horford", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/Alejandro-Renteria-Al-Horford.mp4", type: "Commercial" },
+  { title: "Cheff Claudette", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/Alejandro-Renteria-Cheff-Claudette.mp4", type: "Commercial" },
+  { title: "Rosemarie Burgos", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/Alejandro-Renteria-Rosemarie-Burgos.mp4", type: "Commercial" },
+  { title: "Demo 2020", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/2020-demo.mp4", type: "Demo Reel" },
+  { title: "Fiction Reel", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/fiction.mp4", type: "Reel" },
+  { title: "Change No 5", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/Change-No-5.mp4", type: "Short" },
+  { title: "Behind The Scenes", url: "https://alejandrorenteria.com/wp-content/uploads/2023/01/Behind-the-Scenes.mp4", type: "BTS" },
+];
+
+// ===== PHOTOGRAPHY =====
+export const photographyCategories = [
+  { name: "Romance", url: "https://alejandrorenteria.com/project/still/" },
+  { name: "Drama", url: "https://alejandrorenteria.com/project/still/" },
+  { name: "Food", url: "https://alejandrorenteria.com/project/still/" },
+  { name: "Portraits", url: "https://alejandrorenteria.com/project/still/" },
+  { name: "Lines", url: "https://alejandrorenteria.com/project/still/" },
+  { name: "Beauty", url: "https://alejandrorenteria.com/project/still/" },
+  { name: "Travel", url: "https://alejandrorenteria.com/project/still/" },
+];
+
+// ===== SOFTWARE =====
+export const software = {
+  name: "Story Town",
+  tagline: "Where storymakers produce",
+  elevator: "Story Town is the first AI pre-production studio. You write a story, and the system produces a professional storyboard, shot list, and animatic \u2014 with consistent characters, locations, and cinematography \u2014 all from the screenplay, in minutes.",
+  description: "An end-to-end AI pre-production pipeline. From a screenplay or concept to a complete visual package \u2014 characters, locations, storyboards, shot-by-shot animatics, and video clips \u2014 in one session. The system understands cinematography: framing, camera angle, motion, scene continuity, character placement.",
+  features: [
+    { name: "Sentence-Level Visual Decomposition", desc: "Reads a screenplay line-by-line and derives the correct shot for each moment" },
+    { name: "Bible-Aware Generation", desc: "Characters look the same from shot to shot via a tracked visual bible" },
+    { name: "Muybridge Pipeline", desc: "Turns storyboard frames into video clips with continuity and motion control" },
+    { name: "Multi-Provider AI Routing", desc: "Routes across GPT-4o, LTX-2.3, Veo 3, Runway, fal.ai, and ElevenLabs" },
+    { name: "Director-in-the-Loop", desc: "The filmmaker makes every creative decision; AI handles the production labor" },
+  ],
+  techStack: "Next.js 16 multi-agent pipeline with a custom cinematography engine, bible-aware image generation, LTX-2.3 video extension, and a unified AI router across 8+ providers.",
+  market: "$50B global film/video production market. 50M+ content creators.",
+  screenshot: ASSETS.storyTown,
 };
 
 // ===== PRESS =====
@@ -225,7 +297,13 @@ export const interviews = [
     title: "Demo Reel",
     type: "video" as const,
     url: "https://www.youtube.com/watch?v=6L3JgBtaBSA",
-    thumbnail: `https://img.youtube.com/vi/6L3JgBtaBSA/maxresdefault.jpg`,
+    thumbnail: "https://img.youtube.com/vi/6L3JgBtaBSA/maxresdefault.jpg",
+  },
+  {
+    title: "How I Think \u2014 Portfolio",
+    type: "video" as const,
+    url: "https://www.youtube.com/watch?v=aPuZ0Npwlow",
+    thumbnail: "https://img.youtube.com/vi/aPuZ0Npwlow/maxresdefault.jpg",
   },
 ];
 
@@ -247,13 +325,20 @@ export const contact = {
   languages: ["English", "Spanish"],
 };
 
-// ===== FILMOGRAPHY =====
+// ===== COMPLETE FILMOGRAPHY (IMDB) =====
 export const filmography = [
-  { year: 2024, title: "Objects of Desire - Blade", role: "Director", type: "Short" },
+  { year: 2025, title: "Cofre Abierto", role: "Writer / Actor", type: "Short" },
+  { year: 2024, title: "Objects of Desire - Blade", role: "Director / Cinematographer / Editor", type: "Short" },
   { year: 2024, title: "Objetos de Deseo - La Navaja", role: "Director", type: "Short" },
+  { year: 2020, title: "Entre Amores", role: "Director", type: "Short" },
   { year: 2018, title: "Mismatch Made in Heaven", role: "Director", type: "Short" },
+  { year: 2018, title: "Carry You On: From The Students Of MSD", role: "Cinematographer", type: "Music Video" },
   { year: 2016, title: "Love Till", role: "Cinematographer", type: "Short" },
-  { year: 2014, title: "Reaching the Sea", role: "Director", type: "Medium-length" },
+  { year: 2015, title: "Sigo Pensando", role: "Actor", type: "Short" },
+  { year: 2014, title: "Reaching the Sea", role: "Director / Writer / Cinematographer", type: "Short" },
+  { year: 2013, title: "Los Secretos de Luc\u00eda", role: "Cinematographer", type: "TV Series" },
+  { year: 2013, title: "Santa Diabla", role: "Actor", type: "TV Series" },
+  { year: 2012, title: "Fearless Heart (Coraz\u00f3n Valiente)", role: "Actor", type: "TV Series" },
   { year: 2011, title: "420 Salamanca Ave.", role: "Cinematographer", type: "Short" },
   { year: 2008, title: "Che: Part One (Dir. Steven Soderbergh)", role: "Actor", type: "Feature" },
 ];
