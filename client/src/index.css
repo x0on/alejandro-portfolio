@@ -300,13 +300,6 @@
   transform: translate(-2px, -2px);
 }
 
-/* Cyberpunk glow */
-.theme-cyberpunk .glow {
-  text-shadow: 0 0 10px oklch(0.8 0.2 160 / 60%), 0 0 40px oklch(0.8 0.2 160 / 20%);
-}
-.theme-cyberpunk .glow-box {
-  box-shadow: 0 0 15px oklch(0.8 0.2 160 / 25%), inset 0 0 15px oklch(0.8 0.2 160 / 5%);
-}
 
 /* Art Deco lines */
 .theme-artdeco .deco-line {
@@ -325,31 +318,12 @@
   pointer-events: none;
 }
 
-/* Retro Futurism scanlines */
-.theme-retrofuturism .scanlines::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    oklch(0 0 0 / 5%) 0px,
-    oklch(0 0 0 / 5%) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  pointer-events: none;
-}
 
 /* Swiss grid lines */
 .theme-swiss .swiss-border {
   border: 2px solid oklch(0.15 0 0);
 }
 
-/* Memphis patterns */
-.theme-memphis .memphis-dots {
-  background-image: radial-gradient(oklch(0.18 0.02 290 / 15%) 2px, transparent 2px);
-  background-size: 20px 20px;
-}
 
 /* Smooth transitions for theme switching */
 *, *::before, *::after {

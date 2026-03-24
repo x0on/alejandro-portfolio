@@ -4,11 +4,11 @@ import { ChevronDown, ChevronRight, User, Film, BookOpen, Video, Share2, Briefca
 const mainSections = [
   { id: "hero", label: "Overview", icon: User },
   { id: "about", label: "About", icon: User },
+  { id: "book", label: "Book", icon: BookOpen },
+  { id: "software", label: "Software", icon: Monitor },
   { id: "films", label: "Films", icon: Film },
   { id: "commercial", label: "Commercial", icon: Clapperboard },
   { id: "photography", label: "Photography", icon: Camera },
-  { id: "book", label: "Book", icon: BookOpen },
-  { id: "software", label: "Software", icon: Monitor },
   { id: "press", label: "Press Coverage", icon: BookOpen },
   { id: "interviews", label: "Interviews", icon: Video },
 ];

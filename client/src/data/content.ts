@@ -5,6 +5,7 @@ export const ASSETS = {
   logomark: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-logo-official_a98eaccc.png",
   manuscriptPdf: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/CONVERSATIONSWITHTHEMACHINE_884b8b9b.pdf",
   storyTown: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/storytown-screenshot_305ed758.webp",
+  manuscript: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/manuscript-artistic_905744db.jpg",
 };
 
 // ===== HEADSHOTS =====
@@ -136,7 +137,7 @@ export const films = [
       { name: "Lili Renteria", role: "Special Appearance" },
     ],
     crew: { director: "Alejandro Renteria", writer: "Jorge Luis Sanchez-Noya", producer: "Agustin" },
-    link: "https://alejandrorenteria.com/objetos-de-deseo-2/",
+    link: "/objetos-de-deseo",
     featured: true,
   },
   {
@@ -171,10 +172,10 @@ export const book = {
 
 // ===== COMMERCIAL WORK =====
 export const commercialWork = [
-  { title: "Al Horford", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Al-Horford.mp4", type: "Commercial" },
-  { title: "Cheff Claudette", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Cheff-Claudette.mp4", type: "Commercial" },
-  { title: "Rosemarie Burgos", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Rosemarie-Burgos.mp4", type: "Commercial" },
-  { title: "Behind The Scenes", url: "https://alejandrorenteria.com/videos/Behind-the-Scenes.mp4", type: "BTS" },
+  { title: "Al Horford", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Al-Horford.mp4", type: "Commercial", thumbnail: "https://alejandrorenteria.com/thumbnails/al-horford.jpg" },
+  { title: "Cheff Claudette", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Cheff-Claudette.mp4", type: "Commercial", thumbnail: "https://alejandrorenteria.com/thumbnails/cheff-claudette.jpg" },
+  { title: "Rosemarie Burgos", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Rosemarie-Burgos.mp4", type: "Commercial", thumbnail: "https://alejandrorenteria.com/thumbnails/rosemarie-burgos.jpg" },
+  { title: "Behind The Scenes", url: "https://alejandrorenteria.com/videos/Behind-the-Scenes.mp4", type: "BTS", thumbnail: "https://alejandrorenteria.com/thumbnails/behind-the-scenes.jpg" },
 ];
 
 // ===== PHOTOGRAPHY =====

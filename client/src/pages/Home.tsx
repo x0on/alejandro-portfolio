@@ -203,11 +203,91 @@ export default function Home() {
           </div>
         </Section>
 
+        {/* ===== BOOK ===== */}
+        <Section id="book" className="container py-16 md:py-24">
+          <SectionTitle number="02" title="Book" subtitle="Published Work" />
+          <div className="grid md:grid-cols-5 gap-10 items-start">
+            <div className="md:col-span-2">
+              <img
+                src={ASSETS.manuscript}
+                alt="Conversations with the Machine"
+                className="w-full rounded-sm border border-border shadow-lg"
+              />
+            </div>
+            <div className="md:col-span-3 space-y-4">
+              <h3 className="text-2xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
+                {book.title}
+              </h3>
+              <p className="text-sm leading-relaxed">{book.description}</p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={book.downloadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 text-sm bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity font-medium"
+                >
+                  <Download size={16} /> Download PDF
+                </a>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        {/* ===== SOFTWARE ===== */}
+        <Section id="software" className="relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
+          <div className="relative container py-16 md:py-24">
+            <SectionTitle number="03" title="Software" subtitle="AI-Driven Creative Tools" />
+            <div className="grid md:grid-cols-2 gap-10 items-start">
+              <div>
+                <img
+                  src={software.screenshot}
+                  alt="Story Town"
+                  className="w-full rounded-sm border border-border shadow-xl"
+                />
+              </div>
+              <div className="space-y-5">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
+                    {software.name}
+                  </h3>
+                  <p className="text-sm text-primary font-medium mt-1 italic">{software.tagline}</p>
+                </div>
+                <blockquote className="border-l-2 border-primary pl-4 text-sm leading-relaxed">
+                  "{software.elevator}"
+                </blockquote>
+                <p className="text-sm leading-relaxed text-muted-foreground">{software.description}</p>
+
+                <div className="space-y-2">
+                  <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                    <Zap size={14} /> Key Technology
+                  </h4>
+                  {software.features.map((f, i) => (
+                    <div key={i} className="bg-card border border-border p-3 rounded-sm">
+                      <div className="text-sm font-medium">{f.name}</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">{f.desc}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="bg-card border border-border p-4 rounded-sm">
+                  <div className="text-xs font-mono text-muted-foreground mb-1">TECH STACK</div>
+                  <p className="text-xs leading-relaxed">{software.techStack}</p>
+                </div>
+
+                <div className="text-xs font-mono text-muted-foreground">
+                  Market: {software.market}
+                </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+
         {/* ===== FILMS ===== */}
         <Section id="films" className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-background to-background" />
           <div className="relative container py-16 md:py-24">
-            <SectionTitle number="02" title="Films" subtitle="Short Films & Narrative Work" />
+            <SectionTitle number="04" title="Films" subtitle="Short Films & Narrative Work" />
 
             {/* Film Cards */}
             <div className="space-y-4">
@@ -257,9 +337,15 @@ export default function Home() {
                               </div>
                             )}
                             {film.link && (
-                              <a href={film.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-                                <ExternalLink size={14} /> View Film Page
-                              </a>
+                              film.link.startsWith('/') ? (
+                                <a href={film.link} className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+                                  <Film size={14} /> View Full Film Page
+                                </a>
+                              ) : (
+                                <a href={film.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+                                  <ExternalLink size={14} /> View Film Page
+                                </a>
+                              )
                             )}
                           </div>
                           <div className="md:col-span-2 space-y-4">
@@ -297,9 +383,15 @@ export default function Home() {
                         <div className="space-y-3">
                           {film.description && <p className="text-sm leading-relaxed">{film.description}</p>}
                           {film.link && (
-                            <a href={film.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-                              <ExternalLink size={14} /> View on Website
-                            </a>
+                            film.link.startsWith('/') ? (
+                              <a href={film.link} className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+                                <Film size={14} /> View Full Film Page
+                              </a>
+                            ) : (
+                              <a href={film.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+                                <ExternalLink size={14} /> View on Website
+                              </a>
+                            )
                           )}
                         </div>
                       )}
@@ -358,7 +450,7 @@ export default function Home() {
             >
               <div>
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="text-xs font-mono text-muted-foreground tracking-widest">03</span>
+                  <span className="text-xs font-mono text-muted-foreground tracking-widest">05</span>
                   <div className="h-px flex-1 bg-border" />
                 </div>
                 <h2 className="text-3xl font-bold tracking-tight text-left" style={{ fontFamily: "var(--font-display)" }}>
@@ -373,7 +465,7 @@ export default function Home() {
           </div>
           {/* Desktop: always visible header */}
           <div className="hidden md:block">
-            <SectionTitle number="03" title="Commercial Work" subtitle="Selected Campaigns & Reels" />
+            <SectionTitle number="05" title="Commercial Work" subtitle="Selected Campaigns & Reels" />
           </div>
 
           <div className={`${commercialOpen ? 'block' : 'hidden'} md:block`}>
@@ -391,13 +483,17 @@ export default function Home() {
                     ) : (
                       <button
                         onClick={() => setPlayingVideo(i)}
-                        className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted/80 to-muted/40 hover:from-muted/60 hover:to-muted/20 transition-all"
+                        className="w-full h-full relative group/play"
                       >
-                        <div className="flex flex-col items-center gap-2">
-                          <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center shadow-lg">
-                            <Play size={24} className="text-primary-foreground ml-1" />
+                        <img
+                          src={(item as any).thumbnail}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black/30 group-hover/play:bg-black/50 transition-all flex items-center justify-center">
+                          <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover/play:scale-110 transition-transform">
+                            <Play size={24} className="text-black ml-1" />
                           </div>
-                          <span className="text-xs text-muted-foreground font-mono">{item.type}</span>
                         </div>
                       </button>
                     )}
@@ -424,7 +520,7 @@ export default function Home() {
               >
                 <div>
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs font-mono text-muted-foreground tracking-widest">04</span>
+                    <span className="text-xs font-mono text-muted-foreground tracking-widest">06</span>
                     <div className="h-px flex-1 bg-border" />
                   </div>
                   <h2 className="text-3xl font-bold tracking-tight text-left" style={{ fontFamily: "var(--font-display)" }}>
@@ -439,7 +535,7 @@ export default function Home() {
             </div>
             {/* Desktop: always visible header */}
             <div className="hidden md:block">
-              <SectionTitle number="04" title="Photography" subtitle="Still Photography Categories" />
+              <SectionTitle number="06" title="Photography" subtitle="Still Photography Categories" />
             </div>
 
             <div className={`${photographyOpen ? 'block' : 'hidden'} md:block`}>
@@ -517,86 +613,6 @@ export default function Home() {
                   </button>
                 </div>
               )}
-            </div>
-          </div>
-        </Section>
-
-        {/* ===== BOOK ===== */}
-        <Section id="book" className="container py-16 md:py-24">
-          <SectionTitle number="05" title="Book" subtitle="Published Work" />
-          <div className="grid md:grid-cols-5 gap-10 items-start">
-            <div className="md:col-span-2">
-              <img
-                src={ASSETS.manuscript}
-                alt="Conversations with the Machine"
-                className="w-full rounded-sm border border-border shadow-lg"
-              />
-            </div>
-            <div className="md:col-span-3 space-y-4">
-              <h3 className="text-2xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
-                {book.title}
-              </h3>
-              <p className="text-sm leading-relaxed">{book.description}</p>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href={book.downloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-sm bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity font-medium"
-                >
-                  <Download size={16} /> Download PDF
-                </a>
-              </div>
-            </div>
-          </div>
-        </Section>
-
-        {/* ===== SOFTWARE ===== */}
-        <Section id="software" className="relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
-          <div className="relative container py-16 md:py-24">
-            <SectionTitle number="06" title="Software" subtitle="AI-Driven Creative Tools" />
-            <div className="grid md:grid-cols-2 gap-10 items-start">
-              <div>
-                <img
-                  src={software.screenshot}
-                  alt="Story Town"
-                  className="w-full rounded-sm border border-border shadow-xl"
-                />
-              </div>
-              <div className="space-y-5">
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
-                    {software.name}
-                  </h3>
-                  <p className="text-sm text-primary font-medium mt-1 italic">{software.tagline}</p>
-                </div>
-                <blockquote className="border-l-2 border-primary pl-4 text-sm leading-relaxed">
-                  "{software.elevator}"
-                </blockquote>
-                <p className="text-sm leading-relaxed text-muted-foreground">{software.description}</p>
-
-                <div className="space-y-2">
-                  <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                    <Zap size={14} /> Key Technology
-                  </h4>
-                  {software.features.map((f, i) => (
-                    <div key={i} className="bg-card border border-border p-3 rounded-sm">
-                      <div className="text-sm font-medium">{f.name}</div>
-                      <div className="text-xs text-muted-foreground mt-0.5">{f.desc}</div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="bg-card border border-border p-4 rounded-sm">
-                  <div className="text-xs font-mono text-muted-foreground mb-1">TECH STACK</div>
-                  <p className="text-xs leading-relaxed">{software.techStack}</p>
-                </div>
-
-                <div className="text-xs font-mono text-muted-foreground">
-                  Market: {software.market}
-                </div>
-              </div>
             </div>
           </div>
         </Section>
