@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import { ASSETS, hero, bios, contact, socialLinks, headshots } from "@/data/content";
+import { ASSETS, bios, contact, socialLinks } from "@/data/content";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Download, Copy, Check, X, Mail, Phone, Globe, ExternalLink } from "lucide-react";
@@ -10,7 +10,6 @@ const fadeUp = {
 };
 
 const photos = [
-  ...headshots.map((h, i) => ({ url: h.url, label: `Portrait ${i + 1}` })),
   { url: ASSETS.logomark, label: "Logo Mark" },
   { url: ASSETS.logo, label: "Logo with Text" },
 ];
@@ -73,20 +72,20 @@ export default function MediaKit() {
             <div className="h-px flex-1 bg-border" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ fontFamily: "var(--font-display)" }}>
-            Photo Gallery
+            Logos & Brand Assets
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 gap-4 max-w-lg">
             {photos.map((photo, i) => (
               <div
                 key={i}
-                className="group relative aspect-[3/4] overflow-hidden rounded-sm border border-border cursor-pointer"
+                className="group relative aspect-square overflow-hidden rounded-sm border border-border cursor-pointer bg-white"
                 onClick={() => setLightbox(i)}
               >
                 <img
                   src={photo.url}
                   alt={photo.label}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-contain p-6 transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform">

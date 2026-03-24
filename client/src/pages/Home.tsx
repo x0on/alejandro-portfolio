@@ -5,7 +5,7 @@ import TypingAnimation from "@/components/TypingAnimation";
 import {
   ASSETS, hero, about, films, book, pressArticles, interviews, socialLinks,
   contact, experience, clients, filmography, commercialWork, photographyCategories,
-  software, headshots,
+  software,
 } from "@/data/content";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -77,13 +77,10 @@ export default function Home() {
       <main className="lg:ml-56 pt-14">
         {/* ===== HERO ===== */}
         <Section id="hero" className="relative overflow-hidden">
-          <div className="absolute inset-0">
-            <img src={ASSETS.heroImage} alt="" className="w-full h-full object-cover opacity-40" />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-background to-background" />
           <div className="relative container py-20 md:py-32">
-            <div className="grid md:grid-cols-3 gap-10 items-center">
-              <div className="md:col-span-2">
+            <div className="max-w-3xl">
+              <div>
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -136,22 +133,7 @@ export default function Home() {
                 </motion.div>
               </div>
 
-              {/* Profile Photo */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="hidden md:block"
-              >
-                <div className="relative">
-                  <img
-                    src={headshots[0].url}
-                    alt={headshots[0].alt}
-                    className="w-full aspect-[3/4] object-cover rounded-sm border border-border shadow-2xl"
-                  />
-                  <div className="absolute inset-0 rounded-sm ring-1 ring-white/10" />
-                </div>
-              </motion.div>
+
             </div>
           </div>
         </Section>
@@ -219,10 +201,7 @@ export default function Home() {
 
         {/* ===== FILMS ===== */}
         <Section id="films" className="relative">
-          <div className="absolute inset-0">
-            <img src={ASSETS.filmStill} alt="" className="w-full h-full object-cover opacity-20" />
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/80" />
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-background to-background" />
           <div className="relative container py-16 md:py-24">
             <SectionTitle number="02" title="Films" subtitle="Short Films & Narrative Work" />
 
@@ -515,10 +494,7 @@ export default function Home() {
 
         {/* ===== PRESS COVERAGE ===== */}
         <Section id="press" className="relative">
-          <div className="absolute inset-0">
-            <img src={ASSETS.pressBg} alt="" className="w-full h-full object-cover opacity-10" />
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-background to-background" />
           <div className="relative container py-16 md:py-24">
             <SectionTitle number="07" title="Press Coverage" subtitle="Media Features & Reviews" />
             <div className="space-y-4">
@@ -630,10 +606,7 @@ export default function Home() {
 
         {/* ===== SOCIAL & CONTACT ===== */}
         <Section id="social" className="relative">
-          <div className="absolute inset-0">
-            <img src={ASSETS.miamiCinematic} alt="" className="w-full h-full object-cover opacity-15" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background" />
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-background to-background" />
           <div className="relative container py-16 md:py-24">
             <SectionTitle number="10" title="Connect" subtitle="Social Media & Contact" />
             <div className="grid md:grid-cols-2 gap-10">

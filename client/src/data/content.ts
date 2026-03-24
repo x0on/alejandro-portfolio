@@ -1,10 +1,6 @@
 // ===== ASSET URLS =====
 export const ASSETS = {
-  heroImage: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/hero-cinematic-dmrqyZUZgctQiHEaiyBEzZ.webp",
-  filmStill: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/film-still-noir-Lpc9pPKTNozKeATJnNtSe5.webp",
-  manuscript: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/manuscript-artistic-MqYMT4w7CaWvY777gSiscX.webp",
-  pressBg: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/press-coverage-bg-Lg8DwABNoS5LULfGSnbVCC.webp",
-  miamiCinematic: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/miami-dark-cinematic-FNvSHzRp7W6HCWkHGPDMje.webp",
+
   logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-logo_5d73dd5d.png",
   logomark: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-logo-official_a98eaccc.png",
   manuscriptPdf: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/CONVERSATIONSWITHTHEMACHINE_884b8b9b.pdf",
@@ -199,8 +195,8 @@ export const photographyCategories = [
 export const software = {
   name: "Story Town",
   tagline: "Where storymakers produce",
-  elevator: "Story Town is the first AI pre-production studio. You write a story, and the system produces a professional storyboard, shot list, and animatic \u2014 with consistent characters, locations, and cinematography \u2014 all from the screenplay, in minutes.",
-  description: "An end-to-end AI pre-production pipeline. From a screenplay or concept to a complete visual package \u2014 characters, locations, storyboards, shot-by-shot animatics, and video clips \u2014 in one session. The system understands cinematography: framing, camera angle, motion, scene continuity, character placement.",
+  elevator: "Story Town is the first AI film production platform. You write a story \u2014 or just describe one \u2014 and the system writes the screenplay, builds the visual bibles, generates the storyboard, and produces the actual video clips and audio. Characters stay consistent. Shots follow cinematic grammar. The whole thing flows in one pipeline, from concept to content.",
+  description: "An end-to-end AI film production platform. You write a story \u2014 or just describe one \u2014 and the system writes the screenplay, builds the visual bibles, generates the storyboard, and produces the actual video clips and audio. Characters stay consistent. Shots follow cinematic grammar. The whole thing flows in one pipeline, from concept to content.",
   features: [
     { name: "Sentence-Level Visual Decomposition", desc: "Reads a screenplay line-by-line and derives the correct shot for each moment" },
     { name: "Bible-Aware Generation", desc: "Characters look the same from shot to shot via a tracked visual bible" },
@@ -208,7 +204,7 @@ export const software = {
     { name: "Multi-Provider AI Routing", desc: "Routes across GPT-4o, LTX-2.3, Veo 3, Runway, fal.ai, and ElevenLabs" },
     { name: "Director-in-the-Loop", desc: "The filmmaker makes every creative decision; AI handles the production labor" },
   ],
-  techStack: "Next.js 16 multi-agent pipeline with a custom cinematography engine, bible-aware image generation, LTX-2.3 video extension, and a unified AI router across 8+ providers.",
+  techStack: "Multi-agent AI system with a proprietary shot grammar engine and a model-agnostic video router. Built on Next.js 16 with bible-aware image generation, LTX-2.3 video extension, and a unified AI router across 8+ providers.",
   market: "$50B global film/video production market. 50M+ content creators.",
   screenshot: ASSETS.storyTown,
 };
