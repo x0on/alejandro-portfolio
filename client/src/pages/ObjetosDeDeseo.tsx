@@ -5,7 +5,7 @@ import { ASSETS, films } from "@/data/content";
 import { motion } from "framer-motion";
 import { ArrowLeft, Award, Clock, Globe, Film, MapPin, Clapperboard, X, Image as ImageIcon } from "lucide-react";
 
-const film = films[0]; // Objetos de Deseo is the first film
+const film = films.find(f => f.link === "/objetos-de-deseo") || films[0];
 
 const MEDIA_BASE = "https://alejandrorenteria.com/objetos-media";
 

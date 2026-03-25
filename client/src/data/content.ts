@@ -142,7 +142,7 @@ export const films = [
   },
   {
     title: "Entre Amores",
-    year: 2016,
+    year: 2010,
     description: "A lyrical short film about the complexities of love and relationships. Directed by Adrian M. Garcia with cinematography by Alejandro Renteria.",
     cast: [
       { name: "Juan David Ferrer", role: "Lead" },
@@ -448,16 +448,16 @@ export const contact = {
 export const filmography = [
   { year: 2025, title: "Cofre Abierto", role: "Writer / Actor", type: "Short", pdf: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/CofreAbiertosep-12-2025_d5b57804.pdf" },
   { year: 2024, title: "Objects of Desire - Blade", role: "Director / Cinematographer / Editor", type: "Short" },
-  { year: 2024, title: "Objetos de Deseo - La Navaja", role: "Director", type: "Short" },
-  { year: 2016, title: "Entre Amores", role: "Cinematographer", type: "Short" },
-  { year: 2018, title: "Mismatch Made in Heaven", role: "Director", type: "Short" },
+  { year: 2024, title: "Objetos de Deseo \u2013 La Navaja", role: "Director", type: "Short", hasDetail: true },
+  { year: 2018, title: "Mismatch Made in Heaven", role: "Director", type: "Short", hasDetail: true },
   { year: 2018, title: "Carry You On: From The Students Of MSD", role: "Cinematographer", type: "Music Video" },
   { year: 2016, title: "Love Till", role: "Cinematographer", type: "Short" },
   { year: 2015, title: "Sigo Pensando", role: "Actor", type: "Short" },
-  { year: 2014, title: "Reaching the Sea", role: "Director / Writer / Cinematographer", type: "Short" },
+  { year: 2014, title: "Reaching the Sea", role: "Director / Writer / Cinematographer", type: "Short", hasDetail: true },
   { year: 2013, title: "Los Secretos de Luc\u00eda", role: "Cinematographer", type: "TV Series" },
   { year: 2013, title: "Santa Diabla", role: "Actor", type: "TV Series" },
   { year: 2012, title: "Fearless Heart (Coraz\u00f3n Valiente)", role: "Actor", type: "TV Series" },
+  { year: 2010, title: "Entre Amores", role: "Cinematographer", type: "Short", hasDetail: true },
   { year: 2008, title: "Che: Part One (Dir. Steven Soderbergh)", role: "Actor", type: "Feature" },
 ];
 

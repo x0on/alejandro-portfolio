@@ -5,6 +5,7 @@ const en: Record<string, string> = {
 
   // Hero
   "hero.pressKit": "Press Kit",
+  "hero.tagLabel": "Story Structures",
   "hero.tagline": "Multidisciplinary systems thinker specializing in transforming vision into scalable creative infrastructure.",
   "hero.copyBio": "Copy Bio",
   "hero.viewPress": "View Press",

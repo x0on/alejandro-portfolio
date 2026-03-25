@@ -84,7 +84,7 @@ export default function Home() {
   const [bioOpen, setBioOpen] = useState(false);
   const [expandedPress, setExpandedPress] = useState<string | null>(null);
   const [showAllFilmography, setShowAllFilmography] = useState(false);
-  const [expandedFilm, setExpandedFilm] = useState<number | null>(0);
+  const [expandedFilm, setExpandedFilm] = useState<string | null>(null);
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
   const [commercialOpen, setCommercialOpen] = useState(false);
   const [photographyOpen, setPhotographyOpen] = useState(false);
@@ -92,7 +92,9 @@ export default function Home() {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const { t } = useLanguage();
 
-  const featuredFilm = films[0];
+  // Build a map of detailed films by title for quick lookup
+  const filmDetailMap = new Map(films.map(f => [f.title, f]));
+  const featuredFilm = films.find(f => f.link === "/objetos-de-deseo") || films[0];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -112,7 +114,7 @@ export default function Home() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
                 >
-                  <p className="text-xs font-mono tracking-[0.3em] text-primary mb-4 uppercase">{t("hero.pressKit")}</p>
+                  <p className="text-xs font-mono tracking-[0.3em] text-primary mb-4 uppercase">{t("hero.tagLabel")}</p>
                   <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[0.95]" style={{ fontFamily: "var(--font-display)" }}>
                     {hero.name}
                   </h1>
@@ -313,186 +315,173 @@ export default function Home() {
           <div className="relative container py-16 md:py-24">
             <SectionTitle number="04" title={t("section.films")} subtitle={t("section.films.subtitle")} />
 
-            {/* Film Cards */}
-            <div className="space-y-4">
-              {films.map((film, idx) => (
-                <div key={idx} className="bg-card border border-border rounded-sm overflow-hidden">
-                  <button
-                    onClick={() => setExpandedFilm(expandedFilm === idx ? null : idx)}
-                    className="w-full flex items-center justify-between px-5 py-4 hover:bg-secondary/30 transition-colors text-left"
-                  >
-                    <div className="flex items-center gap-4">
-                      <Film size={18} className="text-primary shrink-0" />
-                      <div>
-                        <span className="font-medium">{film.title}</span>
-                        <span className="text-xs text-muted-foreground font-mono ml-2">({film.year})</span>
+            {/* Unified Filmography List */}
+            <div className="border border-border rounded-sm overflow-hidden">
+              {(showAllFilmography ? filmography : filmography.slice(0, 6)).map((entry, i) => {
+                const detail = filmDetailMap.get(entry.title);
+                const isExpanded = expandedFilm === entry.title;
+                const isFeatured = detail?.featured;
+
+                return (
+                  <div key={i} className={`${i > 0 ? 'border-t border-border' : ''}`}>
+                    {/* Row */}
+                    <div
+                      className={`flex items-center gap-3 px-4 py-3 transition-colors ${
+                        detail ? 'cursor-pointer hover:bg-secondary/30' : 'hover:bg-secondary/10'
+                      } ${isExpanded ? 'bg-secondary/20' : ''}`}
+                      onClick={() => detail && setExpandedFilm(isExpanded ? null : entry.title)}
+                      role={detail ? 'button' : undefined}
+                    >
+                      <span className="text-xs font-mono text-muted-foreground w-10 shrink-0">{entry.year}</span>
+                      <div className="flex items-center gap-2 flex-1 min-w-0">
+                        {detail && <Film size={14} className="text-primary shrink-0" />}
+                        <span className={`text-sm truncate ${detail ? 'font-medium' : ''}`}>{entry.title}</span>
+                        {isFeatured && (
+                          <span className="text-[9px] px-1.5 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded-sm font-mono uppercase shrink-0">{t("films.awardWinner")}</span>
+                        )}
+                        {(entry as any).pdf && (
+                          <a href={(entry as any).pdf} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()} className="inline-flex items-center gap-1 text-xs text-primary hover:underline shrink-0">
+                            <Download size={11} /> PDF
+                          </a>
+                        )}
                       </div>
-                      {film.featured && (
-                        <span className="text-[10px] px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded-sm font-mono uppercase">{t("films.awardWinner")}</span>
+                      <span className="text-xs text-muted-foreground hidden sm:block w-48 truncate text-right">{entry.role}</span>
+                      <span className="text-xs text-muted-foreground hidden md:block w-20 text-right">{entry.type}</span>
+                      {detail ? (
+                        <span className="w-5 shrink-0 text-muted-foreground">
+                          {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                        </span>
+                      ) : (
+                        <span className="w-5 shrink-0" />
                       )}
                     </div>
-                    {expandedFilm === idx ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                  </button>
 
-                  {expandedFilm === idx && (
-                    <div className="border-t border-border px-5 py-5">
-                      {film.featured && featuredFilm ? (
-                        <div className="grid md:grid-cols-5 gap-8">
-                          <div className="md:col-span-3 space-y-4">
-                            <p className="text-sm leading-relaxed">{filmDescKeys[film.title] ? t(filmDescKeys[film.title]) : film.description}</p>
-                            {film.directorStatement && (
-                              <blockquote className="border-l-2 border-primary pl-4 italic text-muted-foreground text-sm leading-relaxed">
-                                &ldquo;{filmStatementKeys[film.title] ? t(filmStatementKeys[film.title]) : film.directorStatement}&rdquo;
-                                <span className="block mt-1 not-italic font-mono text-xs">— {t("about.directorsStatement")}</span>
-                              </blockquote>
-                            )}
-                            {film.runtime && (
-                              <div className="flex flex-wrap gap-4 text-xs font-mono text-muted-foreground">
-                                <span className="flex items-center gap-1"><Clock size={12} /> {film.runtime}</span>
-                                {film.language && <span className="flex items-center gap-1"><Globe size={12} /> {film.language}</span>}
-                                {film.format && <span className="flex items-center gap-1"><Film size={12} /> {film.format}</span>}
-                              </div>
-                            )}
-                            {film.genres && (
-                              <div className="flex flex-wrap gap-2">
-                                {film.genres.map(g => (
-                                  <span key={g} className="text-xs px-2.5 py-1 bg-primary/10 text-primary border border-primary/20 rounded-sm">{g}</span>
-                                ))}
-                              </div>
-                            )}
-                            {film.link && film.link.startsWith('/') && (
-                              <a href={film.link} className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-                                <Film size={14} /> {t("films.viewFullFilmPage")}
-                              </a>
-                            )}
-                          </div>
-                          <div className="md:col-span-2 space-y-4">
-                            {film.awards && (
-                              <div>
-                                <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
-                                  <Award size={14} /> {t("films.awardsSelections")}
-                                </h4>
-                                <div className="space-y-2">
-                                  {film.awards.map((a, i) => (
-                                    <div key={i} className="bg-background/50 border border-border p-3 rounded-sm">
-                                      <div className="text-sm font-medium">{a.award}</div>
-                                      <div className="text-xs text-muted-foreground font-mono">{a.festival}</div>
-                                    </div>
+                    {/* Expanded Detail */}
+                    {detail && isExpanded && (
+                      <div className="border-t border-border bg-card/50 px-5 py-5">
+                        {isFeatured ? (
+                          <div className="grid md:grid-cols-5 gap-8">
+                            <div className="md:col-span-3 space-y-4">
+                              <p className="text-sm leading-relaxed">{filmDescKeys[detail.title] ? t(filmDescKeys[detail.title]) : detail.description}</p>
+                              {detail.directorStatement && (
+                                <blockquote className="border-l-2 border-primary pl-4 italic text-muted-foreground text-sm leading-relaxed">
+                                  &ldquo;{filmStatementKeys[detail.title] ? t(filmStatementKeys[detail.title]) : detail.directorStatement}&rdquo;
+                                  <span className="block mt-1 not-italic font-mono text-xs">— {t("about.directorsStatement")}</span>
+                                </blockquote>
+                              )}
+                              {detail.runtime && (
+                                <div className="flex flex-wrap gap-4 text-xs font-mono text-muted-foreground">
+                                  <span className="flex items-center gap-1"><Clock size={12} /> {detail.runtime}</span>
+                                  {detail.language && <span className="flex items-center gap-1"><Globe size={12} /> {detail.language}</span>}
+                                  {detail.format && <span className="flex items-center gap-1"><Film size={12} /> {detail.format}</span>}
+                                </div>
+                              )}
+                              {detail.genres && (
+                                <div className="flex flex-wrap gap-2">
+                                  {detail.genres.map(g => (
+                                    <span key={g} className="text-xs px-2.5 py-1 bg-primary/10 text-primary border border-primary/20 rounded-sm">{g}</span>
                                   ))}
                                 </div>
-                              </div>
-                            )}
-                            {film.cast && (
-                              <div>
-                                <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">{t("films.cast")}</h4>
+                              )}
+                              {detail.link && detail.link.startsWith('/') && (
+                                <a href={detail.link} className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+                                  <Film size={14} /> {t("films.viewFullFilmPage")}
+                                </a>
+                              )}
+                            </div>
+                            <div className="md:col-span-2 space-y-4">
+                              {detail.awards && (
+                                <div>
+                                  <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
+                                    <Award size={14} /> {t("films.awardsSelections")}
+                                  </h4>
+                                  <div className="space-y-2">
+                                    {detail.awards.map((a, ai) => (
+                                      <div key={ai} className="bg-background/50 border border-border p-3 rounded-sm">
+                                        <div className="text-sm font-medium">{a.award}</div>
+                                        <div className="text-xs text-muted-foreground font-mono">{a.festival}</div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                              {detail.cast && (
+                                <div>
+                                  <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">{t("films.cast")}</h4>
+                                  <div className="space-y-1">
+                                    {detail.cast.map(c => (
+                                      <div key={c.name} className="flex justify-between text-sm">
+                                        <span className="font-medium">{c.name}</span>
+                                        <span className="text-muted-foreground">{c.role}</span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="grid md:grid-cols-5 gap-6">
+                            <div className="md:col-span-3 space-y-3">
+                              {detail.description && <p className="text-sm leading-relaxed">{filmDescKeys[detail.title] ? t(filmDescKeys[detail.title]) : detail.description}</p>}
+                              {(detail as any).runtime && (
+                                <div className="flex flex-wrap gap-4 text-xs font-mono text-muted-foreground">
+                                  <span className="flex items-center gap-1"><Clock size={12} /> {(detail as any).runtime}</span>
+                                  {(detail as any).language && <span className="flex items-center gap-1"><Globe size={12} /> {(detail as any).language}</span>}
+                                </div>
+                              )}
+                              {(detail as any).genres && (
+                                <div className="flex flex-wrap gap-2">
+                                  {(detail as any).genres.map((g: string) => (
+                                    <span key={g} className="text-xs px-2.5 py-1 bg-primary/10 text-primary border border-primary/20 rounded-sm">{g}</span>
+                                  ))}
+                                </div>
+                              )}
+                              {(detail as any).imdb && (
+                                <a href={(detail as any).imdb} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+                                  <ExternalLink size={14} /> {t("films.viewOnImdb")}
+                                </a>
+                              )}
+                            </div>
+                            {(detail as any).cast && (
+                              <div className="md:col-span-2">
+                                <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">{t("films.castCrew")}</h4>
                                 <div className="space-y-1">
-                                  {film.cast.map(c => (
+                                  {(detail as any).cast.map((c: any) => (
                                     <div key={c.name} className="flex justify-between text-sm">
                                       <span className="font-medium">{c.name}</span>
                                       <span className="text-muted-foreground">{c.role}</span>
                                     </div>
                                   ))}
                                 </div>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="grid md:grid-cols-5 gap-6">
-                          <div className="md:col-span-3 space-y-3">
-                            {film.description && <p className="text-sm leading-relaxed">{filmDescKeys[film.title] ? t(filmDescKeys[film.title]) : film.description}</p>}
-                            {(film as any).runtime && (
-                              <div className="flex flex-wrap gap-4 text-xs font-mono text-muted-foreground">
-                                <span className="flex items-center gap-1"><Clock size={12} /> {(film as any).runtime}</span>
-                                {(film as any).language && <span className="flex items-center gap-1"><Globe size={12} /> {(film as any).language}</span>}
-                              </div>
-                            )}
-                            {(film as any).genres && (
-                              <div className="flex flex-wrap gap-2">
-                                {(film as any).genres.map((g: string) => (
-                                  <span key={g} className="text-xs px-2.5 py-1 bg-primary/10 text-primary border border-primary/20 rounded-sm">{g}</span>
-                                ))}
-                              </div>
-                            )}
-                            {(film as any).imdb && (
-                              <a href={(film as any).imdb} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-                                <ExternalLink size={14} /> {t("films.viewOnImdb")}
-                              </a>
-                            )}
-                          </div>
-                          {(film as any).cast && (
-                            <div className="md:col-span-2">
-                              <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">{t("films.castCrew")}</h4>
-                              <div className="space-y-1">
-                                {(film as any).cast.map((c: any) => (
-                                  <div key={c.name} className="flex justify-between text-sm">
-                                    <span className="font-medium">{c.name}</span>
-                                    <span className="text-muted-foreground">{c.role}</span>
+                                {(detail as any).crew && (
+                                  <div className="mt-3 pt-3 border-t border-border space-y-1">
+                                    {Object.entries((detail as any).crew).map(([role, name]: [string, any]) => (
+                                      <div key={role} className="flex justify-between text-sm">
+                                        <span className="text-muted-foreground capitalize">{role}</span>
+                                        <span className="font-medium">{name}</span>
+                                      </div>
+                                    ))}
                                   </div>
-                                ))}
+                                )}
                               </div>
-                              {(film as any).crew && (
-                                <div className="mt-3 pt-3 border-t border-border space-y-1">
-                                  {Object.entries((film as any).crew).map(([role, name]: [string, any]) => (
-                                    <div key={role} className="flex justify-between text-sm">
-                                      <span className="text-muted-foreground capitalize">{role}</span>
-                                      <span className="font-medium">{name}</span>
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
 
-            {/* Filmography Table */}
-            <div className="mt-12">
-              <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2">
-                <Clapperboard size={14} /> {t("films.completeFilmography")}
-              </h3>
-              <div className="border border-border rounded-sm overflow-hidden">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="bg-muted/30 text-left">
-                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground">{t("filmography.year")}</th>
-                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground">{t("filmography.title")}</th>
-                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground hidden sm:table-cell">{t("filmography.role")}</th>
-                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground hidden md:table-cell">{t("filmography.type")}</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border">
-                    {(showAllFilmography ? filmography : filmography.slice(0, 5)).map((f, i) => (
-                      <tr key={i} className="hover:bg-secondary/20 transition-colors">
-                        <td className="px-4 py-2.5 font-mono text-muted-foreground">{f.year}</td>
-                        <td className="px-4 py-2.5 font-medium">
-                          {f.title}
-                          {(f as any).pdf && (
-                            <a href={(f as any).pdf} target="_blank" rel="noopener noreferrer" className="ml-2 inline-flex items-center gap-1 text-xs text-primary hover:underline">
-                              <Download size={12} /> PDF
-                            </a>
-                          )}
-                        </td>
-                        <td className="px-4 py-2.5 text-muted-foreground hidden sm:table-cell">{f.role}</td>
-                        <td className="px-4 py-2.5 text-muted-foreground hidden md:table-cell">{f.type}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                {filmography.length > 5 && (
-                  <button
-                    onClick={() => setShowAllFilmography(!showAllFilmography)}
-                    className="w-full px-4 py-2.5 text-xs text-muted-foreground hover:text-primary transition-colors border-t border-border font-mono"
-                  >
-                    {showAllFilmography ? t("films.showLess") : `${t("films.showAll")} (${filmography.length})`}
-                  </button>
-                )}
-              </div>
+              {filmography.length > 6 && (
+                <button
+                  onClick={() => setShowAllFilmography(!showAllFilmography)}
+                  className="w-full px-4 py-2.5 text-xs text-muted-foreground hover:text-primary transition-colors border-t border-border font-mono"
+                >
+                  {showAllFilmography ? t("films.showLess") : `${t("films.showAll")} (${filmography.length})`}
+                </button>
+              )}
             </div>
           </div>
         </Section>

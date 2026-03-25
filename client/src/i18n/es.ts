@@ -5,6 +5,7 @@ const es: Record<string, string> = {
 
   // Hero
   "hero.pressKit": "Dossier de Prensa",
+  "hero.tagLabel": "Estructuras Narrativas",
   "hero.tagline": "Pensador multidisciplinario de sistemas, especializado en transformar la visi\u00f3n en infraestructura creativa escalable.",
   "hero.copyBio": "Copiar Bio",
   "hero.viewPress": "Ver Prensa",
