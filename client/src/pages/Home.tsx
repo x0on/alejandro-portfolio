@@ -254,9 +254,13 @@ export default function Home() {
                   <p className="text-sm text-primary font-medium mt-1 italic">{software.tagline}</p>
                 </div>
                 <blockquote className="border-l-2 border-primary pl-4 text-sm leading-relaxed">
-                  "{software.elevator}"
+                  {software.elevator}
                 </blockquote>
-                <p className="text-sm leading-relaxed text-muted-foreground">{software.description}</p>
+                <div className="space-y-3">
+                  {software.description.split('\n\n').map((para, i) => (
+                    <p key={i} className="text-sm leading-relaxed text-muted-foreground">{para}</p>
+                  ))}
+                </div>
 
                 <div className="space-y-2">
                   <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground flex items-center gap-2">
@@ -275,9 +279,11 @@ export default function Home() {
                   <p className="text-xs leading-relaxed">{software.techStack}</p>
                 </div>
 
-                <div className="text-xs font-mono text-muted-foreground">
-                  Market: {software.market}
-                </div>
+                {software.market && (
+                  <div className="text-xs font-mono text-muted-foreground">
+                    Market: {software.market}
+                  </div>
+                )}
               </div>
             </div>
           </div>

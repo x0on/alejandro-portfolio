@@ -290,18 +290,18 @@ export const photographyCategories = [
 // ===== SOFTWARE =====
 export const software = {
   name: "Story Town",
-  tagline: "Where storymakers produce",
-  elevator: "Story Town is the first AI film production platform. You write a story \u2014 or just describe one \u2014 and the system writes the screenplay, builds the visual bibles, generates the storyboard, and produces the actual video clips and audio. Characters stay consistent. Shots follow cinematic grammar. The whole thing flows in one pipeline, from concept to content.",
-  description: "Story Town is an end-to-end AI pre-production pipeline. You go from a screenplay or concept to a complete visual package \u2014 characters, locations, storyboards, shot-by-shot animatics, and video clips \u2014 in one session. The system understands cinematography. It doesn\u2019t just generate pretty images. It thinks in shots: framing, camera angle, motion, scene continuity, character placement.",
+  tagline: "From keystroke to screen.",
+  elevator: "Story Town is an AI film production platform built for creators\u2014not to replace them, but to empower them. You bring the idea, the taste, the instinct\u2014and Story Town turns it into a living film pipeline. From a simple concept\u2014or a full screenplay\u2014the system develops the story, builds the world, defines the characters, generates storyboards, and produces cinematic sequences with continuity and intent. Characters remain consistent. Shots follow real film grammar. The story doesn\u2019t just generate\u2014it flows.",
+  description: "The difference is control. You are in charge of every decision. The tone, the rhythm, the choices that make a story feel human\u2014those don\u2019t get automated away. They still belong to you. Story Town handles the growing complexity behind the system so you can focus on what matters: taste, intention, and storytelling.\n\nIn most AI tools, the business model rewards friction\u2014more retries, more credits, more uncertainty. Story Town is designed the opposite way. The faster you arrive at something meaningful, the better the system has done its job.\n\nIt\u2019s not about generating content. It\u2019s about giving creators the power to direct it.",
   features: [
-    { name: "Sentence-Level Visual Decomposition", desc: "Reads a screenplay line-by-line and derives the correct shot for each moment" },
-    { name: "Bible-Aware Generation", desc: "Characters look the same from shot to shot via a tracked visual bible" },
-    { name: "Muybridge Pipeline", desc: "Turns storyboard frames into video clips with continuity and motion control" },
-    { name: "Multi-Provider AI Routing", desc: "Routes across GPT-4o, LTX-2.3, Veo 3, Runway, fal.ai, and ElevenLabs" },
-    { name: "Director-in-the-Loop", desc: "The filmmaker makes every creative decision; AI handles the production labor" },
+    { name: "Narrative-to-Visual Engine", desc: "Transforms written ideas into cinematic structure\u2014translating story into shots with built-in film logic." },
+    { name: "Continuity Intelligence", desc: "Maintains visual consistency across characters, environments, and time\u2014so the story actually holds together." },
+    { name: "Cinematic Motion Pipeline", desc: "Evolves still moments into moving sequences with controlled pacing, rhythm, and visual coherence." },
+    { name: "Adaptive AI Infrastructure", desc: "Dynamically leverages multiple AI systems behind the scenes\u2014so creators get the best output without managing tools." },
+    { name: "Creator-in-Control System", desc: "Every creative decision stays human. The system handles execution, not authorship." },
   ],
-  techStack: "Multi-agent AI system with a proprietary shot grammar engine and a model-agnostic video router. Built on Next.js 16 with bible-aware image generation, LTX-2.3 video extension, and a unified AI router across 8+ providers.",
-  market: "$50B global film/video production market. 50M+ content creators.",
+  techStack: "A modular AI architecture combining narrative intelligence, visual continuity systems, and a model-agnostic generation layer\u2014designed to scale cinematic production without sacrificing creative control.",
+  market: "",
   screenshot: ASSETS.storyTown,
 };
 
