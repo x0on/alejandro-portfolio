@@ -1,26 +1,28 @@
 import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { ChevronDown, ChevronRight, User, Film, BookOpen, Video, Share2, Briefcase, Mail, Camera, Monitor, Clapperboard } from "lucide-react";
 
 const mainSections = [
-  { id: "hero", label: "Overview", icon: User },
-  { id: "about", label: "About", icon: User },
-  { id: "book", label: "Book", icon: BookOpen },
-  { id: "software", label: "Software", icon: Monitor },
-  { id: "films", label: "Films", icon: Film },
-  { id: "commercial", label: "Commercial", icon: Clapperboard },
-  { id: "photography", label: "Photography", icon: Camera },
-  { id: "press", label: "Press Coverage", icon: BookOpen },
-  { id: "interviews", label: "Interviews", icon: Video },
+  { id: "hero", labelKey: "nav.pressKit", icon: User },
+  { id: "about", labelKey: "section.about", icon: User },
+  { id: "book", labelKey: "section.book", icon: BookOpen },
+  { id: "software", labelKey: "section.software", icon: Monitor },
+  { id: "films", labelKey: "section.films", icon: Film },
+  { id: "commercial", labelKey: "section.commercial", icon: Clapperboard },
+  { id: "photography", labelKey: "section.photography", icon: Camera },
+  { id: "press", labelKey: "section.press", icon: BookOpen },
+  { id: "interviews", labelKey: "section.interviews", icon: Video },
 ];
 
 const otherSections = [
-  { id: "experience", label: "Experience", icon: Briefcase },
-  { id: "social", label: "Social & Contact", icon: Share2 },
+  { id: "experience", labelKey: "section.experience", icon: Briefcase },
+  { id: "social", labelKey: "section.connect", icon: Share2 },
 ];
 
 export default function Sidebar() {
   const [otherOpen, setOtherOpen] = useState(false);
   const [active, setActive] = useState("hero");
+  const { t, language } = useLanguage();
 
   const scrollTo = (id: string) => {
     setActive(id);
@@ -46,7 +48,7 @@ export default function Sidebar() {
               }`}
             >
               <Icon size={16} className="shrink-0" />
-              {s.label}
+              {t(s.labelKey)}
             </button>
           );
         })}
@@ -57,7 +59,7 @@ export default function Sidebar() {
             className="flex items-center gap-2.5 px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-accent/50 rounded-sm w-full text-left"
           >
             {otherOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
-            Other
+            {language === "es" ? "Otros" : "Other"}
           </button>
           {otherOpen && (
             <div className="ml-2 flex flex-col gap-0.5">
@@ -74,7 +76,7 @@ export default function Sidebar() {
                     }`}
                   >
                     <Icon size={16} className="shrink-0" />
-                    {s.label}
+                    {t(s.labelKey)}
                   </button>
                 );
               })}
@@ -89,7 +91,7 @@ export default function Sidebar() {
           className="flex items-center gap-2 px-3 py-2 text-xs text-sidebar-foreground hover:text-sidebar-primary transition-colors"
         >
           <Mail size={14} />
-          Contact
+          {t("connect.contact")}
         </button>
       </div>
     </aside>

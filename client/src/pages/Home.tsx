@@ -2,10 +2,11 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import BioModal from "@/components/BioModal";
 import TypingAnimation from "@/components/TypingAnimation";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
-  ASSETS, hero, about, films, book, pressArticles, interviews, socialLinks,
+  ASSETS, hero, films, book, pressArticles, interviews, socialLinks,
   contact, experience, clients, filmography, commercialWork, photographyCategories,
-  software,
+  software, about,
 } from "@/data/content";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -59,6 +60,26 @@ function Newspaper({ size, className }: { size: number; className?: string }) {
   );
 }
 
+// Map film titles to translation keys for descriptions
+const filmDescKeys: Record<string, string> = {
+  "Objetos de Deseo \u2013 La Navaja": "film.objetosDeDeseo.description",
+  "Entre Amores": "film.entreAmores.description",
+  "Mismatch Made in Heaven": "film.mismatchMadeInHeaven.description",
+  "Reaching the Sea": "film.reachingTheSea.description",
+};
+
+const filmStatementKeys: Record<string, string> = {
+  "Objetos de Deseo \u2013 La Navaja": "film.objetosDeDeseo.directorStatement",
+};
+
+// Map stat labels to translation keys
+const statKeys: Record<string, string> = {
+  "Years Experience": "hero.stat.yearsExperience",
+  "Projects Produced": "hero.stat.projectsProduced",
+  "National Campaigns": "hero.stat.nationalCampaigns",
+  "Film Festival Awards": "hero.stat.filmFestivalAwards",
+};
+
 export default function Home() {
   const [bioOpen, setBioOpen] = useState(false);
   const [expandedPress, setExpandedPress] = useState<string | null>(null);
@@ -69,6 +90,7 @@ export default function Home() {
   const [photographyOpen, setPhotographyOpen] = useState(false);
   const [activePhotoCategory, setActivePhotoCategory] = useState<string | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const { t } = useLanguage();
 
   const featuredFilm = films[0];
 
@@ -90,7 +112,7 @@ export default function Home() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
                 >
-                  <p className="text-xs font-mono tracking-[0.3em] text-primary mb-4 uppercase">Press Kit</p>
+                  <p className="text-xs font-mono tracking-[0.3em] text-primary mb-4 uppercase">{t("hero.pressKit")}</p>
                   <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[0.95]" style={{ fontFamily: "var(--font-display)" }}>
                     {hero.name}
                   </h1>
@@ -98,7 +120,7 @@ export default function Home() {
                     <TypingAnimation />
                   </div>
                   <p className="text-sm text-muted-foreground/80 mt-3 max-w-xl leading-relaxed">
-                    {hero.tagline}
+                    {t("hero.tagline")}
                   </p>
                 </motion.div>
 
@@ -111,7 +133,7 @@ export default function Home() {
                   {hero.stats.map(s => (
                     <div key={s.label} className="bg-card border border-border px-4 py-2.5 rounded-sm">
                       <div className="text-xl font-bold text-primary" style={{ fontFamily: "var(--font-display)" }}>{s.value}</div>
-                      <div className="text-xs text-muted-foreground font-mono">{s.label}</div>
+                      <div className="text-xs text-muted-foreground font-mono">{t(statKeys[s.label] || s.label)}</div>
                     </div>
                   ))}
                 </motion.div>
@@ -126,41 +148,39 @@ export default function Home() {
                     onClick={() => setBioOpen(true)}
                     className="px-5 py-2.5 text-sm bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity font-medium"
                   >
-                    Copy Bio
+                    {t("hero.copyBio")}
                   </button>
                   <a href="#press" className="px-5 py-2.5 text-sm border border-border text-foreground rounded-sm hover:bg-secondary transition-colors font-medium">
-                    View Press
+                    {t("hero.viewPress")}
                   </a>
                   <a href="/media-kit" className="px-5 py-2.5 text-sm border border-border text-foreground rounded-sm hover:bg-secondary transition-colors font-medium">
-                    Media Kit
+                    {t("hero.mediaKit")}
                   </a>
                 </motion.div>
               </div>
-
-
             </div>
           </div>
         </Section>
 
         {/* ===== ABOUT ===== */}
         <Section id="about" className="container py-16 md:py-24">
-          <SectionTitle number="01" title="About" subtitle="Background & Philosophy" />
+          <SectionTitle number="01" title={t("section.about")} subtitle={t("section.about.subtitle")} />
           <div className="grid md:grid-cols-5 gap-10">
             <div className="md:col-span-3 space-y-5">
-              <p className="text-base leading-relaxed">{about.fullBio}</p>
+              <p className="text-base leading-relaxed">{t("about.fullBio")}</p>
               <blockquote className="border-l-2 border-primary pl-4 italic text-muted-foreground text-sm leading-relaxed">
-                "{about.identity}"
+                &ldquo;{t("about.identity")}&rdquo;
               </blockquote>
 
               <div className="mt-6 bg-card border border-border p-5 rounded-sm">
-                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">Current Exploration: AI & Cinema</h3>
+                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">{t("about.currentExploration")}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
-                  {about.aiExploration}
+                  {t("about.aiExploration")}
                 </p>
               </div>
 
               <div className="mt-6">
-                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">Education</h3>
+                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">{t("about.education")}</h3>
                 <div className="space-y-2">
                   {about.education.map(e => (
                     <div key={e.degree} className="flex items-start gap-2 text-sm">
@@ -177,24 +197,28 @@ export default function Home() {
 
             <div className="md:col-span-2 space-y-6">
               <div>
-                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">Core Skills</h3>
+                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">{t("about.coreSkills")}</h3>
                 <div className="flex flex-wrap gap-2">
-                  {about.skills.map(s => (
-                    <span key={s} className="text-xs px-2.5 py-1 bg-secondary text-secondary-foreground rounded-sm">
-                      {s}
+                  {[
+                    "skill.proposalPresentation", "skill.strategicWriting", "skill.awardSubmissions",
+                    "skill.publicRelations", "skill.brandVisual", "skill.stakeholder",
+                    "skill.videoProduction", "skill.adobeSuite", "skill.aiPipelines", "skill.webDev"
+                  ].map(key => (
+                    <span key={key} className="text-xs px-2.5 py-1 bg-secondary text-secondary-foreground rounded-sm">
+                      {t(key)}
                     </span>
                   ))}
                 </div>
               </div>
 
               <div>
-                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">Testimonials</h3>
+                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">{t("about.testimonials")}</h3>
                 <div className="space-y-4">
-                  {about.testimonials.map((t, i) => (
+                  {about.testimonials.map((testimonial, i) => (
                     <div key={i} className="bg-card border border-border p-4 rounded-sm">
                       <Quote size={16} className="text-primary mb-2" />
-                      <p className="text-sm italic leading-relaxed">"{t.quote}"</p>
-                      <p className="text-xs text-muted-foreground mt-2 font-mono">— {t.source}</p>
+                      <p className="text-sm italic leading-relaxed">&ldquo;{t(`testimonial.${i}.quote`)}&rdquo;</p>
+                      <p className="text-xs text-muted-foreground mt-2 font-mono">— {t(`testimonial.${i}.source`)}</p>
                     </div>
                   ))}
                 </div>
@@ -205,7 +229,7 @@ export default function Home() {
 
         {/* ===== BOOK ===== */}
         <Section id="book" className="container py-16 md:py-24">
-          <SectionTitle number="02" title="Book" subtitle="Published Work" />
+          <SectionTitle number="02" title={t("section.book")} subtitle={t("section.book.subtitle")} />
           <div className="grid md:grid-cols-5 gap-10 items-start">
             <div className="md:col-span-2">
               <img
@@ -218,7 +242,7 @@ export default function Home() {
               <h3 className="text-2xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
                 {book.title}
               </h3>
-              <p className="text-sm leading-relaxed">{book.description}</p>
+              <p className="text-sm leading-relaxed">{t("book.description")}</p>
               <div className="flex flex-wrap gap-3">
                 <a
                   href={book.downloadUrl}
@@ -226,7 +250,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 text-sm bg-primary text-primary-foreground rounded-sm hover:opacity-90 transition-opacity font-medium"
                 >
-                  <Download size={16} /> Download PDF
+                  <Download size={16} /> {t("book.downloadPdf")}
                 </a>
               </div>
             </div>
@@ -237,7 +261,7 @@ export default function Home() {
         <Section id="software" className="relative">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
           <div className="relative container py-16 md:py-24">
-            <SectionTitle number="03" title="Software" subtitle="AI-Driven Creative Tools" />
+            <SectionTitle number="03" title={t("section.software")} subtitle={t("section.software.subtitle")} />
             <div className="grid md:grid-cols-2 gap-10 items-start">
               <div>
                 <img
@@ -254,36 +278,30 @@ export default function Home() {
                   <p className="text-sm text-primary font-medium mt-1 italic">{software.tagline}</p>
                 </div>
                 <blockquote className="border-l-2 border-primary pl-4 text-sm leading-relaxed">
-                  {software.elevator}
+                  {t("software.elevator")}
                 </blockquote>
                 <div className="space-y-3">
-                  {software.description.split('\n\n').map((para, i) => (
+                  {t("software.description").split('\n\n').map((para, i) => (
                     <p key={i} className="text-sm leading-relaxed text-muted-foreground">{para}</p>
                   ))}
                 </div>
 
                 <div className="space-y-2">
                   <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-                    <Zap size={14} /> Key Technology
+                    <Zap size={14} /> {t("software.keyTechnology")}
                   </h4>
                   {software.features.map((f, i) => (
                     <div key={i} className="bg-card border border-border p-3 rounded-sm">
-                      <div className="text-sm font-medium">{f.name}</div>
-                      <div className="text-xs text-muted-foreground mt-0.5">{f.desc}</div>
+                      <div className="text-sm font-medium">{t(`software.feature.${["narrativeToVisual", "continuityIntelligence", "cinematicMotion", "adaptiveAI", "creatorControl"][i]}`)}</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">{t(`software.feature.${["narrativeToVisual", "continuityIntelligence", "cinematicMotion", "adaptiveAI", "creatorControl"][i]}.desc`)}</div>
                     </div>
                   ))}
                 </div>
 
                 <div className="bg-card border border-border p-4 rounded-sm">
-                  <div className="text-xs font-mono text-muted-foreground mb-1">TECH STACK</div>
-                  <p className="text-xs leading-relaxed">{software.techStack}</p>
+                  <div className="text-xs font-mono text-muted-foreground mb-1">{t("software.techStack").toUpperCase()}</div>
+                  <p className="text-xs leading-relaxed">{t("software.techStackDesc")}</p>
                 </div>
-
-                {software.market && (
-                  <div className="text-xs font-mono text-muted-foreground">
-                    Market: {software.market}
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -293,7 +311,7 @@ export default function Home() {
         <Section id="films" className="relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-background to-background" />
           <div className="relative container py-16 md:py-24">
-            <SectionTitle number="04" title="Films" subtitle="Short Films & Narrative Work" />
+            <SectionTitle number="04" title={t("section.films")} subtitle={t("section.films.subtitle")} />
 
             {/* Film Cards */}
             <div className="space-y-4">
@@ -310,7 +328,7 @@ export default function Home() {
                         <span className="text-xs text-muted-foreground font-mono ml-2">({film.year})</span>
                       </div>
                       {film.featured && (
-                        <span className="text-[10px] px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded-sm font-mono uppercase">Award Winner</span>
+                        <span className="text-[10px] px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded-sm font-mono uppercase">{t("films.awardWinner")}</span>
                       )}
                     </div>
                     {expandedFilm === idx ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
@@ -321,11 +339,11 @@ export default function Home() {
                       {film.featured && featuredFilm ? (
                         <div className="grid md:grid-cols-5 gap-8">
                           <div className="md:col-span-3 space-y-4">
-                            <p className="text-sm leading-relaxed">{film.description}</p>
+                            <p className="text-sm leading-relaxed">{filmDescKeys[film.title] ? t(filmDescKeys[film.title]) : film.description}</p>
                             {film.directorStatement && (
                               <blockquote className="border-l-2 border-primary pl-4 italic text-muted-foreground text-sm leading-relaxed">
-                                "{film.directorStatement}"
-                                <span className="block mt-1 not-italic font-mono text-xs">— Director's Statement</span>
+                                &ldquo;{filmStatementKeys[film.title] ? t(filmStatementKeys[film.title]) : film.directorStatement}&rdquo;
+                                <span className="block mt-1 not-italic font-mono text-xs">— {t("about.directorsStatement")}</span>
                               </blockquote>
                             )}
                             {film.runtime && (
@@ -342,23 +360,17 @@ export default function Home() {
                                 ))}
                               </div>
                             )}
-                            {film.link && (
-                              film.link.startsWith('/') ? (
-                                <a href={film.link} className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-                                  <Film size={14} /> View Full Film Page
-                                </a>
-                              ) : (
-                                <a href={film.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-                                  <ExternalLink size={14} /> View Film Page
-                                </a>
-                              )
+                            {film.link && film.link.startsWith('/') && (
+                              <a href={film.link} className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+                                <Film size={14} /> {t("films.viewFullFilmPage")}
+                              </a>
                             )}
                           </div>
                           <div className="md:col-span-2 space-y-4">
                             {film.awards && (
                               <div>
                                 <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3 flex items-center gap-2">
-                                  <Award size={14} /> Awards & Selections
+                                  <Award size={14} /> {t("films.awardsSelections")}
                                 </h4>
                                 <div className="space-y-2">
                                   {film.awards.map((a, i) => (
@@ -372,7 +384,7 @@ export default function Home() {
                             )}
                             {film.cast && (
                               <div>
-                                <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">Cast</h4>
+                                <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">{t("films.cast")}</h4>
                                 <div className="space-y-1">
                                   {film.cast.map(c => (
                                     <div key={c.name} className="flex justify-between text-sm">
@@ -386,18 +398,50 @@ export default function Home() {
                           </div>
                         </div>
                       ) : (
-                        <div className="space-y-3">
-                          {film.description && <p className="text-sm leading-relaxed">{film.description}</p>}
-                          {film.link && (
-                            film.link.startsWith('/') ? (
-                              <a href={film.link} className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-                                <Film size={14} /> View Full Film Page
+                        <div className="grid md:grid-cols-5 gap-6">
+                          <div className="md:col-span-3 space-y-3">
+                            {film.description && <p className="text-sm leading-relaxed">{filmDescKeys[film.title] ? t(filmDescKeys[film.title]) : film.description}</p>}
+                            {(film as any).runtime && (
+                              <div className="flex flex-wrap gap-4 text-xs font-mono text-muted-foreground">
+                                <span className="flex items-center gap-1"><Clock size={12} /> {(film as any).runtime}</span>
+                                {(film as any).language && <span className="flex items-center gap-1"><Globe size={12} /> {(film as any).language}</span>}
+                              </div>
+                            )}
+                            {(film as any).genres && (
+                              <div className="flex flex-wrap gap-2">
+                                {(film as any).genres.map((g: string) => (
+                                  <span key={g} className="text-xs px-2.5 py-1 bg-primary/10 text-primary border border-primary/20 rounded-sm">{g}</span>
+                                ))}
+                              </div>
+                            )}
+                            {(film as any).imdb && (
+                              <a href={(film as any).imdb} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
+                                <ExternalLink size={14} /> {t("films.viewOnImdb")}
                               </a>
-                            ) : (
-                              <a href={film.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-                                <ExternalLink size={14} /> View on Website
-                              </a>
-                            )
+                            )}
+                          </div>
+                          {(film as any).cast && (
+                            <div className="md:col-span-2">
+                              <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-3">{t("films.castCrew")}</h4>
+                              <div className="space-y-1">
+                                {(film as any).cast.map((c: any) => (
+                                  <div key={c.name} className="flex justify-between text-sm">
+                                    <span className="font-medium">{c.name}</span>
+                                    <span className="text-muted-foreground">{c.role}</span>
+                                  </div>
+                                ))}
+                              </div>
+                              {(film as any).crew && (
+                                <div className="mt-3 pt-3 border-t border-border space-y-1">
+                                  {Object.entries((film as any).crew).map(([role, name]: [string, any]) => (
+                                    <div key={role} className="flex justify-between text-sm">
+                                      <span className="text-muted-foreground capitalize">{role}</span>
+                                      <span className="font-medium">{name}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
                           )}
                         </div>
                       )}
@@ -410,23 +454,30 @@ export default function Home() {
             {/* Filmography Table */}
             <div className="mt-12">
               <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2">
-                <Clapperboard size={14} /> Complete Filmography (IMDb)
+                <Clapperboard size={14} /> {t("films.completeFilmography")}
               </h3>
               <div className="border border-border rounded-sm overflow-hidden">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="bg-muted/30 text-left">
-                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground">Year</th>
-                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground">Title</th>
-                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground hidden sm:table-cell">Role</th>
-                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground hidden md:table-cell">Type</th>
+                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground">{t("filmography.year")}</th>
+                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground">{t("filmography.title")}</th>
+                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground hidden sm:table-cell">{t("filmography.role")}</th>
+                      <th className="px-4 py-2.5 font-mono text-xs text-muted-foreground hidden md:table-cell">{t("filmography.type")}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-border">
                     {(showAllFilmography ? filmography : filmography.slice(0, 5)).map((f, i) => (
                       <tr key={i} className="hover:bg-secondary/20 transition-colors">
                         <td className="px-4 py-2.5 font-mono text-muted-foreground">{f.year}</td>
-                        <td className="px-4 py-2.5 font-medium">{f.title}</td>
+                        <td className="px-4 py-2.5 font-medium">
+                          {f.title}
+                          {(f as any).pdf && (
+                            <a href={(f as any).pdf} target="_blank" rel="noopener noreferrer" className="ml-2 inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                              <Download size={12} /> PDF
+                            </a>
+                          )}
+                        </td>
                         <td className="px-4 py-2.5 text-muted-foreground hidden sm:table-cell">{f.role}</td>
                         <td className="px-4 py-2.5 text-muted-foreground hidden md:table-cell">{f.type}</td>
                       </tr>
@@ -438,7 +489,7 @@ export default function Home() {
                     onClick={() => setShowAllFilmography(!showAllFilmography)}
                     className="w-full px-4 py-2.5 text-xs text-muted-foreground hover:text-primary transition-colors border-t border-border font-mono"
                   >
-                    {showAllFilmography ? "Show Less" : `Show All (${filmography.length})`}
+                    {showAllFilmography ? t("films.showLess") : `${t("films.showAll")} (${filmography.length})`}
                   </button>
                 )}
               </div>
@@ -460,9 +511,9 @@ export default function Home() {
                   <div className="h-px flex-1 bg-border" />
                 </div>
                 <h2 className="text-3xl font-bold tracking-tight text-left" style={{ fontFamily: "var(--font-display)" }}>
-                  Commercial Work
+                  {t("section.commercial")}
                 </h2>
-                <p className="text-muted-foreground mt-1 text-sm text-left">Selected Campaigns & Reels</p>
+                <p className="text-muted-foreground mt-1 text-sm text-left">{t("section.commercial.subtitle")}</p>
               </div>
               <div className="shrink-0 ml-4 w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
                 {commercialOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -471,7 +522,7 @@ export default function Home() {
           </div>
           {/* Desktop: always visible header */}
           <div className="hidden md:block">
-            <SectionTitle number="05" title="Commercial Work" subtitle="Selected Campaigns & Reels" />
+            <SectionTitle number="05" title={t("section.commercial")} subtitle={t("section.commercial.subtitle")} />
           </div>
 
           <div className={`${commercialOpen ? 'block' : 'hidden'} md:block`}>
@@ -530,9 +581,9 @@ export default function Home() {
                     <div className="h-px flex-1 bg-border" />
                   </div>
                   <h2 className="text-3xl font-bold tracking-tight text-left" style={{ fontFamily: "var(--font-display)" }}>
-                    Photography
+                    {t("section.photography")}
                   </h2>
-                  <p className="text-muted-foreground mt-1 text-sm text-left">Still Photography Categories</p>
+                  <p className="text-muted-foreground mt-1 text-sm text-left">{t("section.photography.subtitle")}</p>
                 </div>
                 <div className="shrink-0 ml-4 w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
                   {photographyOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -541,7 +592,7 @@ export default function Home() {
             </div>
             {/* Desktop: always visible header */}
             <div className="hidden md:block">
-              <SectionTitle number="06" title="Photography" subtitle="Still Photography Categories" />
+              <SectionTitle number="06" title={t("section.photography")} subtitle={t("section.photography.subtitle")} />
             </div>
 
             <div className={`${photographyOpen ? 'block' : 'hidden'} md:block`}>
@@ -555,7 +606,7 @@ export default function Home() {
                       : 'bg-card text-muted-foreground border-border hover:border-primary/50'
                   }`}
                 >
-                  All
+                  {t("photography.all")}
                 </button>
                 {photographyCategories.map((cat) => (
                   <button
@@ -567,7 +618,7 @@ export default function Home() {
                         : 'bg-card text-muted-foreground border-border hover:border-primary/50'
                     }`}
                   >
-                    {cat.name}
+                    {t(`photo.${cat.name}`)}
                   </button>
                 ))}
               </div>
@@ -592,7 +643,7 @@ export default function Home() {
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-end">
                         <span className="text-white text-[10px] font-mono px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                          {cat.name}
+                          {t(`photo.${cat.name}`)}
                         </span>
                       </div>
                     </div>
@@ -627,7 +678,7 @@ export default function Home() {
         <Section id="press" className="relative">
           <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-background to-background" />
           <div className="relative container py-16 md:py-24">
-            <SectionTitle number="07" title="Press Coverage" subtitle="Media Features & Reviews" />
+            <SectionTitle number="07" title={t("section.press")} subtitle={t("section.press.subtitle")} />
             <div className="space-y-4">
               {pressArticles.map(cat => (
                 <div key={cat.category} className="border border-border rounded-sm overflow-hidden">
@@ -637,7 +688,7 @@ export default function Home() {
                   >
                     <div className="flex items-center gap-3">
                       <Newspaper size={18} className="text-primary" />
-                      <span className="font-medium">{cat.category}</span>
+                      <span className="font-medium">{t(`pressCategory.${cat.category}`)}</span>
                       <span className="text-xs text-muted-foreground font-mono">({cat.articles.length})</span>
                     </div>
                     {expandedPress === cat.category ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
@@ -670,7 +721,7 @@ export default function Home() {
 
         {/* ===== INTERVIEWS ===== */}
         <Section id="interviews" className="container py-16 md:py-24">
-          <SectionTitle number="08" title="Interviews & Media" subtitle="Video Content & Appearances" />
+          <SectionTitle number="08" title={t("section.interviews")} subtitle={t("section.interviews.subtitle")} />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {interviews.map((item, i) => (
               <a
@@ -697,24 +748,24 @@ export default function Home() {
 
         {/* ===== EXPERIENCE ===== */}
         <Section id="experience" className="container py-16 md:py-24">
-          <SectionTitle number="09" title="Experience" subtitle="Professional Background" />
+          <SectionTitle number="09" title={t("section.experience")} subtitle={t("section.experience.subtitle")} />
           <div className="space-y-6">
             {experience.map((exp, i) => (
               <div key={i} className="bg-card border border-border p-5 rounded-sm">
                 <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                   <div>
-                    <h3 className="text-lg font-semibold" style={{ fontFamily: "var(--font-display)" }}>{exp.role}</h3>
-                    <p className="text-sm text-primary font-medium">{exp.company}</p>
+                    <h3 className="text-lg font-semibold" style={{ fontFamily: "var(--font-display)" }}>{t(`exp.${i}.role`)}</h3>
+                    <p className="text-sm text-primary font-medium">{t(`exp.${i}.company`)}</p>
                   </div>
                   <span className="text-xs font-mono text-muted-foreground flex items-center gap-1">
-                    <Calendar size={12} /> {exp.period}
+                    <Calendar size={12} /> {t(`exp.${i}.period`)}
                   </span>
                 </div>
                 <ul className="space-y-1.5">
-                  {exp.highlights.map((h, j) => (
+                  {exp.highlights.map((_h, j) => (
                     <li key={j} className="text-sm text-muted-foreground flex items-start gap-2">
                       <span className="text-primary mt-1.5 shrink-0 w-1 h-1 rounded-full bg-primary" />
-                      {h}
+                      {t(`exp.${i}.h${j}`)}
                     </li>
                   ))}
                 </ul>
@@ -724,7 +775,7 @@ export default function Home() {
 
           {/* Selected Clients */}
           <div className="mt-10">
-            <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-4">Selected Clients</h3>
+            <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-4">{t("experience.selectedClients")}</h3>
             <div className="flex flex-wrap gap-2">
               {clients.map(c => (
                 <span key={c} className="text-xs px-3 py-1.5 bg-secondary text-secondary-foreground rounded-sm border border-border">
@@ -739,10 +790,10 @@ export default function Home() {
         <Section id="social" className="relative">
           <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-background to-background" />
           <div className="relative container py-16 md:py-24">
-            <SectionTitle number="10" title="Connect" subtitle="Social Media & Contact" />
+            <SectionTitle number="10" title={t("section.connect")} subtitle={t("section.connect.subtitle")} />
             <div className="grid md:grid-cols-2 gap-10">
               <div>
-                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-4">Social Profiles</h3>
+                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-4">{t("connect.socialProfiles")}</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {socialLinks.map(s => (
                     <a
@@ -760,7 +811,7 @@ export default function Home() {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-4">Contact</h3>
+                <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground mb-4">{t("connect.contact")}</h3>
                 <div className="bg-card border border-border p-5 rounded-sm space-y-4">
                   <div className="flex items-center gap-3">
                     <Mail size={18} className="text-primary" />
@@ -776,7 +827,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPin size={18} className="text-primary" />
-                    <span className="text-sm">Bilingual: {contact.languages.join(" & ")}</span>
+                    <span className="text-sm">{t("connect.bilingual")}: {contact.languages.join(" & ")}</span>
                   </div>
                 </div>
               </div>
@@ -789,7 +840,7 @@ export default function Home() {
           <div className="container flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
             <div className="flex items-center gap-2">
               <img src={ASSETS.logomark} alt="AR" className="h-5 w-5 object-contain opacity-60" />
-              <span>&copy; {new Date().getFullYear()} Alejandro Renteria. All rights reserved.</span>
+              <span>&copy; {new Date().getFullYear()} Alejandro Renteria. {t("footer.allRights")}</span>
             </div>
             <div className="flex items-center gap-4">
               <a href="https://www.imdb.com/name/nm2828446/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">IMDb</a>

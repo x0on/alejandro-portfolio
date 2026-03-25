@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
-import { bios, contact, socialLinks } from "@/data/content";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { contact, socialLinks } from "@/data/content";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Download, Copy, Check, X, Mail, Phone, Globe, ExternalLink } from "lucide-react";
@@ -32,20 +33,22 @@ const galleryPhotos = [
   { url: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/gallery-20_1bbb6f1c.webp", label: "On Location — Miami" },
 ];
 
-const facts = [
-  { label: "Full Name", value: "Alejandro Renteria" },
-  { label: "Title", value: "Actor / Writer / Director / Editor / Photographer / Software Developer" },
-  { label: "Company", value: "Thinking Monkeys Films" },
-  { label: "Location", value: "Miami, FL" },
-  { label: "Languages", value: "English, Spanish" },
-  { label: "Experience", value: "15+ years" },
-  { label: "Projects", value: "900+" },
-  { label: "Notable Clients", value: "HBO, Telemundo, NBCUniversal, Carnival Corp." },
+const factKeys = [
+  "fullName", "title", "company", "location", "languages", "experience", "projects", "notableClients"
 ];
 
 export default function MediaKit() {
   const [lightbox, setLightbox] = useState<number | null>(null);
   const [copiedBio, setCopiedBio] = useState<string | null>(null);
+  const { t } = useLanguage();
+
+  const bioEntries = [
+    { key: "short50", labelKey: "bioModal.oneLiner" },
+    { key: "short100", labelKey: "bioModal.shortBio" },
+    { key: "medium250", labelKey: "bioModal.mediumBio" },
+    { key: "medium500", labelKey: "bioModal.longBio" },
+    { key: "long1000", labelKey: "bioModal.fullBio" },
+  ];
 
   const handleCopy = async (text: string, key: string) => {
     await navigator.clipboard.writeText(text);
@@ -66,14 +69,13 @@ export default function MediaKit() {
           className="container py-16 md:py-24"
         >
           <div className="mb-2">
-            <span className="text-xs font-mono tracking-[0.3em] text-primary uppercase">Media Kit</span>
+            <span className="text-xs font-mono tracking-[0.3em] text-primary uppercase">{t("mediaKit.title")}</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-            Press Assets &<br />Media Resources
+            {t("mediaKit.subtitle")}
           </h1>
           <p className="text-muted-foreground mt-4 max-w-xl text-sm leading-relaxed">
-            Download high-resolution photos and copy-ready bios for press and media use.
-            All assets are available for editorial and promotional purposes.
+            {t("mediaKit.heroDescription")}
           </p>
         </motion.section>
 
@@ -90,7 +92,7 @@ export default function MediaKit() {
             <div className="h-px flex-1 bg-border" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ fontFamily: "var(--font-display)" }}>
-            Photo Gallery
+            {t("mediaKit.photoGallery")}
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -115,7 +117,7 @@ export default function MediaKit() {
           </div>
 
           <p className="text-xs text-muted-foreground mt-4 font-mono">
-            Click any image to view full size. Right-click to download.
+            {t("mediaKit.clickToView")}
           </p>
         </motion.section>
 
@@ -145,7 +147,7 @@ export default function MediaKit() {
                     onClick={e => { e.stopPropagation(); setLightbox(lightbox - 1); }}
                     className="px-3 py-1.5 text-xs bg-white/10 text-white rounded-sm hover:bg-white/20 transition-colors"
                   >
-                    Previous
+                    {t("mediaKit.previous")}
                   </button>
                 )}
                 <a
@@ -156,14 +158,14 @@ export default function MediaKit() {
                   className="inline-flex items-center gap-2 px-4 py-1.5 text-xs bg-white/10 text-white rounded-sm hover:bg-white/20 transition-colors"
                   onClick={e => e.stopPropagation()}
                 >
-                  <Download size={14} /> Download
+                  <Download size={14} /> {t("mediaKit.download")}
                 </a>
                 {lightbox < galleryPhotos.length - 1 && (
                   <button
                     onClick={e => { e.stopPropagation(); setLightbox(lightbox + 1); }}
                     className="px-3 py-1.5 text-xs bg-white/10 text-white rounded-sm hover:bg-white/20 transition-colors"
                   >
-                    Next
+                    {t("mediaKit.next")}
                   </button>
                 )}
               </div>
@@ -184,31 +186,30 @@ export default function MediaKit() {
             <div className="h-px flex-1 bg-border" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ fontFamily: "var(--font-display)" }}>
-            Copy-Ready Bios
+            {t("mediaKit.copyReadyBios")}
           </h2>
 
           <div className="space-y-4">
-            {[
-              { key: "short50", label: "One-Liner (50 chars)", text: bios.short50 },
-              { key: "short100", label: "Short Bio (100 chars)", text: bios.short100 },
-              { key: "medium250", label: "Medium Bio (250 chars)", text: bios.medium250 },
-              { key: "long500", label: "Long Bio (500 chars)", text: bios.long500 },
-              { key: "full1000", label: "Full Bio (1000 chars)", text: bios.full1000 },
-            ].map(bio => (
-              <div key={bio.key} className="border border-border rounded-sm p-4 bg-card">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-mono text-muted-foreground">{bio.label}</span>
-                  <button
-                    onClick={() => handleCopy(bio.text, bio.key)}
-                    className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {copiedBio === bio.key ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
-                    {copiedBio === bio.key ? "Copied" : "Copy"}
-                  </button>
+            {bioEntries.map(bio => {
+              const bioText = t(`bio.${bio.key}`);
+              return (
+                <div key={bio.key} className="border border-border rounded-sm p-4 bg-card">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-mono text-muted-foreground">
+                      {t(bio.labelKey)} ({bioText.length} {t("bioModal.chars")})
+                    </span>
+                    <button
+                      onClick={() => handleCopy(bioText, bio.key)}
+                      className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {copiedBio === bio.key ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
+                      {copiedBio === bio.key ? t("bioModal.copied") : t("bioModal.copyToClipboard")}
+                    </button>
+                  </div>
+                  <p className="text-sm leading-relaxed">{bioText}</p>
                 </div>
-                <p className="text-sm leading-relaxed">{bio.text}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </motion.section>
 
@@ -227,13 +228,13 @@ export default function MediaKit() {
                 <div className="h-px flex-1 bg-border" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ fontFamily: "var(--font-display)" }}>
-                Quick Facts
+                {t("mediaKit.quickFacts")}
               </h2>
               <div className="space-y-3">
-                {facts.map((fact, i) => (
+                {factKeys.map((key, i) => (
                   <div key={i} className="flex items-start gap-3 text-sm">
-                    <span className="text-muted-foreground font-mono text-xs min-w-[120px]">{fact.label}</span>
-                    <span className="font-medium">{fact.value}</span>
+                    <span className="text-muted-foreground font-mono text-xs min-w-[120px]">{t(`facts.${key}`)}</span>
+                    <span className="font-medium">{t(`facts.${key}.value`)}</span>
                   </div>
                 ))}
               </div>
@@ -245,7 +246,7 @@ export default function MediaKit() {
                 <div className="h-px flex-1 bg-border" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold mb-6" style={{ fontFamily: "var(--font-display)" }}>
-                Contact
+                {t("connect.contact")}
               </h2>
               <div className="space-y-3">
                 <a href={`mailto:${contact.email}`} className="flex items-center gap-3 text-sm hover:text-primary transition-colors">
@@ -263,7 +264,7 @@ export default function MediaKit() {
               </div>
 
               <div className="mt-6 pt-6 border-t border-border">
-                <p className="text-xs font-mono text-muted-foreground mb-3">Social</p>
+                <p className="text-xs font-mono text-muted-foreground mb-3">{t("connect.socialProfiles")}</p>
                 <div className="flex flex-wrap gap-2">
                   {socialLinks.map((link, i) => (
                     <a
@@ -286,7 +287,7 @@ export default function MediaKit() {
       {/* Footer */}
       <footer className="border-t border-border py-8">
         <div className="container text-center text-xs text-muted-foreground font-mono">
-          &copy; {new Date().getFullYear()} Alejandro Renteria. All rights reserved.
+          &copy; {new Date().getFullYear()} Alejandro Renteria. {t("footer.allRights")}
         </div>
       </footer>
     </div>

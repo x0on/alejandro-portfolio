@@ -142,23 +142,44 @@ export const films = [
   },
   {
     title: "Entre Amores",
-    year: 2020,
-    description: "A short film exploring the complexities of love and relationships.",
-    link: "https://alejandrorenteria.com/films/",
+    year: 2016,
+    description: "A lyrical short film about the complexities of love and relationships. Directed by Adrian M. Garcia with cinematography by Alejandro Renteria.",
+    cast: [
+      { name: "Juan David Ferrer", role: "Lead" },
+    ],
+    crew: { director: "Adrian M. Garcia", cinematographer: "Alejandro Renteria" },
     featured: false,
   },
   {
     title: "Mismatch Made in Heaven",
     year: 2018,
-    description: "A short film directed by Alejandro Renteria.",
-    link: "https://alejandrorenteria.com/films/",
+    runtime: "15 min",
+    genres: ["Comedy", "Romance"],
+    language: "English",
+    description: "A comedic short about the absurdities of modern romance. When an unlikely couple meets through a dating app, their wildly different expectations collide in unexpected ways.",
+    cast: [
+      { name: "Silvana Arias", role: "Melany" },
+      { name: "Pablo Azar", role: "Seth" },
+      { name: "Yul Bürkle", role: "Marco" },
+      { name: "Enrique Sapene", role: "Angel" },
+    ],
+    crew: { director: "Alejandro Renteria", writer: "Alejandro Renteria" },
+    imdb: "https://www.imdb.com/title/tt6391626/",
     featured: false,
   },
   {
     title: "Reaching the Sea",
     year: 2014,
-    description: "A medium-length film written and directed by Alejandro Renteria, exploring themes of migration and identity.",
-    link: "https://alejandrorenteria.com/films/",
+    runtime: "40 min",
+    genres: ["Drama"],
+    language: "Spanish",
+    description: "A medium-length drama exploring themes of migration, identity, and the longing for home. Written and directed by Alejandro Renteria, the film follows characters navigating the emotional landscape of displacement and belonging.",
+    cast: [
+      { name: "Mauricio Renteria", role: "Lead" },
+      { name: "Lili Renteria", role: "Supporting" },
+    ],
+    crew: { director: "Alejandro Renteria", writer: "Alejandro Renteria", cinematographer: "Alejandro Renteria" },
+    imdb: "https://www.imdb.com/title/tt4081628/",
     featured: false,
   },
 ];
@@ -419,10 +440,10 @@ export const contact = {
 
 // ===== COMPLETE FILMOGRAPHY (IMDB) =====
 export const filmography = [
-  { year: 2025, title: "Cofre Abierto", role: "Writer / Actor", type: "Short" },
+  { year: 2025, title: "Cofre Abierto", role: "Writer / Actor", type: "Short", pdf: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/CofreAbiertosep-12-2025_d5b57804.pdf" },
   { year: 2024, title: "Objects of Desire - Blade", role: "Director / Cinematographer / Editor", type: "Short" },
   { year: 2024, title: "Objetos de Deseo - La Navaja", role: "Director", type: "Short" },
-  { year: 2020, title: "Entre Amores", role: "Director", type: "Short" },
+  { year: 2016, title: "Entre Amores", role: "Cinematographer", type: "Short" },
   { year: 2018, title: "Mismatch Made in Heaven", role: "Director", type: "Short" },
   { year: 2018, title: "Carry You On: From The Students Of MSD", role: "Cinematographer", type: "Music Video" },
   { year: 2016, title: "Love Till", role: "Cinematographer", type: "Short" },
@@ -431,7 +452,6 @@ export const filmography = [
   { year: 2013, title: "Los Secretos de Luc\u00eda", role: "Cinematographer", type: "TV Series" },
   { year: 2013, title: "Santa Diabla", role: "Actor", type: "TV Series" },
   { year: 2012, title: "Fearless Heart (Coraz\u00f3n Valiente)", role: "Actor", type: "TV Series" },
-  { year: 2011, title: "420 Salamanca Ave.", role: "Cinematographer", type: "Short" },
   { year: 2008, title: "Che: Part One (Dir. Steven Soderbergh)", role: "Actor", type: "Feature" },
 ];
 

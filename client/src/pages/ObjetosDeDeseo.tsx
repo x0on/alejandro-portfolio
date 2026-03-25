@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { ASSETS, films } from "@/data/content";
 import { motion } from "framer-motion";
 import { ArrowLeft, Award, Clock, Globe, Film, MapPin, Clapperboard, X, Image as ImageIcon } from "lucide-react";
@@ -19,7 +20,36 @@ const stagger = {
 
 export default function ObjetosDeDeseo() {
   const { theme } = useTheme();
+  const { t, language } = useLanguage();
   const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const specsEN = [
+    { label: "Project Type", value: "Short \u2013 Develop Feature Film" },
+    { label: "Genres", value: "Drama, Tragedy, Dark Comedy" },
+    { label: "Runtime", value: "18 minutes 28 seconds" },
+    { label: "Country of Origin", value: "United States" },
+    { label: "Country of Filming", value: "United States" },
+    { label: "Language", value: "Spanish" },
+    { label: "Shooting Format", value: "Digital S35mm" },
+    { label: "Aspect Ratio / Color", value: "16:9 \u2022 Color" },
+  ];
+
+  const specsES = [
+    { label: "Tipo de Proyecto", value: "Cortometraje \u2013 Desarrollo de Largometraje" },
+    { label: "G\u00e9neros", value: "Drama, Tragedia, Comedia Negra" },
+    { label: "Duraci\u00f3n", value: "18 minutos 28 segundos" },
+    { label: "Pa\u00eds de Origen", value: "Estados Unidos" },
+    { label: "Pa\u00eds de Rodaje", value: "Estados Unidos" },
+    { label: "Idioma", value: "Espa\u00f1ol" },
+    { label: "Formato de Rodaje", value: "Digital S35mm" },
+    { label: "Relaci\u00f3n de Aspecto / Color", value: "16:9 \u2022 Color" },
+  ];
+
+  const specs = language === "es" ? specsES : specsEN;
+
+  const crewLabelsEN: Record<string, string> = { director: "Director", writer: "Writer", producer: "Producer" };
+  const crewLabelsES: Record<string, string> = { director: "Director", writer: "Guionista", producer: "Productor" };
+  const crewLabels = language === "es" ? crewLabelsES : crewLabelsEN;
 
   return (
     <div className={`min-h-screen bg-background text-foreground theme-${theme.className}`}>
@@ -28,7 +58,7 @@ export default function ObjetosDeDeseo() {
         <div className="container flex items-center justify-between h-14">
           <a href="/" className="flex items-center gap-3 text-sm font-medium hover:text-primary transition-colors">
             <ArrowLeft size={16} />
-            Back to Press Kit
+            {t("objetos.backToKit")}
           </a>
           <img src={ASSETS.logo} alt="AR" className="h-6 opacity-60" />
         </div>
@@ -56,7 +86,9 @@ export default function ObjetosDeDeseo() {
 
           {/* Title & Info */}
           <motion.div variants={fadeUp} className="pt-2">
-            <span className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4 block">Short Film</span>
+            <span className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4 block">
+              {language === "es" ? "Cortometraje" : "Short Film"}
+            </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[0.95]" style={{ fontFamily: "var(--font-display)" }}>
               Objetos de Deseo
             </h1>
@@ -80,7 +112,7 @@ export default function ObjetosDeDeseo() {
               </div>
               <div className="flex items-center gap-2">
                 <MapPin size={14} className="text-primary" />
-                <span>United States</span>
+                <span>{language === "es" ? "Estados Unidos" : "United States"}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clapperboard size={14} className="text-primary" />
@@ -91,7 +123,7 @@ export default function ObjetosDeDeseo() {
             {/* Synopsis */}
             <div className="mt-8">
               <p className="text-base leading-relaxed text-foreground/90">
-                This captivating award winning tragedy and proof of concept with dark comedy tones; <strong>follows the eventful journey of Jessy, a morally ambiguous young man who finds himself entangled in a web of challenges when his mother is kidnapped. To settle his debt, Jessy reluctantly sets out to seduce Carlos, an older man in a vulnerable state of decline,</strong> who has a shady proposition that could solve his urgent problem.
+                {t("objetos.synopsisText")}
               </p>
             </div>
           </motion.div>
@@ -103,7 +135,7 @@ export default function ObjetosDeDeseo() {
         {/* ===== TRAILER (YouTube) ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
           <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">
-            Trailer
+            {t("objetos.trailer")}
           </motion.h2>
           <motion.div variants={fadeUp} className="aspect-video w-full max-w-4xl rounded-sm overflow-hidden border border-border">
             <iframe
@@ -119,7 +151,7 @@ export default function ObjetosDeDeseo() {
         {/* ===== FULL FILM (YouTube) ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
           <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">
-            Full Film
+            {t("objetos.fullFilm")}
           </motion.h2>
           <motion.div variants={fadeUp} className="aspect-video w-full max-w-4xl rounded-sm overflow-hidden border border-border">
             <iframe
@@ -134,10 +166,10 @@ export default function ObjetosDeDeseo() {
 
         {/* ===== CREDITS ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
-          <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">Credits</motion.h2>
+          <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">{t("objetos.credits")}</motion.h2>
           <div className="grid md:grid-cols-2 gap-8">
             <motion.div variants={fadeUp} className="space-y-4">
-              <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground">Cast</h3>
+              <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground">{t("films.cast")}</h3>
               <div className="space-y-3">
                 {film.cast?.map((c) => (
                   <div key={c.name} className="flex justify-between items-baseline border-b border-border/50 pb-3">
@@ -148,21 +180,23 @@ export default function ObjetosDeDeseo() {
               </div>
             </motion.div>
             <motion.div variants={fadeUp} className="space-y-4">
-              <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground">Crew</h3>
+              <h3 className="text-sm font-mono uppercase tracking-wider text-muted-foreground">
+                {language === "es" ? "Equipo" : "Crew"}
+              </h3>
               <div className="space-y-3">
                 {film.crew && (
                   <>
                     <div className="flex justify-between items-baseline border-b border-border/50 pb-3">
                       <span className="font-medium text-lg">{film.crew.director}</span>
-                      <span className="text-sm text-muted-foreground">Director</span>
+                      <span className="text-sm text-muted-foreground">{crewLabels.director}</span>
                     </div>
                     <div className="flex justify-between items-baseline border-b border-border/50 pb-3">
                       <span className="font-medium text-lg">{film.crew.writer}</span>
-                      <span className="text-sm text-muted-foreground">Writer</span>
+                      <span className="text-sm text-muted-foreground">{crewLabels.writer}</span>
                     </div>
                     <div className="flex justify-between items-baseline border-b border-border/50 pb-3">
                       <span className="font-medium text-lg">{film.crew.producer}</span>
-                      <span className="text-sm text-muted-foreground">Producer</span>
+                      <span className="text-sm text-muted-foreground">{crewLabels.producer}</span>
                     </div>
                   </>
                 )}
@@ -173,18 +207,9 @@ export default function ObjetosDeDeseo() {
 
         {/* ===== SPECIFICATIONS ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-          <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">Specifications</h2>
+          <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">{t("objetos.specifications")}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { label: "Project Type", value: "Short \u2013 Develop Feature Film" },
-              { label: "Genres", value: "Drama, Tragedy, Dark Comedy" },
-              { label: "Runtime", value: "18 minutes 28 seconds" },
-              { label: "Country of Origin", value: "United States" },
-              { label: "Country of Filming", value: "United States" },
-              { label: "Language", value: "Spanish" },
-              { label: "Shooting Format", value: "Digital S35mm" },
-              { label: "Aspect Ratio / Color", value: "16:9 \u2022 Color" },
-            ].map((spec) => (
+            {specs.map((spec) => (
               <div key={spec.label} className="bg-card border border-border p-4 rounded-sm">
                 <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground mb-1">{spec.label}</div>
                 <div className="text-sm font-medium">{spec.value}</div>
@@ -196,7 +221,7 @@ export default function ObjetosDeDeseo() {
         {/* ===== AWARDS ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
           <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8 flex items-center gap-2">
-            <Award size={14} className="text-primary" /> Awards & Selections
+            <Award size={14} className="text-primary" /> {t("films.awardsSelections")}
           </motion.h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {film.awards?.map((a, i) => (
@@ -210,49 +235,33 @@ export default function ObjetosDeDeseo() {
 
         {/* ===== DIRECTOR STATEMENT ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-          <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">Director Statement</h2>
+          <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">{t("objetos.directorStatement")}</h2>
           <div className="max-w-3xl space-y-6">
-            <p className="text-sm text-muted-foreground italic mb-4">This first story is part of a feature film design to reflect this statement.</p>
+            <p className="text-sm text-muted-foreground italic mb-4">{t("objetos.statementPreamble")}</p>
             <div className="space-y-5 text-sm leading-relaxed text-foreground/85">
-              <p className="indent-8">
-                In the vibrant city of Miami, people from different corners of the globe&mdash;Argentina, Mexico, Spain, and Miami itself&mdash;come together. Each bringing their own unique cultural flavors and perspectives. However, underneath these surface differences, the silent motivators that drive human behavior remain consistent.
-              </p>
-              <p className="indent-8">
-                In this meticulously-crafted dark comedy film, we delve into the depths of our humanity, exploring the profound forces that shape our actions. These four interconnected stories capture the essence of the human experience&mdash;the eternal pursuit of our desires and the relentless avoidance of suffering. But an unexpected twist adds an extra layer of intrigue and symbolism.
-              </p>
-              <p className="indent-8">
-                Throughout the film, one character embodies the timeless and undefeatable figure of death. This haunting motif weaves a subtle thread that binds them all together. As tragedy and humor intertwine, these stories are underscored by subdued color schemes, low-key lighting, and high contrast cinematography&mdash;captivating attention and provoking deep introspection.
-              </p>
-              <p className="indent-8">
-                Audiences will witness and undoubtedly feel the complexities of human desires and the many ways we navigate suffering. As the final story unfolds, the symbolism becomes more potent, compelling us to gain a deeper understanding of ourselves and the universal motivations that drive us, no matter where we come from&mdash;shining a light on the human truths that unite us all.
-              </p>
-              <p className="indent-8">
-                Prepare to be entertained and enlightened by an extraordinary cinematic experience that will touch your heart, ignite your mind and leave you wanting more.
-              </p>
+              <p className="indent-8">{t("objetos.statement.p1")}</p>
+              <p className="indent-8">{t("objetos.statement.p2")}</p>
+              <p className="indent-8">{t("objetos.statement.p3")}</p>
+              <p className="indent-8">{t("objetos.statement.p4")}</p>
+              <p className="indent-8">{t("objetos.statement.p5")}</p>
             </div>
           </div>
         </motion.section>
 
         {/* ===== DIRECTOR BIOGRAPHY ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-          <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">Director Biography</h2>
+          <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">{t("objetos.directorBio")}</h2>
           <div className="max-w-3xl space-y-5 text-sm leading-relaxed text-foreground/85">
-            <p>
-              Born in Havana, Cuba, into a family of performing artists, Alejandro embarked on his creative journey at an early age. At ten, his family relocated to Caracas, Venezuela, where he immersed himself in the vibrant world of theatre and performing arts. Upon immigrating to the United States in 2002, Alejandro settled in Miami, continuing his education in cinematography while honing his skills as a Visual Storyteller.
-            </p>
-            <p>
-              Soon after, he founded Thinking Monkeys Films, a production company that served as the conduit for his creative vision. Under its banner, Alejandro directed and produced over 30 commercial spots tailored for the USA Hispanic market, spearheaded more than 900 projects for governmental and corporate entities over the past decade, and contributed to numerous television and film endeavors.
-            </p>
-            <p>
-              His directorial debut, &ldquo;Objetos de Deseo,&rdquo; has garnered widespread acclaim, earning accolades such as the Envision Award and Best Cinematography. Moreover, his adept direction has facilitated wins for his actors in both the USA and Spain, solidifying Alejandro&rsquo;s status as a promising film director.
-            </p>
+            <p>{t("objetos.bio.p1")}</p>
+            <p>{t("objetos.bio.p2")}</p>
+            <p>{t("objetos.bio.p3")}</p>
           </div>
         </motion.section>
 
         {/* Footer CTA */}
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center pt-10 border-t border-border">
           <a href="/" className="inline-flex items-center gap-2 text-sm text-primary hover:underline">
-            <ArrowLeft size={14} /> Back to Press Kit
+            <ArrowLeft size={14} /> {t("objetos.backToKit")}
           </a>
         </motion.div>
       </div>
