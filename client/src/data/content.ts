@@ -206,7 +206,7 @@ export const commercialWork = [
 ];
 
 // ===== PHOTOGRAPHY =====
-const PHOTO_BASE = "https://alejandrorenteria.com/photography";
+const PHOTO_BASE = "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200";
 
 export const photographyCategories = [
   {
