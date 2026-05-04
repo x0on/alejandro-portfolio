@@ -3,7 +3,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { contact, socialLinks } from "@/data/content";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Download, Copy, Check, X, Mail, Phone, Globe, ExternalLink } from "lucide-react";
+import { Download, Copy, Check, X, Mail, Globe, ExternalLink } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -253,10 +253,7 @@ export default function MediaKit() {
                   <Mail size={16} className="text-muted-foreground" />
                   {contact.email}
                 </a>
-                <a href={`tel:${contact.phone}`} className="flex items-center gap-3 text-sm hover:text-primary transition-colors">
-                  <Phone size={16} className="text-muted-foreground" />
-                  {contact.phone}
-                </a>
+
                 <a href={`https://${contact.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm hover:text-primary transition-colors">
                   <Globe size={16} className="text-muted-foreground" />
                   {contact.website}

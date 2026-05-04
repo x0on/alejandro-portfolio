@@ -439,7 +439,6 @@ export const socialLinks = [
 // ===== CONTACT =====
 export const contact = {
   email: "ale@thinkingmonkeys.us",
-  phone: "+1 786 564 3891",
   website: "alejandrorenteria.com",
   languages: ["English", "Spanish"],
 };

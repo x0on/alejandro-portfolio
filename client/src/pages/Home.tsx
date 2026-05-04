@@ -12,7 +12,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ExternalLink, Download, ChevronDown, ChevronUp, Play,
-  Award, Calendar, Clock, Globe, Film, BookOpen, Mail, Phone,
+  Award, Calendar, Clock, Globe, Film, BookOpen, Mail,
   MapPin, Quote, Star, Clapperboard, Copy, Check, Camera, Monitor, Zap
 } from "lucide-react";
 
@@ -806,10 +806,7 @@ export default function Home() {
                     <Mail size={18} className="text-primary" />
                     <a href={`mailto:${contact.email}`} className="text-sm hover:text-primary transition-colors">{contact.email}</a>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Phone size={18} className="text-primary" />
-                    <a href={`tel:${contact.phone}`} className="text-sm hover:text-primary transition-colors">{contact.phone}</a>
-                  </div>
+
                   <div className="flex items-center gap-3">
                     <Globe size={18} className="text-primary" />
                     <a href={`https://${contact.website}`} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary transition-colors">{contact.website}</a>
