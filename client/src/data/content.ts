@@ -198,12 +198,8 @@ export const book = {
 };
 
 // ===== COMMERCIAL WORK =====
-export const commercialWork = [
-  { title: "Al Horford", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Al-Horford.mp4", type: "Commercial", thumbnail: "https://alejandrorenteria.com/thumbnails/al-horford.jpg" },
-  { title: "Cheff Claudette", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Cheff-Claudette.mp4", type: "Commercial", thumbnail: "https://alejandrorenteria.com/thumbnails/cheff-claudette.jpg" },
-  { title: "Rosemarie Burgos", url: "https://alejandrorenteria.com/videos/Alejandro-Renteria-Rosemarie-Burgos.mp4", type: "Commercial", thumbnail: "https://alejandrorenteria.com/thumbnails/rosemarie-burgos.jpg" },
-  { title: "Behind The Scenes", url: "https://alejandrorenteria.com/videos/Behind-the-Scenes.mp4", type: "BTS", thumbnail: "https://alejandrorenteria.com/thumbnails/behind-the-scenes.jpg" },
-];
+// Commercial work videos temporarily hidden - files need to be re-uploaded
+export const commercialWork: { title: string; url: string; type: string; thumbnail: string }[] = [];
 
 // ===== PHOTOGRAPHY =====
 const PHOTO_BASE = "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200";

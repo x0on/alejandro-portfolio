@@ -7,7 +7,7 @@ import { ArrowLeft, Award, Clock, Globe, Film, MapPin, Clapperboard, X, Image as
 
 const film = films.find(f => f.link === "/objetos-de-deseo") || films[0];
 
-const MEDIA_BASE = "https://alejandrorenteria.com/objetos-media";
+const POSTER_URL = "https://img.youtube.com/vi/6L3JgBtaBSA/maxresdefault.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -75,7 +75,7 @@ export default function ObjetosDeDeseo() {
           {/* Main Poster */}
           <motion.div variants={fadeUp} className="relative group cursor-pointer" onClick={() => setLightboxOpen(true)}>
             <img
-              src={`${MEDIA_BASE}/poster.jpg`}
+              src={POSTER_URL}
               alt="Objetos de Deseo - Official Poster"
               className="w-full rounded-sm shadow-2xl border border-border/30"
             />
@@ -273,7 +273,7 @@ export default function ObjetosDeDeseo() {
             <X size={28} />
           </button>
           <img
-            src={`${MEDIA_BASE}/poster.jpg`}
+            src={POSTER_URL}
             alt="Objetos de Deseo - Official Poster"
             className="max-w-[90vw] max-h-[90vh] object-contain"
             onClick={(e) => e.stopPropagation()}
