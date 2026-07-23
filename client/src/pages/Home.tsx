@@ -86,6 +86,7 @@ export default function Home() {
   const [showAllFilmography, setShowAllFilmography] = useState(false);
   const [expandedFilm, setExpandedFilm] = useState<string | null>(null);
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+  const [playingInterview, setPlayingInterview] = useState<number | null>(null);
   const [commercialOpen, setCommercialOpen] = useState(false);
   const [activePhotoCategory, setActivePhotoCategory] = useState<string | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
@@ -795,24 +796,60 @@ export default function Home() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {interviews.map((item, i) => (
-              <a
+              <div
                 key={i}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative overflow-hidden rounded-sm border border-border"
+                className="group relative overflow-hidden rounded-sm border border-border bg-card"
               >
                 <div className="aspect-video relative">
-                  <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Play size={40} className="text-white" />
-                  </div>
+                  {playingInterview === i ? (
+                    <>
+                      <iframe
+                        src={item.embedUrl}
+                        title={item.title}
+                        className="absolute inset-0 w-full h-full bg-black"
+                        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+                        allowFullScreen
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setPlayingInterview(null)}
+                        className="absolute top-2 right-2 z-10 bg-black/75 text-white text-xs px-2 py-1 rounded-sm hover:bg-black"
+                        aria-label={language === "es" ? "Cerrar video" : "Close video"}
+                      >
+                        {language === "es" ? "Cerrar" : "Close"}
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setPlayingInterview(i)}
+                      className="w-full h-full relative"
+                      aria-label={`${language === "es" ? "Reproducir" : "Play"} ${item.title}`}
+                    >
+                      <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
+                      <span className="absolute inset-0 bg-black/35 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+                        <Play size={40} className="text-white" />
+                      </span>
+                    </button>
+                  )}
                 </div>
                 <div className="p-3">
                   <div className="text-sm font-medium">{item.title}</div>
-                  <div className="text-xs text-muted-foreground font-mono capitalize">{item.type}</div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-xs text-muted-foreground font-mono capitalize">{item.type}</div>
+                    {playingInterview === i && (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[11px] text-muted-foreground hover:text-primary inline-flex items-center gap-1"
+                      >
+                        {language === "es" ? "Abrir fuente" : "Open source"} <ExternalLink size={10} />
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
 

@@ -429,18 +429,21 @@ export const interviews = [
     title: "Demo Reel",
     type: "video" as const,
     url: "https://www.youtube.com/watch?v=6L3JgBtaBSA",
+    embedUrl: "https://www.youtube.com/embed/6L3JgBtaBSA?autoplay=1&rel=0",
     thumbnail: "https://img.youtube.com/vi/6L3JgBtaBSA/maxresdefault.jpg",
   },
   {
     title: "How I Think \u2014 Portfolio",
     type: "video" as const,
     url: "https://www.youtube.com/watch?v=aPuZ0Npwlow",
+    embedUrl: "https://www.youtube.com/embed/aPuZ0Npwlow?autoplay=1&rel=0",
     thumbnail: "https://img.youtube.com/vi/aPuZ0Npwlow/maxresdefault.jpg",
   },
   {
     title: "Talking Filmmaking with Daisy Ballmajó",
     type: "interview" as const,
     url: "https://www.instagram.com/susurrone/reel/C5Rg8Kvxs3Y/",
+    embedUrl: "https://www.instagram.com/reel/C5Rg8Kvxs3Y/embed/",
     thumbnail: "/media/interviews/daisy-ballmajo-filmmaking-interview-2024.webp",
   },
 ];
