@@ -89,7 +89,7 @@ export default function Home() {
   const [commercialOpen, setCommercialOpen] = useState(false);
   const [activePhotoCategory, setActivePhotoCategory] = useState<string | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   // Build a map of detailed films by title for quick lookup
   const filmDetailMap = new Map(films.map(f => [f.title, f]));
