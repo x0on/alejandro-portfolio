@@ -87,7 +87,6 @@ export default function Home() {
   const [expandedFilm, setExpandedFilm] = useState<string | null>(null);
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
   const [commercialOpen, setCommercialOpen] = useState(false);
-  const [photographyOpen, setPhotographyOpen] = useState(false);
   const [activePhotoCategory, setActivePhotoCategory] = useState<string | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const { t } = useLanguage();
@@ -558,67 +557,44 @@ export default function Home() {
         <Section id="photography" className="relative">
           <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
           <div className="relative container py-16 md:py-24">
-            {/* Mobile: collapsible header */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setPhotographyOpen(!photographyOpen)}
-                className="w-full flex items-center justify-between mb-6"
-              >
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs font-mono text-muted-foreground tracking-widest">06</span>
-                    <div className="h-px flex-1 bg-border" />
-                  </div>
-                  <h2 className="text-3xl font-bold tracking-tight text-left" style={{ fontFamily: "var(--font-display)" }}>
-                    {t("section.photography")}
-                  </h2>
-                  <p className="text-muted-foreground mt-1 text-sm text-left">{t("section.photography.subtitle")}</p>
-                </div>
-                <div className="shrink-0 ml-4 w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                  {photographyOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                </div>
-              </button>
-            </div>
-            {/* Desktop: always visible header */}
-            <div className="hidden md:block">
-              <SectionTitle number="06" title={t("section.photography")} subtitle={t("section.photography.subtitle")} />
-            </div>
+            <SectionTitle number="06" title={t("section.photography")} subtitle={t("section.photography.subtitle")} />
 
-            <div className={`${photographyOpen ? 'block' : 'hidden'} md:block`}>
-              {/* Category filter tabs */}
-              <div className="flex flex-wrap gap-2 mb-6">
+            {/* Categories remain visible; photographs appear only after a visitor makes a choice. */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              <button
+                onClick={() => setActivePhotoCategory("all")}
+                className={`px-3 py-1.5 text-xs font-mono rounded-sm border transition-all ${
+                  activePhotoCategory === "all"
+                    ? 'bg-primary text-primary-foreground border-primary'
+                    : 'bg-card text-muted-foreground border-border hover:border-primary/50'
+                }`}
+              >
+                {t("photography.all")}
+              </button>
+              {photographyCategories.map((cat) => (
                 <button
-                  onClick={() => setActivePhotoCategory(null)}
+                  key={cat.name}
+                  onClick={() => setActivePhotoCategory(cat.name)}
                   className={`px-3 py-1.5 text-xs font-mono rounded-sm border transition-all ${
-                    activePhotoCategory === null
+                    activePhotoCategory === cat.name
                       ? 'bg-primary text-primary-foreground border-primary'
                       : 'bg-card text-muted-foreground border-border hover:border-primary/50'
                   }`}
                 >
-                  {t("photography.all")}
+                  {t(`photo.${cat.name}`)}
                 </button>
-                {photographyCategories.map((cat) => (
-                  <button
-                    key={cat.name}
-                    onClick={() => setActivePhotoCategory(cat.name)}
-                    className={`px-3 py-1.5 text-xs font-mono rounded-sm border transition-all ${
-                      activePhotoCategory === cat.name
-                        ? 'bg-primary text-primary-foreground border-primary'
-                        : 'bg-card text-muted-foreground border-border hover:border-primary/50'
-                    }`}
-                  >
-                    {t(`photo.${cat.name}`)}
-                  </button>
-                ))}
-              </div>
+              ))}
+            </div>
 
+            {activePhotoCategory && (
+              <>
               {/* Photo grid */}
               <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
-                {(activePhotoCategory
+                {(activePhotoCategory !== "all"
                   ? photographyCategories.filter(c => c.name === activePhotoCategory)
                   : photographyCategories
                 ).flatMap(cat =>
-                  cat.images.slice(0, activePhotoCategory ? undefined : 4).map((img, i) => (
+                  cat.images.slice(0, activePhotoCategory === "all" ? 4 : undefined).map((img, i) => (
                     <div
                       key={`${cat.name}-${i}`}
                       className="break-inside-avoid group relative overflow-hidden rounded-sm border border-border cursor-pointer"
@@ -659,7 +635,8 @@ export default function Home() {
                   </button>
                 </div>
               )}
-            </div>
+              </>
+            )}
           </div>
         </Section>
 
