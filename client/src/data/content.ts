@@ -213,7 +213,7 @@ export const selectedCommercialProjects = [
   { year: "2015", project: "Milk — Dancers", client: "CommonGround/MGS", role: "Producer / Cinematographer", roleES: "Productor / Director de Fotografía" },
   { year: "2014", project: "Milk Life — 18-Spot National Campaign", client: "Milk Life", role: "Cinematographer", roleES: "Director de Fotografía" },
   { year: "2014", project: "Mexico Tourism — 12-Spot Campaign", client: "Turismo México", role: "Cinematographer", roleES: "Director de Fotografía" },
-  { year: "2013", project: "Habibi I Love You — Ahmed Chawki ft. Pitbull", client: "RedOne", role: "Cinematographer", roleES: "Director de Fotografía" },
+  { year: "2013", project: "Habibi I Love You — Ahmed Chawki ft. Pitbull", client: "RedOne", role: "Assistant Director", roleES: "Asistente de Dirección" },
   { year: "2012", project: "Pasos de un Asesino — TV Pilot", client: "Telemundo / NBCUniversal", role: "Director", roleES: "Director" },
 ];
 
