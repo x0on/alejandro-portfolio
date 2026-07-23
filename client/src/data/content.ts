@@ -201,6 +201,22 @@ export const book = {
 // Commercial work videos temporarily hidden - files need to be re-uploaded
 export const commercialWork: { title: string; url: string; type: string; thumbnail: string }[] = [];
 
+export const selectedCommercialProjects = [
+  { year: "2020", project: "Tropical", client: "sociedAD", role: "Executive Producer / Cinematographer", roleES: "Productor Ejecutivo / Director de Fotografía" },
+  { year: "2019", project: "Snuggle", client: "sociedAD", role: "Executive Producer / Cinematographer", roleES: "Productor Ejecutivo / Director de Fotografía" },
+  { year: "2018", project: "Milk — Chef Zepeda", client: "sociedAD", role: "Executive Producer / Cinematographer", roleES: "Productor Ejecutivo / Director de Fotografía" },
+  { year: "2018", project: "Director’s Message", client: "Carnival Corporation", role: "Cinematographer", roleES: "Director de Fotografía" },
+  { year: "2017", project: "MasterChef Latino", client: "Telemundo", role: "Photographer", roleES: "Fotógrafo" },
+  { year: "2017", project: "Milk — Chef Lorena", client: "sociedAD", role: "Producer / Cinematographer", roleES: "Productor / Director de Fotografía" },
+  { year: "2016", project: "Hospitality Institute", client: "Miami Dade College", role: "Producer / Cinematographer", roleES: "Productor / Director de Fotografía" },
+  { year: "2016", project: "Milk — Chef Lala", client: "sociedAD", role: "Producer / Cinematographer", roleES: "Productor / Director de Fotografía" },
+  { year: "2015", project: "Milk — Dancers", client: "CommonGround/MGS", role: "Producer / Cinematographer", roleES: "Productor / Director de Fotografía" },
+  { year: "2014", project: "Milk Life — 18-Spot National Campaign", client: "Milk Life", role: "Cinematographer", roleES: "Director de Fotografía" },
+  { year: "2014", project: "Mexico Tourism — 12-Spot Campaign", client: "Turismo México", role: "Cinematographer", roleES: "Director de Fotografía" },
+  { year: "2013", project: "Habibi I Love You — Ahmed Chawki ft. Pitbull", client: "RedOne", role: "Cinematographer", roleES: "Director de Fotografía" },
+  { year: "2012", project: "Pasos de un Asesino — TV Pilot", client: "Telemundo / NBCUniversal", role: "Director", roleES: "Director" },
+];
+
 // ===== PHOTOGRAPHY =====
 // Photography images hosted on permanent CDN
 
@@ -208,16 +224,18 @@ export const photographyCategories = [
   {
     name: "Portraits",
     images: [
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/GOgFIUzmxHXZMMfl.jpg",
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/dYYAUJAntQvWvnxF.jpg",
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/tKZdgbPYfonzRBuD.jpg",
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/LruCelKAMPEoxpPV.jpg",
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/aqWyuEDKDapnVcky.jpg",
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/xSpKDggOtexlRkQr.jpg",
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/oPvaArmonfffIKHf.jpg",
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/ywUombFVZdMKkEgA.jpg",
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/RrjTnCSuuFFKrCXb.jpg",
-      "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/HHBtTMOtMOoLZdyP.jpg",
+      "/media/portraits/monica-spear-by-alejandro-renteria.webp",
+      "/media/portraits/aracely-arambula-by-alejandro-renteria.webp",
+      "/media/portraits/christian-de-la-campa-by-alejandro-renteria.webp",
+      "/media/portraits/fabian-rios-by-alejandro-renteria.webp",
+      "/media/portraits/gaby-espino-by-alejandro-renteria.webp",
+      "/media/portraits/henry-zakka-by-alejandro-renteria.webp",
+      "/media/portraits/jencarlos-canela-by-alejandro-renteria.webp",
+      "/media/portraits/jorge-luis-pila-by-alejandro-renteria.webp",
+      "/media/portraits/paulina-rubio-by-alejandro-renteria.webp",
+      "/media/portraits/priscila-perales-by-alejandro-renteria.webp",
+      "/media/portraits/sabrina-seara-by-alejandro-renteria.webp",
+      "/media/portraits/david-chocarro-by-alejandro-renteria.webp",
     ],
   },
   {
@@ -336,7 +354,7 @@ export const pressArticles = [
       {
         title: "2024 Miami Film Festival Jury & Audience Award Winners Announced",
         source: "Miami Film Festival",
-        url: "https://miamifilmfestival.com/2024-miami-film-festival-jury-audience-award-winners-announced/",
+        url: "https://miamifilmfestival.com/news/2024-miami-film-festival-jury-audience-award-winners-announced/",
         excerpt: "The Audience Short Film Award went to \"Objects of Desire\" directed by Alejandro Renteria.",
       },
       {
@@ -359,7 +377,7 @@ export const pressArticles = [
       {
         title: "Objetos de Deseo: Una Mirada Profunda al Lado Oscuro de la Naturaleza Humana",
         source: "Substack",
-        url: "https://substack.com/home/post/p-151000165",
+        url: "https://alejandrorenteria.substack.com/p/objetos-de-deseo-una-mirada-profunda",
         excerpt: "A deep look at the dark side of human nature through Renteria's award-winning short film.",
       },
     ],
@@ -419,6 +437,12 @@ export const interviews = [
     type: "video" as const,
     url: "https://www.youtube.com/watch?v=aPuZ0Npwlow",
     thumbnail: "https://img.youtube.com/vi/aPuZ0Npwlow/maxresdefault.jpg",
+  },
+  {
+    title: "Talking Filmmaking with Daisy Ballmajó",
+    type: "interview" as const,
+    url: "https://www.instagram.com/susurrone/reel/C5Rg8Kvxs3Y/",
+    thumbnail: "/media/interviews/daisy-ballmajo-filmmaking-interview-2024.webp",
   },
 ];
 

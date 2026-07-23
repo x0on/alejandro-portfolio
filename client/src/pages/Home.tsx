@@ -5,7 +5,7 @@ import TypingAnimation from "@/components/TypingAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   ASSETS, hero, films, book, pressArticles, interviews, socialLinks,
-  contact, experience, clients, filmography, commercialWork, photographyCategories,
+  contact, experience, clients, filmography, commercialWork, selectedCommercialProjects, photographyCategories,
   software, about,
 } from "@/data/content";
 import { useState } from "react";
@@ -514,42 +514,122 @@ export default function Home() {
           </div>
 
           <div className={`${commercialOpen ? 'block' : 'hidden'} md:block`}>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {commercialWork.map((item, i) => (
-                <div key={i} className="group relative overflow-hidden rounded-sm border border-border bg-card">
-                  <div className="aspect-video relative bg-black">
-                    {playingVideo === i ? (
-                      <video
-                        src={item.url}
-                        controls
-                        autoPlay
-                        className="w-full h-full object-contain"
-                      />
-                    ) : (
-                      <button
-                        onClick={() => setPlayingVideo(i)}
-                        className="w-full h-full relative group/play"
-                      >
-                        <img
-                          src={(item as any).thumbnail}
-                          alt={item.title}
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-black/30 group-hover/play:bg-black/50 transition-all flex items-center justify-center">
-                          <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover/play:scale-110 transition-transform">
-                            <Play size={24} className="text-black ml-1" />
-                          </div>
-                        </div>
-                      </button>
-                    )}
-                  </div>
-                  <div className="p-3 flex items-center justify-between">
-                    <div className="text-sm font-medium">{item.title}</div>
-                    <span className="text-[10px] px-2 py-0.5 bg-secondary text-secondary-foreground rounded-sm font-mono">{item.type}</span>
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-start">
+              <div>
+                <p className="text-base md:text-lg leading-relaxed text-foreground/85 max-w-3xl">
+                  {language === "es"
+                    ? "Como fundador de Thinking Monkeys Films, Alejandro ha dirigido, producido, filmado y editado campañas nacionales, contenido de marca, música, televisión y comunicaciones institucionales. Su trabajo combina criterio cinematográfico con ejecución práctica, desde el concepto y la dirección de talento hasta la postproducción y la entrega final."
+                    : "As founder of Thinking Monkeys Films, Alejandro has directed, produced, shot, and edited national campaigns, branded content, music, television, and institutional communications. His work combines cinematic judgment with practical execution—from concept and talent direction through post-production and final delivery."}
+                </p>
+                <div className="grid sm:grid-cols-3 gap-3 mt-7">
+                  {[
+                    ["900+", language === "es" ? "proyectos realizados" : "projects delivered"],
+                    ["30+", language === "es" ? "campañas nacionales" : "national campaigns"],
+                    ["15+", language === "es" ? "años de experiencia" : "years of experience"],
+                  ].map(([value, label]) => (
+                    <div key={value} className="bg-card border border-border p-4 rounded-sm">
+                      <div className="text-2xl font-bold text-primary">{value}</div>
+                      <div className="text-xs text-muted-foreground font-mono mt-1">{label}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-7">
+                  <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                    {language === "es" ? "Dirección y ejecución" : "Direction & Execution"}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {(language === "es"
+                      ? ["Dirección creativa", "Dirección de talento", "Cinematografía", "Edición", "Producción ejecutiva", "Postproducción", "Contenido bilingüe"]
+                      : ["Creative direction", "Talent direction", "Cinematography", "Editing", "Executive production", "Post-production", "Bilingual content"]
+                    ).map((skill) => (
+                      <span key={skill} className="text-xs px-3 py-1.5 bg-secondary text-secondary-foreground border border-border rounded-sm">
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </div>
-              ))}
+              </div>
+              <div className="bg-card border border-border p-5 md:p-6 rounded-sm">
+                <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground mb-4">
+                  {language === "es" ? "Clientes seleccionados" : "Selected Clients"}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {clients.map((client) => (
+                    <span key={client} className="text-sm px-3 py-2 bg-background border border-border rounded-sm">
+                      {client}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-6 pt-5 border-t border-border">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                    {language === "es"
+                      ? "El archivo comercial se está restaurando progresivamente. Hay selecciones adicionales y reels privados disponibles para conversaciones profesionales."
+                      : "The commercial archive is being progressively restored. Additional selections and private reels are available for professional conversations."}
+                  </p>
+                  <a href="mailto:ale@thinkingmonkeys.us?subject=Private%20Commercial%20Reel%20Request" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
+                    {language === "es" ? "Solicitar reel privado" : "Request private reel"} <ExternalLink size={13} />
+                  </a>
+                </div>
+              </div>
             </div>
+
+            <div className="mt-12">
+              <div className="flex items-center gap-3 mb-5">
+                <h3 className="text-xs font-mono uppercase tracking-[0.22em] text-muted-foreground">
+                  {language === "es" ? "Archivo de proyectos seleccionados" : "Selected Project Archive"}
+                </h3>
+                <div className="h-px flex-1 bg-border" />
+              </div>
+              <div className="border border-border rounded-sm overflow-hidden bg-card">
+                {selectedCommercialProjects.map((project, index) => (
+                  <div
+                    key={`${project.year}-${project.project}`}
+                    className={`grid grid-cols-[52px_1fr] md:grid-cols-[64px_1.25fr_0.9fr_1fr] gap-x-4 gap-y-1 px-4 py-4 ${
+                      index !== selectedCommercialProjects.length - 1 ? "border-b border-border" : ""
+                    } hover:bg-secondary/20 transition-colors`}
+                  >
+                    <div className="text-xs font-mono text-primary pt-0.5">{project.year}</div>
+                    <div className="text-sm font-medium">{project.project}</div>
+                    <div className="text-xs md:text-sm text-muted-foreground col-start-2 md:col-start-auto">{project.client}</div>
+                    <div className="text-xs md:text-sm text-muted-foreground col-start-2 md:col-start-auto">
+                      {language === "es" ? project.roleES : project.role}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground mt-4">
+                {language === "es"
+                  ? "Selección del archivo de Thinking Monkeys Films. Se incorporarán enlaces de reproducción a medida que se restauren los masters."
+                  : "A selection from the Thinking Monkeys Films archive. Playable links will be added as masters are restored."}
+              </p>
+            </div>
+
+            {commercialWork.length > 0 && (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                {commercialWork.map((item, i) => (
+                  <div key={i} className="group relative overflow-hidden rounded-sm border border-border bg-card">
+                    <div className="aspect-video relative bg-black">
+                      {playingVideo === i ? (
+                        <video src={item.url} controls autoPlay className="w-full h-full object-contain" />
+                      ) : (
+                        <button onClick={() => setPlayingVideo(i)} className="w-full h-full relative group/play">
+                          <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-black/30 group-hover/play:bg-black/50 transition-all flex items-center justify-center">
+                            <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover/play:scale-110 transition-transform">
+                              <Play size={24} className="text-black ml-1" />
+                            </div>
+                          </div>
+                        </button>
+                      )}
+                    </div>
+                    <div className="p-3 flex items-center justify-between">
+                      <div className="text-sm font-medium">{item.title}</div>
+                      <span className="text-[10px] px-2 py-0.5 bg-secondary text-secondary-foreground rounded-sm font-mono">{item.type}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </Section>
 
@@ -688,6 +768,18 @@ export default function Home() {
         {/* ===== INTERVIEWS ===== */}
         <Section id="interviews" className="container py-16 md:py-24">
           <SectionTitle number="08" title={t("section.interviews")} subtitle={t("section.interviews.subtitle")} />
+          <div className="grid md:grid-cols-[1.15fr_0.85fr] gap-6 mb-10">
+            <div className="border-l-2 border-primary pl-6 py-2">
+              <h3 className="text-2xl md:text-3xl font-bold leading-tight" style={{ fontFamily: "var(--font-display)" }}>
+                {language === "es" ? "Detrás de la cámara. Frente a la audiencia." : "Behind the camera. In front of the audience."}
+              </h3>
+            </div>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {language === "es"
+                ? "Alejandro aporta más que dirección y producción: es un comunicador bilingüe con presencia pública, experiencia en entrevistas y la capacidad de representar una película, una campaña o una compañía ante audiencias, medios y colaboradores."
+                : "Alejandro brings more than direction and production: he is a bilingual communicator with an assured public presence, interview experience, and the ability to represent a film, campaign, or company before audiences, media, and creative partners."}
+            </p>
+          </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {interviews.map((item, i) => (
               <a
@@ -709,6 +801,41 @@ export default function Home() {
                 </div>
               </a>
             ))}
+          </div>
+
+          <div className="mt-12">
+            <div className="flex items-center gap-3 mb-6">
+              <h3 className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground">
+                {language === "es" ? "Artículos, entrevistas y cobertura destacada" : "Featured Articles, Interviews & Coverage"}
+              </h3>
+              <div className="h-px flex-1 bg-border" />
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {pressArticles.flatMap((category) =>
+                category.articles.map((article) => (
+                  <a
+                    key={article.url}
+                    href={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-card border border-border p-5 rounded-sm hover:border-primary/50 hover:-translate-y-0.5 transition-all flex flex-col min-h-44"
+                  >
+                    <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-primary mb-3">
+                      {article.source}
+                    </div>
+                    <h4 className="text-sm font-semibold leading-snug group-hover:text-primary transition-colors mb-3">
+                      {article.title}
+                    </h4>
+                    <p className="text-xs leading-relaxed text-muted-foreground line-clamp-3 mb-5">
+                      {article.excerpt}
+                    </p>
+                    <span className="mt-auto inline-flex items-center gap-2 text-xs font-mono">
+                      {language === "es" ? "Leer" : "Read"} <ExternalLink size={12} />
+                    </span>
+                  </a>
+                ))
+              )}
+            </div>
           </div>
         </Section>
 

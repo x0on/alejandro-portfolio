@@ -3,7 +3,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ASSETS, films } from "@/data/content";
 import { motion } from "framer-motion";
-import { ArrowLeft, Award, Clock, Globe, Film, MapPin, Clapperboard, X, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, Award, Clock, Globe, Film, MapPin, Clapperboard, X, Image as ImageIcon, ExternalLink, Newspaper, Quote } from "lucide-react";
 
 const film = films.find(f => f.link === "/objetos-de-deseo") || films[0];
 
@@ -17,6 +17,72 @@ const fadeUp = {
 const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
+
+const pressCoverage = [
+  {
+    outlet: "Diario Las Américas",
+    title: 'Alejandro Rentería: “Estas historias se nutren de la humedad de lo sórdido”',
+    description: "An in-depth interview about the film’s origins, visual language, Miami setting, performances, and independent production.",
+    descriptionES: "Una entrevista en profundidad sobre el origen, lenguaje visual, escenario de Miami, actuaciones y producción independiente de la película.",
+    url: "https://www.diariolasamericas.com/cultura/alejandro-renteria-estas-historias-se-nutren-la-humedad-lo-sordido-n5354045",
+  },
+  {
+    outlet: "Artburst Miami",
+    title: "Cineastas de la isla y del exilio evocan una Cuba secreta en el Festival de Cine de Miami",
+    description: "Coverage of the Miami Film Festival’s Spotlight on Cuba program and its participating filmmakers.",
+    descriptionES: "Cobertura del programa Spotlight on Cuba del Festival de Cine de Miami y de sus cineastas participantes.",
+    url: "https://www.artburstmiami.com/articulos-en-espanol/cineastas-de-la-isla-y-del-exilio-evocan-una-cuba-secreta-en-el-festival-de-cine-de-miami",
+  },
+  {
+    outlet: "Miami Film Festival",
+    title: "2024 Miami Film Festival Jury & Audience Award Winners Announced",
+    description: "The festival’s official announcement naming Objetos de Deseo the Audience Award winner for Best Short Film.",
+    descriptionES: "El anuncio oficial del festival que nombra a Objetos de Deseo ganador del Premio del Público al Mejor Cortometraje.",
+    url: "https://miamifilmfestival.com/news/2024-miami-film-festival-jury-audience-award-winners-announced/",
+  },
+  {
+    outlet: "CubaNet",
+    title: "Programa Spotlight on Cuba del Festival de Cine de Miami cautiva a los espectadores",
+    description: "Festival coverage of the Cuban film showcase in which Objetos de Deseo was presented.",
+    descriptionES: "Cobertura de la muestra de cine cubano donde se presentó Objetos de Deseo.",
+    url: "https://www.cubanet.org/programa-spotlight-on-cuba-del-festival-de-cine-de-miami-cautiva-a-los-espectadores/",
+  },
+  {
+    outlet: "CubitaNOW",
+    title: "Cortometraje rodado en Miami gana Mención Honorífica en festival de cine en Barcelona",
+    description: "International recognition for the film at the Around International Film Festival in Barcelona.",
+    descriptionES: "Reconocimiento internacional para la película en el Around International Film Festival de Barcelona.",
+    url: "https://noticias.cubitanow.com/cortometraje-rodado-en-miami-gana-mencin-honorfica-en-festival-de-cine-en-barcelona",
+  },
+  {
+    outlet: "One Film Fan",
+    title: "Short Film Review: Objetos de Deseo",
+    description: "An independent review of the film’s noir-inflected tension, dark humor, performances, and moral ambiguity.",
+    descriptionES: "Una crítica independiente sobre la tensión noir, el humor negro, las actuaciones y la ambigüedad moral de la película.",
+    url: "https://onefilmfan.com/short-film-review-objetos-de-deseo/",
+  },
+  {
+    outlet: "Telemundo 51",
+    title: "Arranca el Festival de Cine de Miami: 181 películas de más de 30 países",
+    description: "Local coverage of the 41st Miami Film Festival and its international program.",
+    descriptionES: "Cobertura local de la edición 41 del Festival de Cine de Miami y su programación internacional.",
+    url: "https://www.telemundo51.com/noticias/local/arranca-el-festival-de-cine-de-miami-181-peliculas-de-mas-de-30-paises/2527041/",
+  },
+  {
+    outlet: "Cuba Noticias 360",
+    title: "Estas son las películas cubanas que podrán verse en el Miami Film Festival",
+    description: "A preview of the Cuban films selected for the 2024 Miami Film Festival.",
+    descriptionES: "Un avance de las películas cubanas seleccionadas para el Festival de Cine de Miami 2024.",
+    url: "https://www.cubanoticias360.com/estas-son-las-peliculas-cubanas-que-podran-verse-en-el-miami-film-festival/",
+  },
+  {
+    outlet: "Alejandro Rentería on Substack",
+    title: "Objetos de Deseo: Una Mirada Profunda al Lado Oscuro de la Naturaleza Humana",
+    description: "The complete bilingual story of the film, its themes, production, performances, and festival journey.",
+    descriptionES: "La historia bilingüe completa de la película, sus temas, producción, actuaciones y recorrido por festivales.",
+    url: "https://alejandrorenteria.substack.com/p/objetos-de-deseo-una-mirada-profunda",
+  },
+];
 
 export default function ObjetosDeDeseo() {
   const { theme } = useTheme();
@@ -132,6 +198,78 @@ export default function ObjetosDeDeseo() {
 
       <div className="container pb-24 space-y-20">
 
+        {/* ===== AUDIENCE AWARD ===== */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+          <div className="border border-primary/30 bg-primary/5 p-6 md:p-8 rounded-sm flex flex-col md:flex-row md:items-center gap-5">
+            <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center shrink-0">
+              <Award size={24} />
+            </div>
+            <div>
+              <div className="text-xs font-mono uppercase tracking-[0.25em] text-primary mb-2">
+                {language === "es" ? "Premio del Público · 2024" : "Audience Award · 2024"}
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
+                {language === "es"
+                  ? "Mejor Cortometraje — Festival de Cine de Miami"
+                  : "Best Short Film — Miami Film Festival"}
+              </h2>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* ===== BEHIND THE FILM ===== */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+          <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">
+            {language === "es" ? "Detrás de la película" : "Behind the Film"}
+          </motion.h2>
+          <div className="grid lg:grid-cols-[1.5fr_0.75fr] gap-10 items-start">
+            <motion.div variants={fadeUp} className="space-y-5 text-base leading-relaxed text-foreground/85">
+              {language === "es" ? (
+                <>
+                  <p>
+                    <em>Objetos de Deseo</em> nació del miedo y de una apuesta creativa: encontrar una historia contundente que pudiera realizarse con un presupuesto limitado sin sacrificar ambición cinematográfica. Inspirada en el relato <em>Una oferta razonable</em>, de JLS Noya, la película convierte un dilema moral íntimo en una tragedia contemporánea sobre deseo, dinero, vulnerabilidad y supervivencia.
+                  </p>
+                  <p>
+                    Rodada en Miami durante tres noches con un equipo pequeño, la película evita deliberadamente la postal luminosa de la ciudad. Su fotografía busca otra Miami: fría, húmeda, silenciosa y cubierta de sombras; un paisaje noir donde los intereses materiales pesan más que las relaciones humanas.
+                  </p>
+                  <p>
+                    La dirección de actores se construyó alrededor de la tensa intimidad entre Mauricio Rentería y Alex Cowley. Sus interpretaciones recibieron reconocimiento internacional, mientras que la película obtuvo premios y selecciones por su cinematografía, actuaciones y lenguaje visual.
+                  </p>
+                  <p>
+                    Dedicada a la memoria de Pedro Rentería, la obra también conecta con una familia de artistas y con la convicción de que hacer cine implica honrar de dónde venimos mientras buscamos una voz propia.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p>
+                    <em>Objetos de Deseo</em> began with fear and a creative wager: to find a forceful story that could be made with limited resources without sacrificing cinematic ambition. Inspired by JLS Noya’s short story <em>Una oferta razonable</em>, the film turns an intimate moral dilemma into a contemporary tragedy about desire, money, vulnerability, and survival.
+                  </p>
+                  <p>
+                    Shot in Miami over three nights with a small crew, the film deliberately avoids the city’s familiar sunlit postcard. Its cinematography searches for another Miami—cold, humid, quiet, and covered in shadow; a noir landscape where material interests outweigh human connection.
+                  </p>
+                  <p>
+                    The performance direction centers on the tense intimacy between Mauricio Rentería and Alex Cowley. Their work earned international recognition, while the film received awards and selections for its cinematography, performances, and visual language.
+                  </p>
+                  <p>
+                    Dedicated to the memory of Pedro Rentería, the film also reflects a family of artists and a conviction that making cinema means honoring where we come from while searching for a voice of our own.
+                  </p>
+                </>
+              )}
+            </motion.div>
+            <motion.blockquote variants={fadeUp} className="border-l-2 border-primary pl-6 py-2">
+              <Quote size={22} className="text-primary mb-4" />
+              <p className="text-xl md:text-2xl leading-snug italic" style={{ fontFamily: "var(--font-display)" }}>
+                {language === "es"
+                  ? "Miami es grande; hay mucho espacio donde el sol no da, y estas historias se nutren de la humedad de lo sórdido."
+                  : "Miami is vast; there is plenty of space where the sun does not reach, and these stories draw nourishment from the humidity of the sordid."}
+              </p>
+              <footer className="text-xs font-mono uppercase tracking-wider text-muted-foreground mt-5">
+                Alejandro Rentería · Diario Las Américas
+              </footer>
+            </motion.blockquote>
+          </div>
+        </motion.section>
+
         {/* ===== TRAILER (YouTube) ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
           <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">
@@ -245,6 +383,41 @@ export default function ObjetosDeDeseo() {
               <p className="indent-8">{t("objetos.statement.p4")}</p>
               <p className="indent-8">{t("objetos.statement.p5")}</p>
             </div>
+          </div>
+        </motion.section>
+
+        {/* ===== PRESS & COVERAGE ===== */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+          <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
+            <Newspaper size={16} className="text-primary" />
+            <h2 className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">
+              {language === "es" ? "Prensa y cobertura" : "Press & Coverage"}
+            </h2>
+          </motion.div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {pressCoverage.map((article) => (
+              <motion.a
+                key={article.url}
+                variants={fadeUp}
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-card border border-border p-5 rounded-sm hover:border-primary/50 hover:-translate-y-0.5 transition-all flex flex-col min-h-52"
+              >
+                <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-primary mb-3">
+                  {article.outlet}
+                </div>
+                <h3 className="font-semibold leading-snug mb-3 group-hover:text-primary transition-colors">
+                  {article.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground mb-5">
+                  {language === "es" ? article.descriptionES : article.description}
+                </p>
+                <span className="mt-auto inline-flex items-center gap-2 text-xs font-mono text-foreground">
+                  {language === "es" ? "Leer cobertura" : "Read coverage"} <ExternalLink size={12} />
+                </span>
+              </motion.a>
+            ))}
           </div>
         </motion.section>
 
