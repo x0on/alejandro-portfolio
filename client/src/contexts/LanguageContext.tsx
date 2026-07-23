@@ -1,4 +1,6 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import en from "@/i18n/en";
+import es from "@/i18n/es";
 
 export type Language = "en" | "es";
 
@@ -21,7 +23,6 @@ function detectBrowserLanguage(): Language {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(detectBrowserLanguage);
-  const [translations, setTranslations] = useState<Record<string, string>>({});
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
@@ -31,12 +32,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = language;
-    if (language === "es") {
-      import("@/i18n/es").then((mod) => setTranslations(mod.default));
-    } else {
-      import("@/i18n/en").then((mod) => setTranslations(mod.default));
-    }
   }, [language]);
+
+  const translations = language === "es" ? es : en;
 
   const t = (key: string): string => {
     return translations[key] || key;
