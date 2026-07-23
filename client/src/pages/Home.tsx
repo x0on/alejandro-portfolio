@@ -264,19 +264,27 @@ export default function Home() {
           <div className="relative container py-16 md:py-24">
             <SectionTitle number="03" title={t("section.software")} subtitle={t("section.software.subtitle")} />
             <div className="grid md:grid-cols-2 gap-10 items-start">
-              <div>
+              <a href="https://storytown.us" target="_blank" rel="noopener noreferrer" className="group block">
                 <img
                   src={software.screenshot}
                   alt="Story Town"
-                  className="w-full rounded-sm border border-border shadow-xl"
+                  className="w-full rounded-sm border border-border shadow-xl group-hover:border-primary/50 transition-colors"
                 />
-              </div>
+              </a>
               <div className="space-y-5">
                 <div>
                   <h3 className="text-2xl md:text-3xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
                     {software.name}
                   </h3>
                   <p className="text-sm text-primary font-medium mt-1 italic">{software.tagline}</p>
+                  <a
+                    href="https://storytown.us"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-3 text-sm font-medium text-primary hover:underline"
+                  >
+                    {t("software.visitApp")} <ExternalLink size={14} />
+                  </a>
                 </div>
                 <blockquote className="border-l-2 border-primary pl-4 text-sm leading-relaxed">
                   {t("software.elevator")}
@@ -291,17 +299,22 @@ export default function Home() {
                   <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground flex items-center gap-2">
                     <Zap size={14} /> {t("software.keyTechnology")}
                   </h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{t("software.keyTechnologyIntro")}</p>
                   {software.features.map((f, i) => (
                     <div key={i} className="bg-card border border-border p-3 rounded-sm">
-                      <div className="text-sm font-medium">{t(`software.feature.${["narrativeToVisual", "continuityIntelligence", "cinematicMotion", "adaptiveAI", "creatorControl"][i]}`)}</div>
-                      <div className="text-xs text-muted-foreground mt-0.5">{t(`software.feature.${["narrativeToVisual", "continuityIntelligence", "cinematicMotion", "adaptiveAI", "creatorControl"][i]}.desc`)}</div>
+                      <div className="text-sm font-medium">{t(`software.feature.${["narrativeToVisual", "modelAgnostic", "cinematicMotion", "continuityIntelligence"][i]}`)}</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">{t(`software.feature.${["narrativeToVisual", "modelAgnostic", "cinematicMotion", "continuityIntelligence"][i]}.desc`)}</div>
                     </div>
                   ))}
                 </div>
 
                 <div className="bg-card border border-border p-4 rounded-sm">
                   <div className="text-xs font-mono text-muted-foreground mb-1">{t("software.techStack").toUpperCase()}</div>
-                  <p className="text-xs leading-relaxed">{t("software.techStackDesc")}</p>
+                  <div className="space-y-2">
+                    {t("software.techStackDesc").split("\n\n").map((paragraph, i) => (
+                      <p key={i} className="text-xs leading-relaxed">{paragraph}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

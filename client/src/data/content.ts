@@ -335,11 +335,10 @@ export const software = {
   elevator: "Story Town is an AI film production platform built for creators\u2014not to replace them, but to empower them. You bring the idea, the taste, the instinct\u2014and Story Town turns it into a living film pipeline. From a simple concept\u2014or a full screenplay\u2014the system develops the story, builds the world, defines the characters, generates storyboards, and produces cinematic sequences with continuity and intent. Characters remain consistent. Shots follow real film grammar. The story doesn\u2019t just generate\u2014it flows.",
   description: "The difference is control. You are in charge of every decision. The tone, the rhythm, the choices that make a story feel human\u2014those don\u2019t get automated away. They still belong to you. Story Town handles the growing complexity behind the system so you can focus on what matters: taste, intention, and storytelling.\n\nIn most AI tools, the business model rewards friction\u2014more retries, more credits, more uncertainty. Story Town is designed the opposite way. The faster you arrive at something meaningful, the better the system has done its job.\n\nIt\u2019s not about generating content. It\u2019s about giving creators the power to direct it.",
   features: [
-    { name: "Narrative-to-Visual Engine", desc: "Transforms written ideas into cinematic structure\u2014translating story into shots with built-in film logic." },
-    { name: "Continuity Intelligence", desc: "Maintains visual consistency across characters, environments, and time\u2014so the story actually holds together." },
-    { name: "Cinematic Motion Pipeline", desc: "Evolves still moments into moving sequences with controlled pacing, rhythm, and visual coherence." },
-    { name: "Adaptive AI Infrastructure", desc: "Dynamically leverages multiple AI systems behind the scenes\u2014so creators get the best output without managing tools." },
-    { name: "Creator-in-Control System", desc: "Every creative decision stays human. The system handles execution, not authorship." },
+    { name: "Narrative-to-Visual Engine", desc: "" },
+    { name: "Model-Agnostic Generation Layer", desc: "" },
+    { name: "Cinematic Motion Pipeline", desc: "" },
+    { name: "Continuity Intelligence (building now)", desc: "" },
   ],
   techStack: "A modular AI architecture combining narrative intelligence, visual continuity systems, and a model-agnostic generation layer\u2014designed to scale cinematic production without sacrificing creative control.",
   market: "",
@@ -450,10 +449,8 @@ export const interviews = [
 export const socialLinks = [
   { platform: "IMDb", url: "https://www.imdb.com/name/nm2828446/", icon: "film" },
   { platform: "LinkedIn", url: "https://www.linkedin.com/in/alejandro-renteria-490a2a15/", icon: "linkedin" },
-  { platform: "Instagram", url: "https://www.instagram.com/alejandrorenteria", icon: "instagram" },
+  { platform: "Instagram", url: "https://www.instagram.com/susurrone/", icon: "instagram" },
   { platform: "X", url: "https://twitter.com/susurrone", icon: "twitter" },
-  { platform: "Behance", url: "https://www.behance.net/alejandrorenteria", icon: "palette" },
-  { platform: "Website", url: "https://alejandrorenteria.com", icon: "globe" },
 ];
 
 // ===== CONTACT =====

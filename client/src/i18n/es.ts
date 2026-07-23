@@ -55,8 +55,10 @@ const es: Record<string, string> = {
 
   // Software
   "software.keyTechnology": "Tecnolog\u00eda Clave",
+  "software.keyTechnologyIntro": "El núcleo de lo que estoy construyendo\u2014con total honestidad sobre lo que ya funciona y lo que todavía está en desarrollo.",
   "software.techStack": "Arquitectura T\u00e9cnica",
   "software.learnMore": "M\u00e1s Informaci\u00f3n",
+  "software.visitApp": "Visitar Story Town",
 
   // Films
   "films.awardWinner": "Premiada",
@@ -163,19 +165,17 @@ const es: Record<string, string> = {
   // Software descriptions
   "software.elevator": "Story Town es una plataforma de producci\u00f3n cinematogr\u00e1fica con IA construida para creadores\u2014no para reemplazarlos, sino para empoderarlos. T\u00fa traes la idea, el gusto, el instinto\u2014y Story Town lo convierte en un pipeline cinematogr\u00e1fico vivo. Desde un concepto simple\u2014o un gui\u00f3n completo\u2014el sistema desarrolla la historia, construye el mundo, define los personajes, genera storyboards y produce secuencias cinematogr\u00e1ficas con continuidad e intenci\u00f3n. Los personajes se mantienen consistentes. Los planos siguen gram\u00e1tica cinematogr\u00e1fica real. La historia no solo se genera\u2014fluye.",
   "software.description": "La diferencia es el control. T\u00fa est\u00e1s a cargo de cada decisi\u00f3n. El tono, el ritmo, las elecciones que hacen que una historia se sienta humana\u2014esas no se automatizan. Siguen siendo tuyas. Story Town maneja la creciente complejidad detr\u00e1s del sistema para que puedas enfocarte en lo que importa: el gusto, la intenci\u00f3n y la narrativa.\n\nEn la mayor\u00eda de las herramientas de IA, el modelo de negocio recompensa la fricci\u00f3n\u2014m\u00e1s reintentos, m\u00e1s cr\u00e9ditos, m\u00e1s incertidumbre. Story Town est\u00e1 dise\u00f1ado al rev\u00e9s. Cuanto m\u00e1s r\u00e1pido llegues a algo significativo, mejor ha hecho su trabajo el sistema.\n\nNo se trata de generar contenido. Se trata de darle a los creadores el poder de dirigirlo.",
-  "software.techStackDesc": "Una arquitectura modular de IA que combina inteligencia narrativa, sistemas de continuidad visual y una capa de generaci\u00f3n agn\u00f3stica de modelos\u2014dise\u00f1ada para escalar la producci\u00f3n cinematogr\u00e1fica sin sacrificar el control creativo.",
+  "software.techStackDesc": "Una arquitectura modular: un motor narrativo basado en reglas, una capa de generación agnóstica de modelos y un sistema de continuidad en desarrollo\u2014construida para escalar la producción cinematográfica sin quitarle nunca la autoría al creador.\n\nEl sistema se encarga de la ejecución. La autoría sigue siendo humana. Ese es el punto.",
 
   // Software features
   "software.feature.narrativeToVisual": "Motor Narrativa-a-Visual",
-  "software.feature.narrativeToVisual.desc": "Transforma ideas escritas en estructura cinematogr\u00e1fica\u2014traduciendo la historia en planos con l\u00f3gica f\u00edlmica integrada.",
-  "software.feature.continuityIntelligence": "Inteligencia de Continuidad",
-  "software.feature.continuityIntelligence.desc": "Mantiene la consistencia visual entre personajes, entornos y tiempo\u2014para que la historia realmente se sostenga.",
+  "software.feature.narrativeToVisual.desc": "Convierte la escritura en estructura cinematográfica mediante reglas, no conjeturas. La historia se vuelve beats, los beats se vuelven planos y los planos siguen gramática cinematográfica real. Sin lotería de prompts.",
+  "software.feature.modelAgnostic": "Capa de Generación Agnóstica de Modelos",
+  "software.feature.modelAgnostic.desc": "Funciona con cualquier modelo de IA\u2014tus claves, tus motores, sin dependencia. Los nuevos modelos lo mejoran desde la semana en que aparecen. Sin créditos, nunca.",
   "software.feature.cinematicMotion": "Pipeline de Movimiento Cinematogr\u00e1fico",
-  "software.feature.cinematicMotion.desc": "Evoluciona momentos est\u00e1ticos en secuencias en movimiento con ritmo, cadencia y coherencia visual controlados.",
-  "software.feature.adaptiveAI": "Infraestructura de IA Adaptativa",
-  "software.feature.adaptiveAI.desc": "Aprovecha din\u00e1micamente m\u00faltiples sistemas de IA tras bambalinas\u2014para que los creadores obtengan el mejor resultado sin gestionar herramientas.",
-  "software.feature.creatorControl": "Sistema Creador-en-Control",
-  "software.feature.creatorControl.desc": "Cada decisi\u00f3n creativa permanece humana. El sistema maneja la ejecuci\u00f3n, no la autor\u00eda.",
+  "software.feature.cinematicMotion.desc": "Las imágenes fijas se convierten en movimiento\u2014dirigido, medido y coherente. Tú eliges el movimiento; el sistema lo renderiza.",
+  "software.feature.continuityIntelligence": "Inteligencia de Continuidad (en desarrollo)",
+  "software.feature.continuityIntelligence.desc": "La película que se recuerda a sí misma\u2014personajes, lugares y tiempo consistentes en cada escena. Esta es la frontera en la que estoy trabajando.",
 
   // Experience entries
   "exp.creativeProducer": "Productor Creativo",

@@ -55,8 +55,10 @@ const en: Record<string, string> = {
 
   // Software
   "software.keyTechnology": "Key Technology",
+  "software.keyTechnologyIntro": "The core of what I'm building\u2014and I'm honest about what's shipped and what's still ahead.",
   "software.techStack": "Tech Stack",
   "software.learnMore": "Learn More",
+  "software.visitApp": "Visit Story Town",
 
   // Films
   "films.awardWinner": "Award Winner",
@@ -163,19 +165,17 @@ const en: Record<string, string> = {
   // Software descriptions
   "software.elevator": "Story Town is an AI film production platform built for creators\u2014not to replace them, but to empower them. You bring the idea, the taste, the instinct\u2014and Story Town turns it into a living film pipeline. From a simple concept\u2014or a full screenplay\u2014the system develops the story, builds the world, defines the characters, generates storyboards, and produces cinematic sequences with continuity and intent. Characters remain consistent. Shots follow real film grammar. The story doesn\u2019t just generate\u2014it flows.",
   "software.description": "The difference is control. You are in charge of every decision. The tone, the rhythm, the choices that make a story feel human\u2014those don\u2019t get automated away. They still belong to you. Story Town handles the growing complexity behind the system so you can focus on what matters: taste, intention, and storytelling.\n\nIn most AI tools, the business model rewards friction\u2014more retries, more credits, more uncertainty. Story Town is designed the opposite way. The faster you arrive at something meaningful, the better the system has done its job.\n\nIt\u2019s not about generating content. It\u2019s about giving creators the power to direct it.",
-  "software.techStackDesc": "A modular AI architecture combining narrative intelligence, visual continuity systems, and a model-agnostic generation layer\u2014designed to scale cinematic production without sacrificing creative control.",
+  "software.techStackDesc": "A modular architecture: a rules-based narrative engine, a model-agnostic generation layer, and a continuity system in progress\u2014built to scale cinematic production without ever taking authorship away from the creator.\n\nThe system handles execution. Authorship stays human. That's the whole point.",
 
   // Software features
   "software.feature.narrativeToVisual": "Narrative-to-Visual Engine",
-  "software.feature.narrativeToVisual.desc": "Transforms written ideas into cinematic structure\u2014translating story into shots with built-in film logic.",
-  "software.feature.continuityIntelligence": "Continuity Intelligence",
-  "software.feature.continuityIntelligence.desc": "Maintains visual consistency across characters, environments, and time\u2014so the story actually holds together.",
+  "software.feature.narrativeToVisual.desc": "Turns writing into film structure by rules, not guesswork. Story becomes beats, beats become shots, and the shots follow real film grammar. No prompting lottery.",
+  "software.feature.modelAgnostic": "Model-Agnostic Generation Layer",
+  "software.feature.modelAgnostic.desc": "Works with any AI model\u2014your keys, your engines, no lock-in. New models make it better the week they ship. No credits, ever.",
   "software.feature.cinematicMotion": "Cinematic Motion Pipeline",
-  "software.feature.cinematicMotion.desc": "Evolves still moments into moving sequences with controlled pacing, rhythm, and visual coherence.",
-  "software.feature.adaptiveAI": "Adaptive AI Infrastructure",
-  "software.feature.adaptiveAI.desc": "Dynamically leverages multiple AI systems behind the scenes\u2014so creators get the best output without managing tools.",
-  "software.feature.creatorControl": "Creator-in-Control System",
-  "software.feature.creatorControl.desc": "Every creative decision stays human. The system handles execution, not authorship.",
+  "software.feature.cinematicMotion.desc": "Stills become motion\u2014directed, paced, coherent. You choose the movement; the system renders it.",
+  "software.feature.continuityIntelligence": "Continuity Intelligence (building now)",
+  "software.feature.continuityIntelligence.desc": "The film that remembers itself\u2014characters, places, and time consistent across every scene. This is the frontier I'm working on.",
 
   // Experience entries
   "exp.creativeProducer": "Creative Producer",
