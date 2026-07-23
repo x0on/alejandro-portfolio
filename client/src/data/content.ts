@@ -326,7 +326,7 @@ export const photographyCategories = [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/pWjfLKgmOkSOWxJQ.jpg",
     ],
   },
-];
+].filter((category) => category.name === "Portraits");
 
 // ===== SOFTWARE =====
 export const software = {

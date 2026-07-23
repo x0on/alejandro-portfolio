@@ -803,40 +803,6 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-12">
-            <div className="flex items-center gap-3 mb-6">
-              <h3 className="text-xs font-mono uppercase tracking-[0.25em] text-muted-foreground">
-                {language === "es" ? "Artículos, entrevistas y cobertura destacada" : "Featured Articles, Interviews & Coverage"}
-              </h3>
-              <div className="h-px flex-1 bg-border" />
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {pressArticles.flatMap((category) =>
-                category.articles.map((article) => (
-                  <a
-                    key={article.url}
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group bg-card border border-border p-5 rounded-sm hover:border-primary/50 hover:-translate-y-0.5 transition-all flex flex-col min-h-44"
-                  >
-                    <div className="text-[10px] font-mono uppercase tracking-[0.18em] text-primary mb-3">
-                      {article.source}
-                    </div>
-                    <h4 className="text-sm font-semibold leading-snug group-hover:text-primary transition-colors mb-3">
-                      {article.title}
-                    </h4>
-                    <p className="text-xs leading-relaxed text-muted-foreground line-clamp-3 mb-5">
-                      {article.excerpt}
-                    </p>
-                    <span className="mt-auto inline-flex items-center gap-2 text-xs font-mono">
-                      {language === "es" ? "Leer" : "Read"} <ExternalLink size={12} />
-                    </span>
-                  </a>
-                ))
-              )}
-            </div>
-          </div>
         </Section>
 
         {/* ===== EXPERIENCE ===== */}
