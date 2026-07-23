@@ -326,7 +326,7 @@ export const photographyCategories = [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/pWjfLKgmOkSOWxJQ.jpg",
     ],
   },
-].filter((category) => category.name === "Portraits");
+];
 
 // ===== SOFTWARE =====
 export const software = {
@@ -466,8 +466,7 @@ export const contact = {
 // ===== COMPLETE FILMOGRAPHY (IMDB) =====
 export const filmography = [
   { year: 2025, title: "Cofre Abierto", role: "Writer / Actor", type: "Short", pdf: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/CofreAbiertosep-12-2025_d5b57804.pdf" },
-  { year: 2024, title: "Objects of Desire - Blade", role: "Director / Cinematographer / Editor", type: "Short" },
-  { year: 2024, title: "Objetos de Deseo \u2013 La Navaja", role: "Director", type: "Short", hasDetail: true },
+  { year: 2024, title: "Objetos de Deseo \u2013 La Navaja", role: "Director / Cinematographer / Editor", type: "Short", hasDetail: true },
   { year: 2018, title: "Mismatch Made in Heaven", role: "Director", type: "Short", hasDetail: true },
   { year: 2018, title: "Carry You On: From The Students Of MSD", role: "Cinematographer", type: "Music Video" },
   { year: 2016, title: "Love Till", role: "Cinematographer", type: "Short" },

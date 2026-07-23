@@ -656,7 +656,7 @@ export default function Home() {
             {/* Categories remain visible; photographs appear only after a visitor makes a choice. */}
             <div className="flex flex-wrap gap-2 mb-6">
               <button
-                onClick={() => setActivePhotoCategory("all")}
+                onClick={() => setActivePhotoCategory(activePhotoCategory === "all" ? null : "all")}
                 className={`px-3 py-1.5 text-xs font-mono rounded-sm border transition-all ${
                   activePhotoCategory === "all"
                     ? 'bg-primary text-primary-foreground border-primary'
@@ -688,7 +688,7 @@ export default function Home() {
                   ? photographyCategories.filter(c => c.name === activePhotoCategory)
                   : photographyCategories
                 ).flatMap(cat =>
-                  cat.images.slice(0, activePhotoCategory === "all" ? 4 : undefined).map((img, i) => (
+                  cat.images.map((img, i) => (
                     <div
                       key={`${cat.name}-${i}`}
                       className="break-inside-avoid group relative overflow-hidden rounded-sm border border-border cursor-pointer"
