@@ -239,6 +239,18 @@ export const photographyCategories = [
     ],
   },
   {
+    name: "Behind the Scenes",
+    images: [
+      "/media/behind-the-scenes/camera-monitor-on-set-alejandro-renteria.jpg",
+      "/media/behind-the-scenes/camera-dolly-interior-scene-alejandro-renteria.jpg",
+      "/media/behind-the-scenes/steadicam-night-scene-alejandro-renteria.jpg",
+      "/media/behind-the-scenes/directing-actors-bedroom-scene-alejandro-renteria.jpg",
+      "/media/behind-the-scenes/actors-and-slate-on-set-alejandro-renteria.jpg",
+      "/media/behind-the-scenes/director-reviewing-script-with-cast-alejandro-renteria.jpg",
+      "/media/behind-the-scenes/night-scene-filming-alejandro-renteria.jpg",
+    ],
+  },
+  {
     name: "Romance",
     images: [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/cjtgqGxOsGJzddUb.jpg",
@@ -326,7 +338,26 @@ export const photographyCategories = [
       "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028448018/pWjfLKgmOkSOWxJQ.jpg",
     ],
   },
-];
+].map((category) => {
+  const localCounts: Record<string, number> = {
+    Romance: 10,
+    Drama: 10,
+    Food: 7,
+    Beauty: 8,
+    Lines: 10,
+    Travel: 10,
+  };
+  const count = localCounts[category.name];
+  if (!count) return category;
+  const slug = category.name.toLowerCase();
+  return {
+    ...category,
+    images: Array.from(
+      { length: count },
+      (_, index) => `/media/photography/${slug}/${slug}-${String(index + 1).padStart(2, "0")}-alejandro-renteria.jpg`,
+    ),
+  };
+});
 
 // ===== SOFTWARE =====
 export const software = {

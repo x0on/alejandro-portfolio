@@ -199,6 +199,7 @@ const es: Record<string, string> = {
 
   // Photography categories
   "photo.Portraits": "Retratos",
+  "photo.Behind the Scenes": "Detrás de Cámaras",
   "photo.Romance": "Romance",
   "photo.Drama": "Drama",
   "photo.Food": "Gastronomía",
