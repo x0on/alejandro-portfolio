@@ -1,0 +1,47 @@
+{
+  "favorites": {
+    "selected": 34,
+    "imported": 34,
+    "duplicates": 0
+  },
+  "portraits": {
+    "selected": 59,
+    "imported": 52,
+    "duplicates": 7
+  },
+  "behind-the-scenes": {
+    "selected": 3,
+    "imported": 3,
+    "duplicates": 0
+  },
+  "romance": {
+    "selected": 0,
+    "imported": 0,
+    "duplicates": 0
+  },
+  "drama": {
+    "selected": 11,
+    "imported": 10,
+    "duplicates": 1
+  },
+  "food": {
+    "selected": 5,
+    "imported": 0,
+    "duplicates": 5
+  },
+  "beauty": {
+    "selected": 5,
+    "imported": 5,
+    "duplicates": 0
+  },
+  "lines": {
+    "selected": 33,
+    "imported": 25,
+    "duplicates": 8
+  },
+  "travel": {
+    "selected": 0,
+    "imported": 0,
+    "duplicates": 0
+  }
+}

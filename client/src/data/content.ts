@@ -222,6 +222,10 @@ export const selectedCommercialProjects = [
 
 export const photographyCategories = [
   {
+    name: "Favorites",
+    images: [],
+  },
+  {
     name: "Portraits",
     images: [
       "/media/portraits/monica-spear-by-alejandro-renteria.webp",
@@ -357,6 +361,22 @@ export const photographyCategories = [
       (_, index) => `/media/photography/${slug}/${slug}-${String(index + 1).padStart(2, "0")}-alejandro-renteria.jpg`,
     ),
   };
+}).map((category) => {
+  const additions: Record<string, { slug: string; count: number }> = {
+    Favorites: { slug: "favorites", count: 34 },
+    Portraits: { slug: "portraits", count: 52 },
+    "Behind the Scenes": { slug: "behind-the-scenes", count: 3 },
+    Drama: { slug: "drama", count: 10 },
+    Beauty: { slug: "beauty", count: 5 },
+    Lines: { slug: "lines", count: 25 },
+  };
+  const addition = additions[category.name];
+  if (!addition) return category;
+  const selectedImages = Array.from(
+    { length: addition.count },
+    (_, index) => `/media/photography/user-selections/${addition.slug}/${addition.slug}-selection-${String(index + 1).padStart(3, "0")}.jpg`,
+  );
+  return { ...category, images: [...category.images, ...selectedImages] };
 });
 
 // ===== SOFTWARE =====

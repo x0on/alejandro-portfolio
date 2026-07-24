@@ -198,6 +198,7 @@ const es: Record<string, string> = {
   "skill.webDev": "Next.js / React / TypeScript",
 
   // Photography categories
+  "photo.Favorites": "Favoritas",
   "photo.Portraits": "Retratos",
   "photo.Behind the Scenes": "Detrás de Cámaras",
   "photo.Romance": "Romance",
