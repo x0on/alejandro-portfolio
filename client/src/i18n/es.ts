@@ -59,6 +59,8 @@ const es: Record<string, string> = {
   "software.techStack": "Arquitectura T\u00e9cnica",
   "software.learnMore": "M\u00e1s Informaci\u00f3n",
   "software.visitApp": "Visitar Story Town",
+  "software.asro.visitApp": "Explorar ASRO",
+  "software.asro.viewSource": "Ver Código",
 
   // Films
   "films.awardWinner": "Premiada",
@@ -176,6 +178,21 @@ const es: Record<string, string> = {
   "software.feature.cinematicMotion.desc": "Las imágenes fijas se convierten en movimiento\u2014dirigido, medido y coherente. Tú eliges el movimiento; el sistema lo renderiza.",
   "software.feature.continuityIntelligence": "Inteligencia de Continuidad (en desarrollo)",
   "software.feature.continuityIntelligence.desc": "La película que se recuerda a sí misma\u2014personajes, lugares y tiempo consistentes en cada escena. Esta es la frontera en la que estoy trabajando.",
+
+  // ASRO
+  "software.asro.elevator": "ASRO es un observatorio de alerta temprana en vivo sobre los riesgos financieros creados por el auge de la IA. Lee noticias económicas y documentos oficiales de empresas, verifica la evidencia y mide si los riesgos se están conectando—y si es más probable que alcancen los mercados, las pensiones y a los inversionistas comunes.",
+  "software.asro.description": "ASRO no predice que ocurrirá un colapso. Monitorea si las condiciones que podrían producir tensión sistémica se fortalecen o se debilitan en nueve dimensiones de riesgo.\n\nEl proyecto separa los hechos de las fuentes, las relaciones derivadas, la interpretación de modelos y las hipótesis de investigación. Cada relación extraída conserva el vínculo con su fuente, manteniendo el análisis transparente y abierto a revisión.",
+  "software.asro.capabilities": "Capacidades Principales",
+  "software.asro.feature.collection": "Recolección de Evidencia en Vivo",
+  "software.asro.feature.collection.desc": "Monitorea noticias económicas y documentos de SEC EDGAR en busca de eventos y divulgaciones financieras relacionadas con la IA.",
+  "software.asro.feature.verification": "Verificación de Evidencia",
+  "software.asro.feature.verification.desc": "Separa hechos confirmados de rumores, reportes duplicados y señales provisionales.",
+  "software.asro.feature.measurement": "Medición de Riesgo en Nueve Dimensiones",
+  "software.asro.feature.measurement.desc": "Mide presiones conectadas como compromisos de capital, financiamiento circular, apalancamiento y transmisión al mercado público.",
+  "software.asro.feature.lineage": "Trazabilidad de Procedencia",
+  "software.asro.feature.lineage.desc": "Mantiene observaciones, eventos extraídos e indicadores derivados vinculados a sus fuentes originales.",
+  "software.asro.architecture": "Arquitectura",
+  "software.asro.architectureDesc": "Un pipeline de monitoreo tipado en Python con recolectores modulares, extracción y puntuación deterministas, almacenamiento SQLite, reportes CSV, pruebas automatizadas y un dashboard interactivo en vivo.",
 
   // Experience entries
   "exp.creativeProducer": "Productor Creativo",

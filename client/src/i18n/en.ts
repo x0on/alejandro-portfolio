@@ -59,6 +59,8 @@ const en: Record<string, string> = {
   "software.techStack": "Tech Stack",
   "software.learnMore": "Learn More",
   "software.visitApp": "Visit Story Town",
+  "software.asro.visitApp": "Explore ASRO",
+  "software.asro.viewSource": "View Source",
 
   // Films
   "films.awardWinner": "Award Winner",
@@ -176,6 +178,21 @@ const en: Record<string, string> = {
   "software.feature.cinematicMotion.desc": "Stills become motion\u2014directed, paced, coherent. You choose the movement; the system renders it.",
   "software.feature.continuityIntelligence": "Continuity Intelligence (building now)",
   "software.feature.continuityIntelligence.desc": "The film that remembers itself\u2014characters, places, and time consistent across every scene. This is the frontier I'm working on.",
+
+  // ASRO
+  "software.asro.elevator": "ASRO is a live early-warning observatory for financial risks created by the AI boom. It reads economic news and official company filings, verifies the evidence, and measures whether risks are becoming more connected—and more likely to reach markets, pensions, and ordinary investors.",
+  "software.asro.description": "ASRO does not predict that a crash will happen. It tracks whether the conditions that could produce systemic stress are strengthening or weakening across nine risk dimensions.\n\nThe project separates source facts, derived relationships, model interpretation, and research hypotheses. Every extracted relationship remains traceable to its source, keeping the analysis transparent and open to review.",
+  "software.asro.capabilities": "Core Capabilities",
+  "software.asro.feature.collection": "Live Evidence Collection",
+  "software.asro.feature.collection.desc": "Monitors economic news and SEC EDGAR filings for AI-related financial events and disclosures.",
+  "software.asro.feature.verification": "Evidence Verification",
+  "software.asro.feature.verification.desc": "Separates confirmed facts from rumors, duplicate reporting, and provisional signals.",
+  "software.asro.feature.measurement": "Nine-Dimension Risk Measurement",
+  "software.asro.feature.measurement.desc": "Scores connected pressures including capital commitments, circular financing, leverage, and public-market transmission.",
+  "software.asro.feature.lineage": "Provenance-Preserving Lineage",
+  "software.asro.feature.lineage.desc": "Keeps observations, extracted events, and derived indicators traceable to their original sources.",
+  "software.asro.architecture": "Architecture",
+  "software.asro.architectureDesc": "A typed Python monitoring pipeline with plugin-style collectors, deterministic extraction and scoring, SQLite storage, CSV reporting, automated tests, and a live interactive dashboard.",
 
   // Experience entries
   "exp.creativeProducer": "Creative Producer",

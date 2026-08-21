@@ -5,6 +5,7 @@ export const ASSETS = {
   logomark: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-logo-official_a98eaccc.png",
   manuscriptPdf: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/CONVERSATIONSWITHTHEMACHINE_884b8b9b.pdf",
   storyTown: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/storytown-screenshot_305ed758.webp",
+  asro: "/media/asro-dashboard.png",
   manuscript: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/manuscript-artistic_905744db.jpg",
 };
 
@@ -394,6 +395,15 @@ export const software = {
   techStack: "A modular AI architecture combining narrative intelligence, visual continuity systems, and a model-agnostic generation layer\u2014designed to scale cinematic production without sacrificing creative control.",
   market: "",
   screenshot: ASSETS.storyTown,
+};
+
+export const asro = {
+  name: "ASRO",
+  tagline: "AI Systemic Risk Observatory",
+  liveUrl: "https://x0on.github.io/ASRO/#dashboard",
+  sourceUrl: "https://github.com/x0on/ASRO",
+  screenshot: ASSETS.asro,
+  featureKeys: ["collection", "verification", "measurement", "lineage"],
 };
 
 // ===== PRESS =====

@@ -6,7 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import {
   ASSETS, hero, films, book, pressArticles, interviews, socialLinks,
   contact, experience, clients, filmography, commercialWork, selectedCommercialProjects, photographyCategories,
-  software, about,
+  software, asro, about,
 } from "@/data/content";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -161,6 +161,7 @@ export default function Home() {
                 </motion.div>
               </div>
             </div>
+
           </div>
         </Section>
 
@@ -316,6 +317,49 @@ export default function Home() {
                       <p key={i} className="text-xs leading-relaxed">{paragraph}</p>
                     ))}
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="my-14 md:my-20 h-px bg-border" />
+
+            <div className="grid md:grid-cols-2 gap-10 items-start">
+              <a href={asro.liveUrl} target="_blank" rel="noopener noreferrer" className="group block">
+                <img src={asro.screenshot} alt="ASRO systemic risk dashboard" className="w-full rounded-sm border border-border shadow-xl group-hover:border-primary/50 transition-colors" />
+              </a>
+              <div className="space-y-5">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold" style={{ fontFamily: "var(--font-display)" }}>{asro.name}</h3>
+                  <p className="text-sm text-primary font-medium mt-1 italic">{asro.tagline}</p>
+                  <div className="flex flex-wrap gap-x-5 gap-y-2 mt-3">
+                    <a href={asro.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
+                      {t("software.asro.visitApp")} <ExternalLink size={14} />
+                    </a>
+                    <a href={asro.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
+                      {t("software.asro.viewSource")} <ExternalLink size={14} />
+                    </a>
+                  </div>
+                </div>
+                <blockquote className="border-l-2 border-primary pl-4 text-sm leading-relaxed">{t("software.asro.elevator")}</blockquote>
+                <div className="space-y-3">
+                  {t("software.asro.description").split('\n\n').map((para, i) => (
+                    <p key={i} className="text-sm leading-relaxed text-muted-foreground">{para}</p>
+                  ))}
+                </div>
+                <div className="space-y-2">
+                  <h4 className="text-sm font-mono uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                    <Zap size={14} /> {t("software.asro.capabilities")}
+                  </h4>
+                  {asro.featureKeys.map((key) => (
+                    <div key={key} className="bg-card border border-border p-3 rounded-sm">
+                      <div className="text-sm font-medium">{t(`software.asro.feature.${key}`)}</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">{t(`software.asro.feature.${key}.desc`)}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-card border border-border p-4 rounded-sm">
+                  <div className="text-xs font-mono text-muted-foreground mb-1">{t("software.asro.architecture").toUpperCase()}</div>
+                  <p className="text-xs leading-relaxed">{t("software.asro.architectureDesc")}</p>
                 </div>
               </div>
             </div>
