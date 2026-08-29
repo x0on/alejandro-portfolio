@@ -1,8 +1,8 @@
 // ===== ASSET URLS =====
 export const ASSETS = {
 
-  logo: "/media/site/alejandro-renteria-logo.svg",
-  logomark: "/media/site/alejandro-renteria-mark.svg",
+  logo: "/media/site/alejandro-renteria-logo.png",
+  logomark: "/media/site/alejandro-renteria-logo.png",
   manuscriptPdf: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/CONVERSATIONSWITHTHEMACHINE_884b8b9b.pdf",
   storyTown: "/media/site/story-town-platform.jpg",
   asro: "/media/asro-dashboard.png",

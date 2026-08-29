@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 160" role="img" aria-labelledby="title">
-  <title id="title">Alejandro Renteria</title>
-  <rect width="720" height="160" fill="#ffffff"/>
-  <circle cx="80" cy="80" r="58" fill="none" stroke="#171717" stroke-width="5"/>
-  <path d="M43 111 70 47h20l27 64h-17l-6-16H66l-6 16Zm29-31h16L80 59Z" fill="#171717"/>
-  <path d="M92 48h20c18 0 29 9 29 24 0 10-5 17-14 21l17 18h-20l-14-16h-2v16H92Zm16 14v20h4c8 0 12-3 12-10s-4-10-12-10Z" fill="#171717"/>
-  <text x="170" y="94" fill="#171717" font-family="Georgia, 'Times New Roman', serif" font-size="43" letter-spacing="2">ALEJANDRO RENTERIA</text>
-</svg>
