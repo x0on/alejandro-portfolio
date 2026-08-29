@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+  <title id="title">Conversations with the Machine</title>
+  <desc id="desc">Book cover for Alejandro Renteria's philosophical manuscript.</desc>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="44%" r="70%">
+      <stop offset="0" stop-color="#393632"/>
+      <stop offset="0.48" stop-color="#171716"/>
+      <stop offset="1" stop-color="#070707"/>
+    </radialGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0e7d7" stop-opacity=".08"/>
+      <stop offset=".5" stop-color="#f0e7d7" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#f0e7d7" stop-opacity=".08"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#glow)"/>
+  <rect x="54" y="54" width="1092" height="1492" fill="none" stroke="#d9d0c1" stroke-opacity=".22" stroke-width="2"/>
+  <g fill="none" stroke="url(#line)" stroke-width="2">
+    <circle cx="600" cy="800" r="268"/>
+    <circle cx="600" cy="800" r="214" stroke-dasharray="4 16"/>
+    <path d="M332 800h536M600 532v536M410 610l380 380M790 610 410 990"/>
+  </g>
+  <circle cx="600" cy="800" r="8" fill="#e8dece"/>
+  <text x="600" y="210" fill="#e8dece" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="10">A PHILOSOPHICAL DIALOGUE</text>
+  <text x="600" y="350" fill="#f3eee6" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="86">CONVERSATIONS</text>
+  <text x="600" y="442" fill="#f3eee6" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="60" font-style="italic">with the</text>
+  <text x="600" y="548" fill="#f3eee6" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="104">MACHINE</text>
+  <text x="600" y="1378" fill="#d8d0c3" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="25" letter-spacing="8">ALEJANDRO RENTERIA</text>
+  <text x="600" y="1440" fill="#948d83" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-style="italic">identity · consciousness · free will</text>
+</svg>

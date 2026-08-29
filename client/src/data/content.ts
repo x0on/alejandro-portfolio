@@ -1,12 +1,12 @@
 // ===== ASSET URLS =====
 export const ASSETS = {
 
-  logo: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-logo_5d73dd5d.png",
-  logomark: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/ar-logo-official_a98eaccc.png",
+  logo: "/media/site/alejandro-renteria-logo.svg",
+  logomark: "/media/site/alejandro-renteria-mark.svg",
   manuscriptPdf: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/CONVERSATIONSWITHTHEMACHINE_884b8b9b.pdf",
-  storyTown: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/storytown-screenshot_305ed758.webp",
+  storyTown: "/media/site/story-town-platform.jpg",
   asro: "/media/asro-dashboard.png",
-  manuscript: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/manuscript-artistic_905744db.jpg",
+  manuscript: "/media/site/conversations-with-the-machine-cover.svg",
 };
 
 // ===== HEADSHOTS =====
