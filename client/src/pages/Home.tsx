@@ -233,15 +233,15 @@ export default function Home() {
         {/* ===== BOOK ===== */}
         <Section id="book" className="container py-16 md:py-24">
           <SectionTitle number="02" title={t("section.book")} subtitle={t("section.book.subtitle")} />
-          <div className="grid md:grid-cols-5 gap-10 items-start">
-            <div className="md:col-span-2">
+          <div className="grid md:grid-cols-[minmax(180px,240px)_1fr] gap-8 md:gap-10 items-start">
+            <div className="w-full max-w-[220px] md:max-w-[240px] mx-auto md:mx-0">
               <img
                 src={ASSETS.manuscript}
                 alt="Conversations with the Machine"
                 className="w-full rounded-sm border border-border shadow-lg"
               />
             </div>
-            <div className="md:col-span-3 space-y-4">
+            <div className="space-y-4 max-w-2xl">
               <h3 className="text-2xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
                 {book.title}
               </h3>
