@@ -235,11 +235,25 @@ export default function Home() {
           <SectionTitle number="02" title={t("section.book")} subtitle={t("section.book.subtitle")} />
           <div className="grid md:grid-cols-[minmax(180px,240px)_1fr] gap-8 md:gap-10 items-start">
             <div className="w-full max-w-[220px] md:max-w-[240px] mx-auto md:mx-0">
-              <img
-                src={ASSETS.manuscript}
-                alt="Conversations with the Machine"
-                className="w-full rounded-sm border border-border shadow-lg"
-              />
+              <div
+                role="img"
+                aria-label="Conversations with the Machine by Alejandro Renteria"
+                className="relative aspect-[2/3] overflow-hidden rounded-sm border border-border bg-black bg-cover bg-center shadow-lg text-[#f1eadf]"
+                style={{ backgroundImage: `url(${ASSETS.manuscriptArt})` }}
+              >
+                <div className="absolute inset-x-0 top-0 h-[31%] bg-gradient-to-b from-black via-black/85 to-transparent" />
+                <div className="absolute inset-2.5 border border-[#e8dfd0]/30" />
+                <div className="absolute inset-x-4 top-4 text-center">
+                  <p className="text-[5px] sm:text-[6px] uppercase tracking-[0.36em]">A Philosophical Dialogue</p>
+                  <p className="mt-2 font-serif text-[15px] sm:text-[17px] leading-none tracking-wide">CONVERSATIONS</p>
+                  <p className="mt-1 font-serif text-[11px] italic leading-none">with the</p>
+                  <p className="mt-1 font-serif text-[20px] sm:text-[22px] leading-none tracking-wider">MACHINE</p>
+                </div>
+                <div className="absolute inset-x-4 bottom-4 text-center">
+                  <p className="text-[6px] uppercase tracking-[0.3em]">Alejandro Renteria</p>
+                  <p className="mt-1 font-serif text-[5px] italic text-[#d7cdbd]">identity · consciousness · free will</p>
+                </div>
+              </div>
             </div>
             <div className="space-y-4 max-w-2xl">
               <h3 className="text-2xl font-bold" style={{ fontFamily: "var(--font-display)" }}>

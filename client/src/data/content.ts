@@ -7,6 +7,7 @@ export const ASSETS = {
   storyTown: "/media/site/story-town-platform.jpg",
   asro: "/media/asro-dashboard.png",
   manuscript: "/media/site/conversations-with-the-machine-cover-v2.svg",
+  manuscriptArt: "/media/site/conversations-with-the-machine-art-v2.png",
 };
 
 // ===== HEADSHOTS =====
