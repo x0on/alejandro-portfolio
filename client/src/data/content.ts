@@ -6,7 +6,7 @@ export const ASSETS = {
   manuscriptPdf: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/CONVERSATIONSWITHTHEMACHINE_884b8b9b.pdf",
   storyTown: "/media/site/story-town-platform.jpg",
   asro: "/media/asro-dashboard.png",
-  manuscript: "/media/site/conversations-with-the-machine-cover.svg",
+  manuscript: "/media/site/conversations-with-the-machine-cover-v2.svg",
 };
 
 // ===== HEADSHOTS =====

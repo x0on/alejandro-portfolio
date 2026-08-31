@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 1536" role="img" aria-labelledby="title desc">
+  <title id="title">Conversations with the Machine by Alejandro Renteria</title>
+  <desc id="desc">A cinematic book cover showing a human presence facing a structured machine presence across a luminous threshold.</desc>
+  <image width="1024" height="1536" href="conversations-with-the-machine-art-v2.png" xlink:href="conversations-with-the-machine-art-v2.png" preserveAspectRatio="xMidYMid slice"/>
+  <rect x="0" y="0" width="1024" height="430" fill="url(#topShade)"/>
+  <rect x="54" y="54" width="916" height="1428" fill="none" stroke="#e8dfd0" stroke-opacity="0.3" stroke-width="1"/>
+  <defs>
+    <linearGradient id="topShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#050505" stop-opacity="0.96"/>
+      <stop offset="0.72" stop-color="#050505" stop-opacity="0.72"/>
+      <stop offset="1" stop-color="#050505" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g fill="#f1eadf" text-anchor="middle">
+    <text x="512" y="118" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="8">A PHILOSOPHICAL DIALOGUE</text>
+    <text x="512" y="216" font-family="Georgia, 'Times New Roman', serif" font-size="62" letter-spacing="3">CONVERSATIONS</text>
+    <text x="512" y="277" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-style="italic">with the</text>
+    <text x="512" y="359" font-family="Georgia, 'Times New Roman', serif" font-size="76" letter-spacing="5">MACHINE</text>
+    <text x="512" y="1432" font-family="Arial, Helvetica, sans-serif" font-size="21" letter-spacing="7">ALEJANDRO RENTERIA</text>
+    <text x="512" y="1466" font-family="Georgia, 'Times New Roman', serif" font-size="16" font-style="italic" fill="#d7cdbd">identity · consciousness · free will</text>
+  </g>
+</svg>
