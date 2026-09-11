@@ -18,8 +18,8 @@ const es: Record<string, string> = {
   // Section titles
   "section.about": "Acerca de",
   "section.about.subtitle": "Trayectoria y Filosof\u00eda",
-  "section.book": "Libro",
-  "section.book.subtitle": "Obra In\u00e9dita",
+  "section.book": "Libros",
+  "section.book.subtitle": "Poes\u00eda, Filosof\u00eda y Obra In\u00e9dita",
   "section.software": "Software",
   "section.software.subtitle": "Producci\u00f3n Cinematogr\u00e1fica con IA",
   "section.films": "Cine",
@@ -51,7 +51,8 @@ const es: Record<string, string> = {
 
   // Book
   "book.downloadPdf": "Descargar PDF",
-  "book.description": "Un manuscrito filos\u00f3fico que explora la intersecci\u00f3n entre espiritualidad, psicolog\u00eda y tecnolog\u00eda. Escrito como un di\u00e1logo entre \u00abEl Buscador\u00bb y \u00abLa M\u00e1quina\u00bb, profundiza en temas como la muerte, la identidad, el libre albedr\u00edo y la conciencia\u2014indagando en las profundidades de la naturaleza humana a trav\u00e9s del prisma del pensamiento sist\u00e9mico.",
+  "book.conversations.description": "Un manuscrito filos\u00f3fico que explora la intersecci\u00f3n entre espiritualidad, psicolog\u00eda y tecnolog\u00eda. Escrito como un di\u00e1logo entre \u00abEl Buscador\u00bb y \u00abLa M\u00e1quina\u00bb, profundiza en temas como la muerte, la identidad, el libre albedr\u00edo y la conciencia\u2014indagando en las profundidades de la naturaleza humana a trav\u00e9s del prisma del pensamiento sist\u00e9mico.",
+  "book.freeWill.description": "Doce a\u00f1os de poemas, fragmentos, cartas y reflexiones \u00edntimas sobre el amor, la fe, la paternidad, el exilio, el deseo y la b\u00fasqueda de presencia. Free Will recorre una vida en movimiento entre el mar y el cielo, la oscuridad y la luz, y pregunta si nuestra libertad habita no en la acci\u00f3n, sino en la pausa en la que despertamos.",
 
   // Software
   "software.keyTechnology": "Tecnolog\u00eda Clave",

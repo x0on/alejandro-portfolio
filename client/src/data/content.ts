@@ -8,6 +8,8 @@ export const ASSETS = {
   asro: "/media/asro-dashboard.png",
   manuscript: "/media/site/conversations-with-the-machine-cover-v2.svg",
   manuscriptArt: "/media/site/conversations-with-the-machine-art-v2.png",
+  freeWillArt: "/media/books/free-will-art.png",
+  freeWillPdf: "/media/books/free-will-alejandro-renteria-sept-2026.pdf",
 };
 
 // ===== HEADSHOTS =====
@@ -193,11 +195,22 @@ export const films = [
 ];
 
 // ===== BOOK =====
-export const book = {
-  title: "Conversations with the Machine",
-  description: "A philosophical manuscript exploring the intersection of spirituality, psychology, and technology. Written as a dialogue between \"The Seeker\" and \"The Machine,\" it delves into themes of death, identity, free will, and consciousness\u2014probing the depths of human nature through the lens of systems thinking.",
-  downloadUrl: ASSETS.manuscriptPdf,
-};
+export const books = [
+  {
+    id: "conversations",
+    title: "Conversations with the Machine",
+    art: ASSETS.manuscriptArt,
+    descriptionKey: "book.conversations.description",
+    downloadUrl: ASSETS.manuscriptPdf,
+  },
+  {
+    id: "free-will",
+    title: "Free Will",
+    art: ASSETS.freeWillArt,
+    descriptionKey: "book.freeWill.description",
+    downloadUrl: ASSETS.freeWillPdf,
+  },
+];
 
 // ===== COMMERCIAL WORK =====
 // Commercial work videos temporarily hidden - files need to be re-uploaded
