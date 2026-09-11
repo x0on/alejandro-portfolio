@@ -51,6 +51,9 @@ const es: Record<string, string> = {
 
   // Book
   "book.downloadPdf": "Descargar PDF",
+  "book.share": "Compartir",
+  "book.linkCopied": "Enlace copiado",
+  "book.shareMessage": "Quiero compartir {title}, un libro de Alejandro Renteria.",
   "book.conversations.description": "Un manuscrito filos\u00f3fico que explora la intersecci\u00f3n entre espiritualidad, psicolog\u00eda y tecnolog\u00eda. Escrito como un di\u00e1logo entre \u00abEl Buscador\u00bb y \u00abLa M\u00e1quina\u00bb, profundiza en temas como la muerte, la identidad, el libre albedr\u00edo y la conciencia\u2014indagando en las profundidades de la naturaleza humana a trav\u00e9s del prisma del pensamiento sist\u00e9mico.",
   "book.freeWill.description": "Una colecci\u00f3n de pensamientos breves y versos libres: las semillas de doce a\u00f1os de sabidur\u00eda encarnada.",
 

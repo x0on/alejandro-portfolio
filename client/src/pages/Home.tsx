@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import {
   ExternalLink, Download, ChevronDown, ChevronUp, Play,
   Award, Calendar, Clock, Globe, Film, BookOpen, Mail,
-  MapPin, Quote, Star, Clapperboard, Copy, Check, Camera, Monitor, Zap
+  MapPin, Quote, Star, Clapperboard, Copy, Check, Camera, Monitor, Zap, Share2
 } from "lucide-react";
 
 const fadeUp = {
@@ -90,7 +90,30 @@ export default function Home() {
   const [commercialOpen, setCommercialOpen] = useState(false);
   const [activePhotoCategory, setActivePhotoCategory] = useState<string | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [sharedBook, setSharedBook] = useState<string | null>(null);
   const { t, language } = useLanguage();
+
+  const shareBook = async (book: (typeof books)[number]) => {
+    const url = new URL(book.downloadUrl, window.location.origin).href;
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: `${book.title} — Alejandro Renteria`,
+          text: t("book.shareMessage").replace("{title}", book.title),
+          url,
+        });
+      } else {
+        await navigator.clipboard.writeText(url);
+        setSharedBook(book.id);
+        window.setTimeout(() => setSharedBook(null), 2200);
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      await navigator.clipboard.writeText(url);
+      setSharedBook(book.id);
+      window.setTimeout(() => setSharedBook(null), 2200);
+    }
+  };
 
   // Build a map of detailed films by title for quick lookup
   const filmDetailMap = new Map(films.map(f => [f.title, f]));
@@ -289,6 +312,15 @@ export default function Home() {
                     >
                       <Download size={16} /> {t("book.downloadPdf")}
                     </a>
+                    <button
+                      type="button"
+                      onClick={() => shareBook(book)}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 text-sm border border-border text-foreground rounded-sm hover:bg-secondary transition-colors font-medium"
+                      aria-label={`${t("book.share")} ${book.title}`}
+                    >
+                      {sharedBook === book.id ? <Check size={16} /> : <Share2 size={16} />}
+                      {sharedBook === book.id ? t("book.linkCopied") : t("book.share")}
+                    </button>
                   </div>
                 </div>
               </article>

@@ -51,6 +51,9 @@ const en: Record<string, string> = {
 
   // Book
   "book.downloadPdf": "Download PDF",
+  "book.share": "Share",
+  "book.linkCopied": "Link copied",
+  "book.shareMessage": "I wanted to share {title}, a book by Alejandro Renteria.",
   "book.conversations.description": "A philosophical manuscript exploring the intersection of spirituality, psychology, and technology. Written as a dialogue between \"The Seeker\" and \"The Machine,\" it delves into themes of death, identity, free will, and consciousness\u2014probing the depths of human nature through the lens of systems thinking.",
   "book.freeWill.description": "A collection of short thoughts and free verse\u2014the seeds of twelve years of embodied wisdom.",
 
