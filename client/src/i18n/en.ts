@@ -52,7 +52,7 @@ const en: Record<string, string> = {
   // Book
   "book.downloadPdf": "Download PDF",
   "book.conversations.description": "A philosophical manuscript exploring the intersection of spirituality, psychology, and technology. Written as a dialogue between \"The Seeker\" and \"The Machine,\" it delves into themes of death, identity, free will, and consciousness\u2014probing the depths of human nature through the lens of systems thinking.",
-  "book.freeWill.description": "Twelve years of poems, fragments, letters, and private reflections on love, faith, fatherhood, exile, desire, and the search for presence. Free Will follows a life in motion between sea and sky, darkness and light\u2014asking whether our freedom lives not in action, but in the pause where we become awake.",
+  "book.freeWill.description": "A collection of short thoughts and free verse\u2014the seeds of twelve years of embodied wisdom.",
 
   // Software
   "software.keyTechnology": "Key Technology",
