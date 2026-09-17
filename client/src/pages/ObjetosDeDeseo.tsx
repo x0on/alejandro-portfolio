@@ -7,7 +7,24 @@ import { ArrowLeft, Award, Clock, Globe, Film, MapPin, Clapperboard, X, Image as
 
 const film = films.find(f => f.link === "/objetos-de-deseo") || films[0];
 
-const POSTER_URL = "https://img.youtube.com/vi/6L3JgBtaBSA/maxresdefault.jpg";
+const POSTER_URL = "/media/films/objetos-de-deseo/official-poster.jpg";
+
+const officialSelections = [
+  "Broadway International Film Festival — Los Angeles",
+  "Miami Film Festival",
+  "LGBTQ+ Toronto & Los Angeles Film Festival",
+  "Miami Projections Film Festival",
+  "Philadelphia Latino Arts & Film Festival",
+  "Hispanic Film Festival",
+  "San Diego Independent Filmmaker’s Festival",
+  "SHORT to the Point",
+  "New York Lift-Off Film Festival",
+  "BJX Fest",
+  "Gasparilla International Film Festival",
+  "Toronto Lift-Off Film Festival",
+  "ARFF Barcelona International Film Festival",
+  "Lost River Film Fest",
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -217,6 +234,36 @@ export default function ObjetosDeDeseo() {
           </div>
         </motion.section>
 
+        {/* ===== AWARDS & SELECTIONS ===== */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
+          <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8 flex items-center gap-2">
+            <Award size={14} className="text-primary" /> {t("films.awardsSelections")}
+          </motion.h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {film.awards?.map((a, i) => (
+              <motion.div key={i} variants={fadeUp} className="bg-card border border-border p-5 rounded-sm hover:border-primary/30 transition-colors">
+                <div className="text-sm font-medium mb-1">{a.award}</div>
+                <div className="text-xs text-muted-foreground font-mono">{a.festival}</div>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div variants={fadeUp} className="mt-6 pt-5 border-t border-border">
+            <div className="text-[10px] font-mono uppercase tracking-[0.25em] text-muted-foreground mb-3">
+              {language === "es" ? "Selecciones oficiales" : "Official Selections"}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {officialSelections.map((selection) => (
+                <span
+                  key={selection}
+                  className="inline-flex items-center px-2.5 py-1.5 border border-border bg-card text-[11px] text-muted-foreground rounded-sm"
+                >
+                  {selection}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </motion.section>
+
         {/* ===== BEHIND THE FILM ===== */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
           <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">
@@ -256,34 +303,36 @@ export default function ObjetosDeDeseo() {
                 </>
               )}
             </motion.div>
-            <motion.blockquote variants={fadeUp} className="border-l-2 border-primary pl-6 py-2">
-              <Quote size={22} className="text-primary mb-4" />
-              <p className="text-xl md:text-2xl leading-snug italic" style={{ fontFamily: "var(--font-display)" }}>
-                {language === "es"
-                  ? "Miami es grande; hay mucho espacio donde el sol no da, y estas historias se nutren de la humedad de lo sórdido."
-                  : "Miami is vast; there is plenty of space where the sun does not reach, and these stories draw nourishment from the humidity of the sordid."}
-              </p>
-              <footer className="text-xs font-mono uppercase tracking-wider text-muted-foreground mt-5">
-                Alejandro Rentería · Diario Las Américas
-              </footer>
-            </motion.blockquote>
+            <motion.div variants={fadeUp} className="space-y-8">
+              <blockquote className="border-l-2 border-primary pl-6 py-2">
+                <Quote size={22} className="text-primary mb-4" />
+                <p className="text-xl md:text-2xl leading-snug italic" style={{ fontFamily: "var(--font-display)" }}>
+                  {language === "es"
+                    ? "Miami es grande; hay mucho espacio donde el sol no da, y estas historias se nutren de la humedad de lo sórdido."
+                    : "Miami is vast; there is plenty of space where the sun does not reach, and these stories draw nourishment from the humidity of the sordid."}
+                </p>
+                <footer className="text-xs font-mono uppercase tracking-wider text-muted-foreground mt-5">
+                  Alejandro Rentería · Diario Las Américas
+                </footer>
+              </blockquote>
+              <div>
+                <h3 className="text-[10px] font-mono uppercase tracking-[0.25em] text-muted-foreground mb-3">
+                  {t("objetos.trailer")}
+                </h3>
+                <div className="aspect-video w-full rounded-sm overflow-hidden border border-border bg-black">
+                  <iframe
+                    src={`https://www.youtube.com/embed/-IkjPxa6YXQ?rel=0&playsinline=1&origin=${encodeURIComponent(window.location.origin)}`}
+                    title="Objetos de Deseo - Official Trailer"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="unsafe-url"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </motion.section>
-
-        {/* ===== TRAILER (YouTube) ===== */}
-        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
-          <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">
-            {t("objetos.trailer")}
-          </motion.h2>
-          <motion.div variants={fadeUp} className="aspect-video w-full max-w-4xl rounded-sm overflow-hidden border border-border">
-            <iframe
-              src="https://www.youtube.com/embed/-IkjPxa6YXQ"
-              title="Objetos de Deseo - Official Trailer"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full"
-            />
-          </motion.div>
         </motion.section>
 
         {/* ===== FULL FILM (YouTube) ===== */}
@@ -291,14 +340,26 @@ export default function ObjetosDeDeseo() {
           <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8">
             {t("objetos.fullFilm")}
           </motion.h2>
-          <motion.div variants={fadeUp} className="aspect-video w-full max-w-4xl rounded-sm overflow-hidden border border-border">
+          <motion.div variants={fadeUp} className="aspect-video w-full rounded-sm overflow-hidden border border-border bg-black">
             <iframe
-              src="https://www.youtube.com/embed/rNcGMiXXXoM"
+              src={`https://www.youtube.com/embed/rNcGMiXXXoM?rel=0&playsinline=1&origin=${encodeURIComponent(window.location.origin)}`}
               title="Objetos de Deseo - La Navaja (Full Film)"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="unsafe-url"
               allowFullScreen
               className="w-full h-full"
             />
+          </motion.div>
+          <motion.div variants={fadeUp} className="mt-3 text-right">
+            <a
+              href="https://youtu.be/rNcGMiXXXoM"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
+            >
+              {language === "es" ? "Ver película en YouTube" : "Watch film on YouTube"} <ExternalLink size={12} />
+            </a>
           </motion.div>
         </motion.section>
 
@@ -352,21 +413,6 @@ export default function ObjetosDeDeseo() {
                 <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground mb-1">{spec.label}</div>
                 <div className="text-sm font-medium">{spec.value}</div>
               </div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* ===== AWARDS ===== */}
-        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}>
-          <motion.h2 variants={fadeUp} className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground mb-8 flex items-center gap-2">
-            <Award size={14} className="text-primary" /> {t("films.awardsSelections")}
-          </motion.h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {film.awards?.map((a, i) => (
-              <motion.div key={i} variants={fadeUp} className="bg-card border border-border p-5 rounded-sm hover:border-primary/30 transition-colors">
-                <div className="text-sm font-medium mb-1">{a.award}</div>
-                <div className="text-xs text-muted-foreground font-mono">{a.festival}</div>
-              </motion.div>
             ))}
           </div>
         </motion.section>
