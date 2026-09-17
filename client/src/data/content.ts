@@ -213,23 +213,26 @@ export const books = [
 ];
 
 // ===== COMMERCIAL WORK =====
-// Commercial work videos temporarily hidden - files need to be re-uploaded
+// The selected project archive remains visible while restored masters are moved to hosted players.
 export const commercialWork: { title: string; url: string; type: string; thumbnail: string }[] = [];
 
 export const selectedCommercialProjects = [
-  { year: "2020", project: "Tropical", client: "sociedAD", role: "Executive Producer / Cinematographer", roleES: "Productor Ejecutivo / Director de Fotografía" },
-  { year: "2019", project: "Snuggle", client: "sociedAD", role: "Executive Producer / Cinematographer", roleES: "Productor Ejecutivo / Director de Fotografía" },
-  { year: "2018", project: "Milk — Chef Zepeda", client: "sociedAD", role: "Executive Producer / Cinematographer", roleES: "Productor Ejecutivo / Director de Fotografía" },
+  { year: "2020", project: "Tropical", client: "sociedAD", role: "Executive Producer / Cinematographer", roleES: "Productor Ejecutivo / Director de Fotografía", youtubeId: "9HDzhKVDsTQ" },
+  { year: "2018", project: "Milk — Chef Zepeda", client: "sociedAD", role: "Executive Producer / Cinematographer", roleES: "Productor Ejecutivo / Director de Fotografía", youtubeId: "YxD8Ha5FZGg" },
+  { year: "2018", project: "Milk — Rosmerie Burgos", client: "sociedAD", role: "Executive Producer / Cinematographer", roleES: "Productor Ejecutivo / Director de Fotografía", youtubeId: "ECMo-x9jkoA" },
+  { year: "c. 2018", project: "Photoshoot — Behind the Scenes", client: "Independent", role: "Photographer", roleES: "Fotógrafo", localUrl: "/media/commercial/photoshoot-behind-the-scenes-circa-2018.mp4", posterUrl: "/media/posters/photoshoot-behind-the-scenes.jpg" },
   { year: "2018", project: "Director’s Message", client: "Carnival Corporation", role: "Cinematographer", roleES: "Director de Fotografía" },
   { year: "2017", project: "MasterChef Latino", client: "Telemundo", role: "Photographer", roleES: "Fotógrafo" },
   { year: "2017", project: "Milk — Chef Lorena", client: "sociedAD", role: "Producer / Cinematographer", roleES: "Productor / Director de Fotografía" },
   { year: "2016", project: "Hospitality Institute", client: "Miami Dade College", role: "Producer / Cinematographer", roleES: "Productor / Director de Fotografía" },
-  { year: "2016", project: "Milk — Chef Lala", client: "sociedAD", role: "Producer / Cinematographer", roleES: "Productor / Director de Fotografía" },
+  { year: "2016", project: "Milk — Chef Lala", client: "sociedAD", role: "Producer / Cinematographer", roleES: "Productor / Director de Fotografía", youtubeId: "Xlu3hGM5rjU" },
   { year: "2015", project: "Milk — Dancers", client: "CommonGround/MGS", role: "Producer / Cinematographer", roleES: "Productor / Director de Fotografía" },
+  { year: "2015", project: "Snuggle", client: "sociedAD", role: "Executive Producer / Cinematographer", roleES: "Productor Ejecutivo / Director de Fotografía", youtubeId: "1lNWxhNR8Lk" },
   { year: "2014", project: "Milk Life — 18-Spot National Campaign", client: "Milk Life", role: "Cinematographer", roleES: "Director de Fotografía" },
   { year: "2014", project: "Mexico Tourism — 12-Spot Campaign", client: "Turismo México", role: "Cinematographer", roleES: "Director de Fotografía" },
-  { year: "2013", project: "Habibi I Love You — Ahmed Chawki ft. Pitbull", client: "RedOne", role: "Assistant Director", roleES: "Asistente de Dirección" },
+  { year: "2013", project: "Habibi I Love You — Ahmed Chawki ft. Pitbull", client: "RedOne", role: "Assistant Director", roleES: "Asistente de Dirección", youtubeId: "TyZEwpDPCCw" },
   { year: "2012", project: "Pasos de un Asesino — TV Pilot", client: "Telemundo / NBCUniversal", role: "Director", roleES: "Director" },
+  { year: "c. 2010", project: "Change No. 5 — Spec Ad", client: "Independent", role: "Director", roleES: "Director", localUrl: "/media/commercial/change-no-5-spec-ad.mp4", posterUrl: "/media/posters/change-no-5-spec-ad.jpg" },
 ];
 
 // ===== PHOTOGRAPHY =====
@@ -542,16 +545,104 @@ export const contact = {
 export const filmography = [
   { year: 2025, title: "Cofre Abierto", role: "Writer / Actor", type: "Short", pdf: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028448018/D9SNns3EDqWWFf4F2eTt6N/CofreAbiertosep-12-2025_d5b57804.pdf" },
   { year: 2024, title: "Objetos de Deseo \u2013 La Navaja", role: "Director / Cinematographer / Editor", type: "Short", hasDetail: true },
-  { year: 2018, title: "Mismatch Made in Heaven", role: "Director", type: "Short", hasDetail: true },
+  { year: 2018, title: "Mismatch Made in Heaven", role: "Director", type: "Short", hasDetail: true, youtubeId: "DHL7ovW7JPc" },
   { year: 2018, title: "Carry You On: From The Students Of MSD", role: "Cinematographer", type: "Music Video" },
   { year: 2016, title: "Love Till", role: "Cinematographer", type: "Short" },
-  { year: 2015, title: "Sigo Pensando", role: "Actor", type: "Short" },
-  { year: 2014, title: "Reaching the Sea", role: "Director / Writer / Cinematographer", type: "Short", hasDetail: true },
+  { year: 2015, title: "Sigo Pensando", role: "Actor", type: "Short", youtubeId: "WoBsN8QCXjQ" },
+  { year: 2014, title: "Reaching the Sea", role: "Director / Writer / Cinematographer", type: "Short", hasDetail: true, youtubeId: "r7skiAWr9zE" },
   { year: 2013, title: "Los Secretos de Luc\u00eda", role: "Cinematographer", type: "TV Series" },
   { year: 2013, title: "Santa Diabla", role: "Actor", type: "TV Series" },
   { year: 2012, title: "Fearless Heart (Coraz\u00f3n Valiente)", role: "Actor", type: "TV Series" },
-  { year: 2010, title: "Entre Amores", role: "Cinematographer", type: "Short", hasDetail: true },
+  { year: 2010, title: "Entre Amores", role: "Cinematographer", type: "Short", hasDetail: true, youtubeId: "geMJOXw_vaA" },
   { year: 2008, title: "Che: Part One (Dir. Steven Soderbergh)", role: "Actor", type: "Feature" },
+];
+
+export const theatreCredits = [
+  {
+    year: 2025,
+    title: "El Gran Circo Maravillas cierra por fin sus puertas",
+    role: "Actor / Ensemble Cast",
+    playwright: "Abilio Est\u00e9vez",
+    production: "Antiheroes Project with Fantasy Theater Factory",
+    venue: "Sandrell Rivers Theater, Miami",
+    distinction: "World Premiere",
+    videoUrl: "/media/acting/theatre/el-gran-circo-performance.mp4",
+    coverage: [
+      {
+        outlet: "Artburst Miami",
+        label: "World-premiere feature",
+        labelES: "Art\u00edculo sobre el estreno mundial",
+        url: "https://www.artburstmiami.com/articulos-en-espanol/el-gran-circo-maravillas-cierra-por-fin-sus-puertas-en-el-sandrell-rivers-theater",
+      },
+      {
+        outlet: "14ymedio",
+        label: "2026 Teatro Miami engagement",
+        labelES: "Temporada 2026 en Teatro Miami",
+        url: "https://www.14ymedio.com/cartelera/gran-circo-maravillas-cierra-puertas_1_1122606.html",
+      },
+    ],
+  },
+];
+
+export const portfolioVideoGroups = [
+  {
+    id: "acting",
+    title: "On Camera",
+    titleES: "Frente a C\u00e1mara",
+    role: "Actor",
+    roleES: "Actor",
+    videos: [
+      {
+        title: "Dramatic Acting Performance",
+        youtubeId: "uF_FOLt4imQ",
+        localUrl: "/media/acting/alejandro-renteria-dramatic-performance.mp4",
+      },
+      { title: "Stunts and Fire", youtubeId: "YbJ5aooEci0" },
+      { title: "Sigo Pensando — Behind the Scenes", youtubeId: "WoBsN8QCXjQ" },
+    ],
+  },
+  {
+    id: "directing",
+    title: "Narrative Direction",
+    titleES: "Direcci\u00f3n Narrativa",
+    role: "Director",
+    roleES: "Director",
+    videos: [
+      { title: "Mismatch Made in Heaven", youtubeId: "DHL7ovW7JPc" },
+      { title: "Reaching the Sea", youtubeId: "eyaNIOKO9z8" },
+    ],
+  },
+  {
+    id: "cinematography",
+    title: "Cinematography",
+    titleES: "Direcci\u00f3n de Fotograf\u00eda",
+    role: "Director of Photography",
+    roleES: "Director de Fotograf\u00eda",
+    videos: [
+      { title: "Short Film — Selected Scene", youtubeId: "geMJOXw_vaA" },
+    ],
+  },
+  {
+    id: "music-video",
+    title: "Music Video",
+    titleES: "Video Musical",
+    role: "Director / Director of Photography",
+    roleES: "Director / Director de Fotograf\u00eda",
+    videos: [
+      { title: "Como Pincel — Osamu Men\u00e9ndez & Carlos Varela", youtubeId: "P8numFTmEyE" },
+    ],
+  },
+  {
+    id: "production-bts",
+    title: "Production — Behind the Scenes",
+    titleES: "Producci\u00f3n — Detr\u00e1s de C\u00e1maras",
+    role: "Producer / Director of Photography",
+    roleES: "Productor / Director de Fotograf\u00eda",
+    videos: [
+      { title: "Chef Lala — Behind the Scenes", youtubeId: "Xlu3hGM5rjU" },
+      { title: "Production — Behind the Scenes", youtubeId: "9HDzhKVDsTQ" },
+    ],
+  },
 ];
 
 // ===== SELECTED CLIENTS =====

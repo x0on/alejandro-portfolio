@@ -5,7 +5,7 @@ import TypingAnimation from "@/components/TypingAnimation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   ASSETS, hero, films, books, pressArticles, interviews, socialLinks,
-  contact, experience, clients, filmography, commercialWork, selectedCommercialProjects, photographyCategories,
+  contact, experience, clients, filmography, theatreCredits, commercialWork, selectedCommercialProjects, photographyCategories,
   software, asro, about,
 } from "@/data/content";
 import { useState } from "react";
@@ -85,6 +85,7 @@ export default function Home() {
   const [expandedPress, setExpandedPress] = useState<string | null>(null);
   const [showAllFilmography, setShowAllFilmography] = useState(false);
   const [expandedFilm, setExpandedFilm] = useState<string | null>(null);
+  const [expandedCommercialProject, setExpandedCommercialProject] = useState<string | null>(null);
   const [playingVideo, setPlayingVideo] = useState<number | null>(null);
   const [playingInterview, setPlayingInterview] = useState<number | null>(null);
   const [commercialOpen, setCommercialOpen] = useState(false);
@@ -439,27 +440,107 @@ export default function Home() {
           <div className="relative container py-16 md:py-24">
             <SectionTitle number="04" title={t("section.films")} subtitle={t("section.films.subtitle")} />
 
+            <div className="grid lg:grid-cols-[0.75fr_1.25fr] gap-6 mb-10">
+              <div className="bg-card border border-border rounded-sm p-5 md:p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <Clapperboard size={18} className="text-primary" />
+                  <h3 className="text-xl font-semibold" style={{ fontFamily: "var(--font-display)" }}>
+                    {language === "es" ? "Actor" : "Actor"}
+                  </h3>
+                </div>
+                <p className="text-sm leading-relaxed text-muted-foreground mb-5">
+                  {language === "es"
+                    ? "Formado en teatro y artes esc\u00e9nicas, Alejandro trabaja frente a la c\u00e1mara y sobre el escenario, aportando a cada interpretaci\u00f3n la mirada de un cineasta y la presencia de un actor."
+                    : "Trained in theatre and performing arts, Alejandro works on camera and on stage, bringing a filmmaker's eye and an actor's presence to every performance."}
+                </p>
+                <div className="mt-5 overflow-hidden rounded-sm border border-border bg-black">
+                  <video
+                    src="/media/acting/alejandro-renteria-dramatic-performance.mp4"
+                    poster="/media/posters/dramatic-acting-performance.jpg"
+                    controls
+                    preload="none"
+                    playsInline
+                    className="w-full aspect-video object-contain"
+                    aria-label={language === "es" ? "Interpretaci\u00f3n dram\u00e1tica de Alejandro Renteria" : "Dramatic acting performance by Alejandro Renteria"}
+                  />
+                </div>
+                <p className="mt-3 text-sm font-medium">
+                  {language === "es" ? "Interpretaci\u00f3n dram\u00e1tica" : "Dramatic Acting Performance"}
+                </p>
+              </div>
+
+              <div className="border border-border rounded-sm overflow-hidden bg-card">
+                <div className="px-5 py-3 border-b border-border text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground">
+                  {language === "es" ? "Teatro reciente" : "Recent Theatre"}
+                </div>
+                {theatreCredits.map((credit) => (
+                  <article key={`${credit.year}-${credit.title}`} className="p-5 md:p-6">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span className="text-xs font-mono text-primary">{credit.year}</span>
+                      <span className="text-[10px] px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded-sm font-mono uppercase">
+                        {language === "es" ? "Estreno mundial" : credit.distinction}
+                      </span>
+                    </div>
+                    <h3 className="text-lg md:text-xl font-semibold leading-snug" style={{ fontFamily: "var(--font-display)" }}>
+                      {credit.title}
+                    </h3>
+                    <p className="text-sm text-foreground/80 mt-2">{language === "es" ? "Actor / Elenco" : credit.role}</p>
+                    <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                      {language === "es" ? "De" : "By"} {credit.playwright} · {credit.production} · {credit.venue}
+                    </p>
+                    <div className="mt-5 overflow-hidden rounded-sm border border-border bg-black">
+                      <video
+                        src={credit.videoUrl}
+                        poster="/media/posters/el-gran-circo-performance.jpg"
+                        controls
+                        preload="none"
+                        playsInline
+                        className="w-full max-h-[540px] object-contain"
+                        aria-label={language === "es" ? `Escena de ${credit.title}` : `Performance clip from ${credit.title}`}
+                      />
+                    </div>
+                    <div className="flex flex-wrap gap-x-5 gap-y-2 mt-4">
+                      {credit.coverage.map((item) => (
+                        <a
+                          key={item.outlet}
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                        >
+                          <Newspaper size={14} /> {item.outlet}: {language === "es" ? item.labelES : item.label}
+                        </a>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
             {/* Unified Filmography List */}
             <div className="border border-border rounded-sm overflow-hidden">
               {(showAllFilmography ? filmography : filmography.slice(0, 6)).map((entry, i) => {
                 const detail = filmDetailMap.get(entry.title);
                 const isExpanded = expandedFilm === entry.title;
                 const isFeatured = detail?.featured;
+                const hasExpandableContent = Boolean(detail || (entry as any).youtubeId);
 
                 return (
                   <div key={i} className={`${i > 0 ? 'border-t border-border' : ''}`}>
                     {/* Row */}
                     <div
                       className={`flex items-center gap-3 px-4 py-3 transition-colors ${
-                        detail ? 'cursor-pointer hover:bg-secondary/30' : 'hover:bg-secondary/10'
+                        hasExpandableContent ? 'cursor-pointer hover:bg-secondary/30' : 'hover:bg-secondary/10'
                       } ${isExpanded ? 'bg-secondary/20' : ''}`}
-                      onClick={() => detail && setExpandedFilm(isExpanded ? null : entry.title)}
-                      role={detail ? 'button' : undefined}
+                      onClick={() => hasExpandableContent && setExpandedFilm(isExpanded ? null : entry.title)}
+                      role={hasExpandableContent ? 'button' : undefined}
                     >
                       <span className="text-xs font-mono text-muted-foreground w-10 shrink-0">{entry.year}</span>
                       <div className="flex items-center gap-2 flex-1 min-w-0">
-                        {detail && <Film size={14} className="text-primary shrink-0" />}
-                        <span className={`text-sm truncate ${detail ? 'font-medium' : ''}`}>{entry.title}</span>
+                        {(entry as any).youtubeId
+                          ? <Play size={14} className="text-primary shrink-0" />
+                          : hasExpandableContent && <Film size={14} className="text-primary shrink-0" />}
+                        <span className={`text-sm truncate ${hasExpandableContent ? 'font-medium' : ''}`}>{entry.title}</span>
                         {isFeatured && (
                           <span className="text-[9px] px-1.5 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded-sm font-mono uppercase shrink-0">{t("films.awardWinner")}</span>
                         )}
@@ -471,7 +552,7 @@ export default function Home() {
                       </div>
                       <span className="text-xs text-muted-foreground hidden sm:block w-48 truncate text-right">{entry.role}</span>
                       <span className="text-xs text-muted-foreground hidden md:block w-20 text-right">{entry.type}</span>
-                      {detail ? (
+                      {hasExpandableContent ? (
                         <span className="w-5 shrink-0 text-muted-foreground">
                           {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                         </span>
@@ -481,9 +562,22 @@ export default function Home() {
                     </div>
 
                     {/* Expanded Detail */}
-                    {detail && isExpanded && (
+                    {hasExpandableContent && isExpanded && (
                       <div className="border-t border-border bg-card/50 px-5 py-5">
-                        {isFeatured ? (
+                        {(entry as any).youtubeId && (
+                          <div className="aspect-video max-w-4xl mx-auto mb-5 bg-black">
+                            <iframe
+                              src={`https://www.youtube.com/embed/${(entry as any).youtubeId}?autoplay=1&rel=0&playsinline=1&origin=${encodeURIComponent(window.location.origin)}`}
+                              title={entry.title}
+                              className="w-full h-full"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              referrerPolicy="unsafe-url"
+                              allowFullScreen
+                            />
+                          </div>
+                        )}
+                        {detail && (
+                        isFeatured ? (
                           <div className="grid md:grid-cols-5 gap-8">
                             <div className="md:col-span-3 space-y-4">
                               <p className="text-sm leading-relaxed">{filmDescKeys[detail.title] ? t(filmDescKeys[detail.title]) : detail.description}</p>
@@ -591,6 +685,7 @@ export default function Home() {
                               </div>
                             )}
                           </div>
+                        )
                         )}
                       </div>
                     )}
@@ -685,16 +780,6 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-                <div className="mt-6 pt-5 border-t border-border">
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                    {language === "es"
-                      ? "El archivo comercial se está restaurando progresivamente. Hay selecciones adicionales y reels privados disponibles para conversaciones profesionales."
-                      : "The commercial archive is being progressively restored. Additional selections and private reels are available for professional conversations."}
-                  </p>
-                  <a href="mailto:ale@thinkingmonkeys.us?subject=Private%20Commercial%20Reel%20Request" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
-                    {language === "es" ? "Solicitar reel privado" : "Request private reel"} <ExternalLink size={13} />
-                  </a>
-                </div>
               </div>
             </div>
 
@@ -706,26 +791,64 @@ export default function Home() {
                 <div className="h-px flex-1 bg-border" />
               </div>
               <div className="border border-border rounded-sm overflow-hidden bg-card">
-                {selectedCommercialProjects.map((project, index) => (
-                  <div
-                    key={`${project.year}-${project.project}`}
-                    className={`grid grid-cols-[52px_1fr] md:grid-cols-[64px_1.25fr_0.9fr_1fr] gap-x-4 gap-y-1 px-4 py-4 ${
-                      index !== selectedCommercialProjects.length - 1 ? "border-b border-border" : ""
-                    } hover:bg-secondary/20 transition-colors`}
-                  >
-                    <div className="text-xs font-mono text-primary pt-0.5">{project.year}</div>
-                    <div className="text-sm font-medium">{project.project}</div>
-                    <div className="text-xs md:text-sm text-muted-foreground col-start-2 md:col-start-auto">{project.client}</div>
-                    <div className="text-xs md:text-sm text-muted-foreground col-start-2 md:col-start-auto">
-                      {language === "es" ? project.roleES : project.role}
+                {selectedCommercialProjects.map((project, index) => {
+                  const projectKey = `${project.year}-${project.project}`;
+                  const hasVideo = Boolean((project as any).youtubeId || (project as any).localUrl);
+                  const isExpanded = expandedCommercialProject === projectKey;
+                  return (
+                    <div key={projectKey} className={index !== selectedCommercialProjects.length - 1 ? "border-b border-border" : ""}>
+                      <div
+                        className={`grid grid-cols-[52px_1fr_auto] md:grid-cols-[64px_1.25fr_0.9fr_1fr_24px] gap-x-4 gap-y-1 px-4 py-4 hover:bg-secondary/20 transition-colors ${hasVideo ? "cursor-pointer" : ""}`}
+                        onClick={() => hasVideo && setExpandedCommercialProject(isExpanded ? null : projectKey)}
+                        role={hasVideo ? "button" : undefined}
+                        aria-expanded={hasVideo ? isExpanded : undefined}
+                      >
+                        <div className="text-xs font-mono text-primary pt-0.5">{project.year}</div>
+                        <div className="text-sm font-medium flex items-center gap-2">
+                          {hasVideo && <Play size={13} className="text-primary shrink-0" />}
+                          {project.project}
+                        </div>
+                        <div className="text-xs md:text-sm text-muted-foreground col-start-2 md:col-start-auto">{project.client}</div>
+                        <div className="text-xs md:text-sm text-muted-foreground col-start-2 md:col-start-auto">
+                          {language === "es" ? project.roleES : project.role}
+                        </div>
+                        {hasVideo && <div className="row-start-1 col-start-3 md:col-start-5 text-muted-foreground">{isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}</div>}
+                      </div>
+                      {hasVideo && isExpanded && (
+                        <div className="border-t border-border bg-black">
+                          <div className="aspect-video max-w-4xl mx-auto">
+                            {(project as any).localUrl ? (
+                              <video
+                                src={(project as any).localUrl}
+                                poster={(project as any).posterUrl}
+                                controls
+                                autoPlay
+                                preload="none"
+                                playsInline
+                                className="w-full h-full object-contain"
+                                aria-label={project.project}
+                              />
+                            ) : (
+                              <iframe
+                                src={`https://www.youtube.com/embed/${(project as any).youtubeId}?autoplay=1&rel=0&playsinline=1&origin=${encodeURIComponent(window.location.origin)}`}
+                                title={project.project}
+                                className="w-full h-full"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="unsafe-url"
+                                allowFullScreen
+                              />
+                            )}
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
               <p className="text-xs text-muted-foreground mt-4">
                 {language === "es"
-                  ? "Selección del archivo de Thinking Monkeys Films. Se incorporarán enlaces de reproducción a medida que se restauren los masters."
-                  : "A selection from the Thinking Monkeys Films archive. Playable links will be added as masters are restored."}
+                  ? "Selección del archivo de Thinking Monkeys Films."
+                  : "A selection from the Thinking Monkeys Films archive."}
               </p>
             </div>
 
@@ -735,7 +858,7 @@ export default function Home() {
                   <div key={i} className="group relative overflow-hidden rounded-sm border border-border bg-card">
                     <div className="aspect-video relative bg-black">
                       {playingVideo === i ? (
-                        <video src={item.url} controls autoPlay className="w-full h-full object-contain" />
+                        <video src={item.url} controls autoPlay preload="none" className="w-full h-full object-contain" />
                       ) : (
                         <button onClick={() => setPlayingVideo(i)} className="w-full h-full relative group/play">
                           <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
